@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import type { CSSProperties, ReactNode } from "react";
 import { ContentShell } from "@/components/layout/content-shell";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -54,6 +55,21 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <ContentShell>{children}</ContentShell>
         </main>
         <SiteFooter />
+        {/* Keep GA4 global; enhanced measurement handles client-side page views. */}
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-8MR0VLN6L5', {
+  allow_google_signals: false,
+  allow_ad_personalization_signals: false
+});`}
+        </Script>
+        <Script
+          id="ga4-loader"
+          src="https://www.googletagmanager.com/gtag/js?id=G-8MR0VLN6L5"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
