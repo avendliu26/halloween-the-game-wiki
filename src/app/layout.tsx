@@ -49,6 +49,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
   return (
     <html lang={gameConfig.locale} style={themeStyle}>
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7698014065206574"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <SiteHeader />
         <main className="site-main">
