@@ -44,7 +44,12 @@ export const gameConfig = createGameConfig({
       { id: "characters", label: "Characters", href: "/characters" },
       { id: "locations", label: "Maps", href: "/locations" }
     ] },
-    { id: "game-info", label: "Game Info", href: "/game-info" }
+    { id: "game-info", label: "Game Info", href: "/game-info", children: [
+      { id: "game-info-overview", label: "Overview", href: "/game-info" },
+      { id: "release-date", label: "Release Date", href: "/release-date" },
+      { id: "editions", label: "Editions & Price", href: "/editions" },
+      { id: "platforms", label: "Platforms", href: "/platforms" }
+    ] }
   ],
   content: {
     guideIndexDescription: "Confirmed launch information and a first look at both sides of Halloween: The Game. Detailed controls and tested strategies will follow launch.",
@@ -69,14 +74,14 @@ export const gameConfig = createGameConfig({
       secondaryAction: { label: "Explore Maps", reference: { kind: "category", category: "locations" } },
       tertiaryAction: { label: "Learn How to Play", reference: { kind: "guide", slug: "how-to-play" } },
       startHereLinks: [
-        { label: "Beginner Guide", description: "Learn the confirmed objectives, survival priorities, and match structure before entering Haddonfield. Detailed controls and tested tips await launch.", reference: { kind: "guide", slug: "beginner-guide" } },
+        { label: "Beginner Guide", description: "Prepare for your first night: check your platform, edition and PC requirements, then choose what to read before entering Haddonfield.", reference: { kind: "guide", slug: "beginner-guide" } },
         { label: "How to Play", description: "Understand both sides of the 1v4 match: stalking Haddonfield as Michael Myers or cooperating with other Civilians to survive and escape.", reference: { kind: "guide", slug: "how-to-play" } },
         { label: "Maps & Locations", description: "Explore the four confirmed launch maps and recognizable landmarks from the original Halloween film. Detailed escape routes await launch.", reference: { kind: "category", category: "locations" } },
-        { label: "Characters & Progression", description: "Meet Michael Myers and the Civilians, and learn their confirmed roles. Detailed progression systems and rewards are awaiting verification.", reference: { kind: "category", category: "characters" } }
+        { label: "Characters & Roster", description: "Meet Michael Myers, the ten Standard Edition Civilians and two Deluxe additions. Separate playable roles from NPCs and cosmetic appearances.", reference: { kind: "category", category: "characters" } }
       ],
       databaseAction: { label: "Explore Maps", reference: { kind: "category", category: "locations" } },
       popularQuestions: [
-        { label: "When does Halloween: The Game release?", reference: { kind: "guide", slug: "beginner-guide", anchor: "launch-details" } },
+        { label: "When does Halloween: The Game release?", reference: { kind: "page", slug: "release-date" } },
         { label: "How does the 1v4 match work?", reference: { kind: "guide", slug: "how-to-play", anchor: "core-match-structure" } },
         { label: "Is crossplay confirmed?", reference: { kind: "guide", slug: "how-to-play", anchor: "crossplay" } },
         { label: "What are the four launch maps?", reference: { kind: "category", category: "locations" } }

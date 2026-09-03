@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
     notFound();
   }
 
-  return buildPageMetadata({
+  return {
+    ...buildPageMetadata({
     title: guide.frontmatter.title,
     description: guide.frontmatter.description,
     pathname: `/guides/${guide.slug}`,
@@ -39,7 +40,9 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
       publishedAt: guide.frontmatter.publishedAt,
       author: guide.frontmatter.author
     }
-  });
+    }),
+    ...(guide.frontmatter.title.startsWith(gameConfig.name) ? { title: { absolute: guide.frontmatter.title } } : {})
+  };
 }
 
 export default async function GuidePage({ params }: GuidePageProps) {
@@ -82,7 +85,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
       <header className="guide-article-page__header">
         <p className="preview-card__eyebrow">Guide</p>
         <h1>{guide.frontmatter.title}</h1>
-        <p>{guide.frontmatter.description}</p>
+        {guide.frontmatter.publishedAt ? <time dateTime={guide.frontmatter.publishedAt}>Published {formatDate(guide.frontmatter.publishedAt)}</time> : null}
         <time dateTime={guide.frontmatter.updatedAt}>Updated {formatDate(guide.frontmatter.updatedAt)}</time>
       </header>
       <div className="guide-article-page__layout">

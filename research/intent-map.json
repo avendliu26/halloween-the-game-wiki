@@ -1,0 +1,191 @@
+[
+  {
+    "id": "how-to-play",
+    "primaryKeyword": "halloween the game how to play",
+    "secondaryKeywords": [
+      "halloween the game gameplay"
+    ],
+    "type": "Guide",
+    "pathname": "/guides/how-to-play",
+    "title": "Halloween: The Game How to Play — Roles & Objectives",
+    "status": "PUBLISHED",
+    "sourceUrls": [
+      "https://halloweengame.com/news/multiplayer-gameplay-overview/",
+      "https://halloweengame.com/news/unleash-hell-upon-haddonfield/",
+      "https://halloweengame.com/news/stealth-stalking-and-scares/",
+      "https://halloweengame.com/news/the-locations-of-halloween-the-game/",
+      "https://www.xbox.com/en-US/games/store/halloween/9nl5n20r06dv",
+      "https://store.epicgames.com/p/halloween-f3e2dd?lang=en-US"
+    ]
+  },
+  {
+    "id": "release-date",
+    "primaryKeyword": "halloween the game release date",
+    "secondaryKeywords": [],
+    "type": "Release",
+    "pathname": "/release-date",
+    "title": "Halloween: The Game Release Date & Early Access",
+    "status": "PUBLISHED",
+    "sourceUrls": [
+      "https://halloweengame.com/news/the-locations-of-halloween-the-game/",
+      "https://halloweengame.com/news/preorder/",
+      "https://halloweengame.com/news/physical-editions/",
+      "https://store.steampowered.com/app/3219630/Halloween_The_Game/",
+      "https://store.playstation.com/en-us/concept/10014718/"
+    ]
+  },
+  {
+    "id": "editions",
+    "primaryKeyword": "halloween the game deluxe edition",
+    "secondaryKeywords": [
+      "halloween the game pre order",
+      "halloween the game price"
+    ],
+    "type": "Edition",
+    "pathname": "/editions",
+    "title": "Halloween: The Game Deluxe Edition, Price & Pre-order",
+    "status": "PUBLISHED",
+    "sourceUrls": [
+      "https://halloweengame.com/news/preorder/",
+      "https://store.playstation.com/en-us/concept/10014718/",
+      "https://halloweengame.com/news/physical-editions/"
+    ]
+  },
+  {
+    "id": "physical-editions",
+    "primaryKeyword": "halloween the game physical copy",
+    "secondaryKeywords": [
+      "halloween the game limited collector's edition",
+      "halloween the game collector's edition ps5"
+    ],
+    "type": "Edition",
+    "pathname": "/physical-editions",
+    "title": "Halloween: The Game Physical Copy & Collector Editions",
+    "status": "PUBLISHED",
+    "sourceUrls": [
+      "https://halloweengame.com/news/physical-editions/",
+      "https://halloweengame.com/news/preorder/",
+      "https://halloweengame.com/news/the-locations-of-halloween-the-game/"
+    ]
+  },
+  {
+    "id": "platforms",
+    "primaryKeyword": "halloween the game platforms",
+    "secondaryKeywords": [
+      "halloween the game ps5",
+      "halloween the game xbox"
+    ],
+    "type": "Platform",
+    "pathname": "/platforms",
+    "title": "Halloween: The Game Platforms — PS5, Xbox & PC",
+    "status": "PUBLISHED",
+    "sourceUrls": [
+      "https://halloweengame.com/news/the-locations-of-halloween-the-game/",
+      "https://store.playstation.com/en-us/concept/10014718/",
+      "https://www.xbox.com/en-US/games/store/halloween/9nl5n20r06dv",
+      "https://store.steampowered.com/app/3219630/Halloween_The_Game/",
+      "https://store.epicgames.com/p/halloween-f3e2dd?lang=en-US",
+      "https://halloweengame.com/news/physical-editions/",
+      "https://bloody-disgusting.com/video-games/3965902/halloween-the-game-denied-cero-rating-will-not-launch-on-playstation-in-japan/"
+    ]
+  },
+  {
+    "id": "system-requirements",
+    "primaryKeyword": "halloween the game system requirements",
+    "secondaryKeywords": [],
+    "type": "Platform",
+    "pathname": "/system-requirements",
+    "title": "Halloween: The Game System Requirements for PC",
+    "status": "PUBLISHED",
+    "sourceUrls": [
+      "https://store.steampowered.com/app/3219630/Halloween_The_Game/",
+      "https://store.epicgames.com/p/halloween-f3e2dd?lang=en-US"
+    ]
+  },
+  {
+    "id": "michael-myers",
+    "primaryKeyword": "halloween the game michael myers",
+    "secondaryKeywords": [],
+    "type": "Character",
+    "pathname": "/characters/michael-myers",
+    "title": "Halloween: The Game Michael Myers — Abilities & Role",
+    "status": "PUBLISHED",
+    "sourceUrls": [
+      "https://halloweengame.com/news/multiplayer-gameplay-overview/",
+      "https://halloweengame.com/news/embracing-the-darkness/",
+      "https://halloweengame.com/news/unleash-hell-upon-haddonfield/",
+      "https://halloweengame.com/news/preorder/",
+      "https://halloweengame.com/news/stealth-stalking-and-scares/"
+    ]
+  },
+  {
+    "id": "characters",
+    "primaryKeyword": "halloween the game characters",
+    "secondaryKeywords": [],
+    "type": "Character / Category",
+    "pathname": "/characters",
+    "title": "Halloween: The Game Characters — Confirmed Roster",
+    "status": "PUBLISHED",
+    "sourceUrls": [
+      "https://halloweengame.com/news/legacy-characters-reimagined/",
+      "https://halloweengame.com/news/the-heroes-of-haddonfield/",
+      "https://halloweengame.com/news/preorder/",
+      "https://halloweengame.com/news/multiplayer-gameplay-overview/"
+    ]
+  },
+  {
+    "id": "maps",
+    "primaryKeyword": "halloween the game maps",
+    "secondaryKeywords": [],
+    "type": "Map / Category",
+    "pathname": "/locations",
+    "title": "Halloween: The Game Maps — All Four Launch Locations",
+    "status": "PUBLISHED",
+    "sourceUrls": [
+      "https://halloweengame.com/news/the-locations-of-halloween-the-game/",
+      "https://halloweengame.com/news/orange-grove-estates/",
+      "https://halloweengame.com/news/multiplayer-gameplay-overview/"
+    ]
+  },
+  {
+    "id": "crossplay",
+    "primaryKeyword": "halloween the game crossplay",
+    "secondaryKeywords": [],
+    "type": "Multiplayer",
+    "pathname": "/crossplay",
+    "title": "Halloween: The Game Crossplay — Confirmed Details",
+    "status": "WAITING_FOR_MORE_DATA",
+    "sourceUrls": [
+      "https://www.xbox.com/en-US/games/store/halloween/9nl5n20r06dv",
+      "https://store.epicgames.com/p/halloween-f3e2dd?lang=en-US",
+      "https://halloweengame.com/news/multiplayer-gameplay-overview/"
+    ]
+  },
+  {
+    "id": "alexis",
+    "primaryKeyword": "halloween the game alexis",
+    "secondaryKeywords": [],
+    "type": "Character",
+    "pathname": "/characters/alexis",
+    "title": "Halloween: The Game Alexis — Role & Availability",
+    "status": "WAITING_FOR_MORE_DATA",
+    "sourceUrls": [
+      "https://halloweengame.com/news/preorder/",
+      "https://store.playstation.com/en-us/concept/10014718/"
+    ]
+  },
+  {
+    "id": "trailer",
+    "primaryKeyword": "halloween the game trailer",
+    "secondaryKeywords": [],
+    "type": "Game Info / Media",
+    "pathname": "/trailers",
+    "title": "Halloween: The Game Trailers — Official Video Guide",
+    "status": "WAITING_FOR_MORE_DATA",
+    "sourceUrls": [
+      "https://halloweengame.com/news/halloween-gameplay-release-date-trailer/",
+      "https://halloweengame.com/news/unleash-hell-upon-haddonfield/",
+      "https://halloweengame.com/news/the-locations-of-halloween-the-game/"
+    ]
+  }
+]

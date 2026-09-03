@@ -3,6 +3,7 @@ import { categoryDefinitions } from "@/config/categories";
 import { gameConfig } from "@/config/game";
 import { getAllGuides } from "@/lib/content/guides";
 import { getAllEntities } from "@/lib/content/queries";
+import { getResearchPage, standalonePages } from "@/lib/content/pages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   if (!gameConfig.siteUrl) {
@@ -17,6 +18,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: toUrl("/guides") },
     { url: toUrl("/privacy-policy") },
     { url: toUrl("/terms-of-service") },
+    ...standalonePages.map((page) => ({
+      url: toUrl(page.pathname),
+      lastModified: getResearchPage(page.slug)!.frontmatter.updatedAt
+    })),
     ...getAllGuides().map((guide) => ({
       url: toUrl(`/guides/${guide.slug}`),
       lastModified: guide.frontmatter.updatedAt

@@ -79,7 +79,7 @@ export const createCategoryDefinitions = (navigation: readonly NavigationItem[])
     slug: "characters",
     label: labelFor("characters"),
     singularLabel: "Character",
-    description: "Meet Michael Myers and the Civilians. Roles are confirmed; detailed progression, rewards, and character abilities await verification.",
+    description: "Meet Michael Myers, ten Standard Edition Civilians and two Deluxe additions. Explore the confirmed roster, NPC distinctions and playable roles.",
     glyph: "CH",
     cardFields: ["location", "type", "effect"],
     infoboxFields: [

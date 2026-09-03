@@ -4,9 +4,12 @@ import { JsonLdScript } from "@/components/seo/json-ld-script";
 import { WikiDetailLayout } from "@/components/wiki/wiki-detail-layout";
 import { categoryDefinitions, isCategorySlug } from "@/config/categories";
 import { getAllEntities, getEntity, resolveContentReferences } from "@/lib/content/queries";
-import { buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
+import { buildArticleJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { gameConfig } from "@/config/game";
+import { compileGuide } from "@/lib/content/guides";
+import { getResearchPage } from "@/lib/content/pages";
+import { formatDate } from "@/lib/utils/format";
 
 type EntityPageProps = Readonly<{
   params: Promise<{ category: string; slug: string }>;
@@ -33,13 +36,18 @@ export async function generateMetadata({ params }: EntityPageProps): Promise<Met
     notFound();
   }
 
-  return buildPageMetadata({
-    title: entity.name,
-    description: entity.summary,
+  const editorial = category === "characters" && slug === "michael-myers" ? getResearchPage(slug) : undefined;
+  return {
+    ...buildPageMetadata({
+    title: editorial?.frontmatter.title ?? entity.name,
+    description: editorial?.frontmatter.description ?? entity.summary,
     pathname: `/${entity.category}/${entity.slug}`,
     siteUrl: gameConfig.siteUrl,
-    image: entity.image
-  });
+    image: entity.image,
+    ...(editorial ? { article: { updatedAt: editorial.frontmatter.updatedAt, publishedAt: editorial.frontmatter.publishedAt } } : {})
+    }),
+    ...(editorial ? { title: { absolute: editorial.frontmatter.title } } : {})
+  };
 }
 
 export default async function EntityPage({ params }: EntityPageProps) {
@@ -51,8 +59,15 @@ export default async function EntityPage({ params }: EntityPageProps) {
     notFound();
   }
 
+  const editorial = category === "characters" && slug === "michael-myers" ? getResearchPage(slug) : undefined;
+  const compiled = editorial ? await compileGuide(editorial) : undefined;
   return (
     <>
+      {editorial ? <JsonLdScript data={buildArticleJsonLd({
+        title: editorial.frontmatter.title, description: editorial.frontmatter.description,
+        updatedAt: editorial.frontmatter.updatedAt, publishedAt: editorial.frontmatter.publishedAt,
+        pathname: `/${entity.category}/${entity.slug}`, siteUrl: gameConfig.siteUrl, image: entity.image
+      })} /> : null}
       <JsonLdScript
         data={buildBreadcrumbJsonLd({
           items: [
@@ -63,7 +78,11 @@ export default async function EntityPage({ params }: EntityPageProps) {
           siteUrl: gameConfig.siteUrl
         })}
       />
-      <WikiDetailLayout category={definition} entity={entity} related={resolveContentReferences(entity.related)} />
+      <WikiDetailLayout category={definition} entity={entity} related={resolveContentReferences(entity.related)}
+        editorial={editorial && compiled ? {
+          title: editorial.frontmatter.title, content: compiled.content,
+          dates: <p className="editorial-dates">Published {formatDate(editorial.frontmatter.publishedAt!)} · Updated <time dateTime={editorial.frontmatter.updatedAt}>{formatDate(editorial.frontmatter.updatedAt)}</time></p>
+        } : undefined} />
     </>
   );
 }

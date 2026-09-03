@@ -1022,7 +1022,7 @@ a:hover {
     align-items: start;
   }
 
-  .guide-article-page__body {
+  .guide-article-page__layout > .guide-article-page__body {
     grid-column: 1;
     grid-row: 1;
   }

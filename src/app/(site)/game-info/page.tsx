@@ -1,87 +1,65 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/wiki/breadcrumbs";
 import { gameConfig } from "@/config/game";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { formatDate } from "@/lib/utils/format";
 
-const gameInfoDescription = `Game information and supported platforms for ${gameConfig.name}.`;
-
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
     title: "Game Info",
-    description: gameInfoDescription,
-    pathname: "/game-info",
-    siteUrl: gameConfig.siteUrl,
-    image: gameConfig.heroImagePath
+    description: "Halloween: The Game information hub: find release dates, editions, platforms, PC specifications and official links for the Haddonfield horror game.",
+    pathname: "/game-info", siteUrl: gameConfig.siteUrl, image: gameConfig.heroImagePath
   });
 }
 
-const optionalFacts = [
-  { label: "Developer", value: gameConfig.developer },
-  { label: "Publisher", value: gameConfig.publisher },
-  { label: "Release date", value: gameConfig.releaseDate ? formatDate(gameConfig.releaseDate) : undefined }
-].filter((fact): fact is { label: string; value: string } => Boolean(fact.value));
-
-const officialLinks = [
-  { href: gameConfig.officialWebsite, label: "Official website" },
-  { href: gameConfig.steamUrl, label: "Steam" },
-  { href: gameConfig.discordUrl, label: "Official Discord" },
-  { href: gameConfig.youtubeUrl, label: "Official YouTube — Announce Trailer" }
-].filter((link): link is { href: string; label: string } => Boolean(link.href));
+const topics = [
+  ["/release-date", "Release dates", "Digital launch, Deluxe early access and the later disc release."],
+  ["/editions", "Digital editions and price", "Standard versus Deluxe, exclusive characters and pre-order bonuses."],
+  ["/physical-editions", "Physical copies", "Standard and Limited Collector's disc packages and their contents."],
+  ["/platforms", "Platforms", "PS5, Xbox Series X|S and PC stores, subscriptions and regional caveats."],
+  ["/system-requirements", "PC requirements", "Published minimum and recommended specifications, with CPU-label limitations."],
+  ["/guides/how-to-play", "How to play", "Civilian rescue objectives, Michael's systems and singleplayer."],
+  ["/characters", "Characters", "Standard and Deluxe roster, player roles and NPC residents."],
+  ["/locations", "Maps", "Four launch neighborhoods and confirmed landmarks."]
+];
 
 export default function GameInfoPage() {
-  return (
-    <article className="game-info-page">
-      <Breadcrumbs items={[{ href: "/", label: "Home" }, { label: "Game Info" }]} />
-      <header className="page-header">
-        <p className="preview-card__eyebrow">Game information</p>
-        <h1>{gameConfig.name}</h1>
-        <p>{gameConfig.description}</p>
-      </header>
-      {gameConfig.content.gameInfoDemoNotice ? (
-        <aside className="demo-notice" role="note">
-          <h2>{gameConfig.content.gameInfoDemoNotice.title}</h2>
-          <p>{gameConfig.content.gameInfoDemoNotice.body}</p>
-        </aside>
-      ) : null}
-      <section aria-labelledby="facts-heading" className="game-info-section">
-        <h2 id="facts-heading">Details</h2>
-        <dl className="facts-list">
-          <div><dt>Platforms</dt><dd>{gameConfig.platforms.join(", ")}</dd></div>
-          {optionalFacts.map((fact) => <div key={fact.label}><dt>{fact.label}</dt><dd>{fact.value}</dd></div>)}
-          <div><dt>Genre</dt><dd>Asymmetrical Horror Action</dd></div>
-          <div><dt>Multiplayer</dt><dd>1v4</dd></div>
-          <div><dt>Launch maps</dt><dd>4</dd></div>
-          <div><dt>Supported languages</dt><dd>10 on Steam; English full audio</dd></div>
-          <div><dt>Digital editions</dt><dd>Standard: $39.99 USD; Deluxe: $59.99 USD. Regional pricing may differ.</dd></div>
-          <div><dt>Early access</dt><dd>Eligible Digital Deluxe pre-orders: September 4, 2026, at 9 AM Pacific Time.</dd></div>
-        </dl>
-      </section>
-      <section aria-labelledby="requirements-heading" className="game-info-section">
-        <h2 id="requirements-heading">PC System Requirements</h2>
-        <p>Steam requirements checked September 3, 2026. These are the publisher&apos;s listed specifications, not performance benchmarks from this wiki.</p>
-        <dl className="facts-list">
-          <div><dt>Operating system</dt><dd>Windows 11 64-bit; DirectX 12</dd></div>
-          <div><dt>Minimum</dt><dd>Intel LGA 1200+ / AMD AM4+; 16 GB RAM; GTX 1660+ / RX 590+ / Arc A770+ (1080p at 30 fps)</dd></div>
-          <div><dt>Recommended</dt><dd>Intel LGA 1700+ / AMD AM5+; 32 GB RAM; RTX 3000 series / RX 7000 series (4K at 30 fps)</dd></div>
-          <div><dt>Storage / network</dt><dd>45 GB available space; SSD/NVME required; broadband Internet connection</dd></div>
-        </dl>
-        <p>The CPU entries above reproduce Steam&apos;s platform/socket labels; specific processor models are not identified there. Check the <a href={gameConfig.steamUrl}>current Steam listing</a> for updates.</p>
-      </section>
-      <section aria-labelledby="pending-heading" className="game-info-section">
-        <h2 id="pending-heading">Awaiting Verification</h2>
-        <p>Official Discord and YouTube links are temporarily hidden pending a direct availability check. The <a href="https://halloweengame.com/news/official-discord-server/">official Discord announcement</a> and <a href={gameConfig.officialWebsite}>game website</a> remain available as verified sources.</p>
-        <p>Full crossplay and cross-progression rules, detailed character progression, rewards, controls, and tested escape strategies are awaiting confirmation in this wiki. No redemption-code system is confirmed.</p>
-        <p>This independent fan-made website is not an official game resource. Launch dates and prices are based on the <a href="https://halloweengame.com/news/preorder/">official pre-order FAQ</a>; maps are based on the <a href="https://halloweengame.com/news/the-locations-of-halloween-the-game/">official map announcement</a>.</p>
-      </section>
-      {officialLinks.length > 0 ? (
-        <section aria-labelledby="links-heading" className="game-info-section">
-          <h2 id="links-heading">Official links</h2>
-          <ul className="link-list">
-            {officialLinks.map((link) => <li key={link.href}><a href={link.href}>{link.label}</a></li>)}
-          </ul>
-        </section>
-      ) : null}
-    </article>
-  );
+  return <article className="game-info-page">
+    <Breadcrumbs items={[{ href: "/", label: "Home" }, { label: "Game Info" }]} />
+    <header className="page-header">
+      <p className="preview-card__eyebrow">Game information</p>
+      <h1>Halloween: The Game Information</h1>
+      <p>{gameConfig.description}</p>
+    </header>
+    <section aria-labelledby="facts-heading" className="game-info-section">
+      <h2 id="facts-heading">At a glance</h2>
+      <dl className="facts-list">
+        <div><dt>Developer</dt><dd>{gameConfig.developer}</dd></div>
+        <div><dt>Publisher</dt><dd>{gameConfig.publisher}</dd></div>
+        <div><dt>Announced digital launch</dt><dd>{formatDate(gameConfig.releaseDate!)} in supported regions</dd></div>
+        <div><dt>Setting</dt><dd>Haddonfield, Halloween night in 1978</dd></div>
+        <div><dt>Modes</dt><dd>1v4 multiplayer and a Michael Myers singleplayer story</dd></div>
+      </dl>
+      <p>Based on the <a href="https://halloweengame.com/news/multiplayer-gameplay-overview/">official multiplayer overview</a>, <a href="https://halloweengame.com/news/unleash-hell-upon-haddonfield/">singleplayer reveal</a> and <a href={gameConfig.steamUrl}>Steam listing</a>, checked September 3, 2026.</p>
+    </section>
+    <section aria-labelledby="topics-heading" className="game-info-section">
+      <h2 id="topics-heading">Find the specific answer</h2>
+      <ul className="link-list">{topics.map(([href, title, summary]) => <li key={href}><Link href={href}>{title}</Link><p>{summary}</p></li>)}</ul>
+    </section>
+    <section aria-labelledby="limits-heading" className="game-info-section">
+      <h2 id="limits-heading">Evidence and remaining gaps</h2>
+      <p>Xbox and Epic list cross-platform functionality, but the reviewed sources do not establish the full platform pairing and cross-progression rules. The <Link href="/platforms">platform page</Link> explains the scope and regional exceptions.</p>
+      <p>Numerical character builds, tested escape routes and a detailed Alexis profile remain outside our verified evidence. This independent fan-made wiki does not present prerelease source descriptions as hands-on results.</p>
+    </section>
+    <section aria-labelledby="links-heading" className="game-info-section">
+      <h2 id="links-heading">Official links</h2>
+      <ul className="link-list">
+        <li><a href={gameConfig.officialWebsite}>Official game website</a></li>
+        <li><a href={gameConfig.steamUrl}>Steam store page</a></li>
+        <li><a href="https://halloweengame.com/news/official-discord-server/">Official Discord announcement</a></li>
+        <li><a href="https://halloweengame.com/news/halloween-gameplay-release-date-trailer/">Official gameplay trailer announcement</a></li>
+      </ul>
+    </section>
+  </article>;
 }

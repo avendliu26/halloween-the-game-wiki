@@ -29,6 +29,11 @@ export const ContentReferenceSchema = z.discriminatedUnion("kind", [
 
 export const InternalReferenceSchema = z.discriminatedUnion("kind", [
   z.strictObject({
+    kind: z.literal("page"),
+    slug: SlugSchema,
+    anchor: SlugSchema.optional()
+  }),
+  z.strictObject({
     kind: z.literal("category"),
     category: CategorySlugSchema
   }),

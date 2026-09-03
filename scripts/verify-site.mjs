@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { JSDOM } from "jsdom";
+import { readFileSync } from "node:fs";
 
 const base = new URL(process.argv[2] ?? "http://127.0.0.1:3105");
 const expectedSite = process.env.NEXT_PUBLIC_SITE_URL;
@@ -12,7 +13,7 @@ const forbidden = /Gravenwake|Ashen(?: Blade)?|drowned kingdom|flooded realm|\bD
 while (pending.length) {
   const path = pending.shift();
   if (pages.has(path)) continue;
-  assert.ok(pages.size < 40, "Unexpected expansion beyond phase-one scope");
+  assert.ok(pages.size < 60, "Unexpected crawl expansion");
   const response = await fetch(new URL(path, base));
   assert.equal(response.status, 200, path);
   const html = await response.text();
@@ -58,10 +59,25 @@ for (const asset of assets) {
   assert.equal(response.status, 200, asset);
   assert.ok(response.headers.get("content-type")?.startsWith("image/"), asset);
 }
-for (const path of ["/weapons", "/bosses", "/skills", "/items", "/quests", "/codes", "/missing-page"]) {
+for (const path of ["/weapons", "/bosses", "/skills", "/items", "/quests", "/codes", "/missing-page", "/crossplay", "/characters/alexis", "/trailers", "/maps"]) {
   assert.equal((await fetch(new URL(path, base))).status, 404, path);
 }
 const home = pages.get("/");
+for (const selector of ["title", "h1", 'link[rel="canonical"]']) {
+  const seen = new Map();
+  for (const [path, doc] of pages) {
+    const element = doc.querySelector(selector);
+    if (!element) continue;
+    const value = (selector.startsWith("link") ? element.href : element.textContent).trim();
+    assert.equal(seen.has(value), false, `Duplicate ${selector}: ${path} and ${seen.get(value)}`);
+    seen.set(value, path);
+  }
+}
+const prerender = JSON.parse(readFileSync(new URL("../.next/prerender-manifest.json", import.meta.url), "utf8"));
+const builtPages = Object.entries(prerender.routes)
+  .filter(([path, info]) => !path.startsWith("/_") && info.routeType === "page")
+  .map(([path]) => path);
+for (const path of builtPages) assert.ok(pages.has(path), `Orphan built page: ${path}`);
 assert.equal(home.title, "Halloween: The Game Wiki — Release Date, Crossplay & Guides");
 assert.ok(home.title.length <= 60);
 const descriptionLength = home.querySelector('meta[name="description"]').content.length;
@@ -79,6 +95,8 @@ if (expectedSite) {
   const xml = new JSDOM(sitemap, { contentType: "text/xml" }).window.document;
   const urls = [...xml.querySelectorAll("loc")].map((el) => el.textContent);
   for (const path of pages.keys()) assert.ok(urls.includes(new URL(path, expectedSite).href), path);
+  for (const url of urls) assert.ok(pages.has(new URL(url).pathname), `Orphan sitemap URL: ${url}`);
+  assert.equal(new Set(urls).size, urls.length, "Duplicate sitemap URLs");
 } else {
   assert.equal(robots.includes("Sitemap:"), false);
   assert.equal(sitemap.includes("<loc>"), false);
@@ -89,5 +107,6 @@ console.log(JSON.stringify({
   hiddenAndUnknownRoutes: "404", metadata: "passed", jsonLd: "passed",
   canonicalMode: expectedSite ? "configured origin" : "intentionally omitted",
   sitemapAndRobots: "passed", productionResidue: "none",
+  duplicateTitlesH1Canonicals: "none", orphanBuiltPages: "none",
   homeTitleLength: home.title.length, homeDescriptionLength: descriptionLength
 }, null, 2));

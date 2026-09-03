@@ -4,8 +4,12 @@ import { gameConfig } from "@/config/game";
 import { getAllGuides } from "@/lib/content/guides";
 import { getAllEntities, resolveContentReferences } from "@/lib/content/queries";
 import type { InternalReference } from "@/lib/content/types";
+import { standalonePages } from "@/lib/content/pages";
 
 const referenceExists = (reference: InternalReference): boolean => {
+  if (reference.kind === "page") {
+    return standalonePages.some((page) => page.slug === reference.slug);
+  }
   if (reference.kind === "category") {
     return categoryDefinitions.some((category) => category.slug === reference.category);
   }

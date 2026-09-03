@@ -25,7 +25,7 @@ export const resolveInternalHref = (reference: InternalReference): string => {
       ? `/${reference.category}`
       : reference.kind === "entity"
         ? `/${reference.category}/${reference.slug}`
-        : `/guides/${reference.slug}`;
+        : reference.kind === "page" ? `/${reference.slug}` : `/guides/${reference.slug}`;
   const anchor = reference.kind === "category" ? undefined : reference.anchor;
 
   return anchor ? `${pathname}#${anchor}` : pathname;

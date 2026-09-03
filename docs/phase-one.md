@@ -1,5 +1,7 @@
 # Phase one implementation record
 
+Historical phase-one snapshot. The September 3 content expansion and refreshed source findings are recorded in [content-audit.md](content-audit.md) and [../research/README.md](../research/README.md); use those for current verification status.
+
 ## Scope and protection
 
 - Approved source: ARPG Wiki Template v1.0, commit `228c093`, branch main, clean before copying.

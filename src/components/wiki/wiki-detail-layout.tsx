@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { Breadcrumbs } from "@/components/wiki/breadcrumbs";
 import { RelatedContent } from "@/components/wiki/related-content";
 import { WikiInfobox } from "@/components/wiki/wiki-infobox";
@@ -10,9 +11,10 @@ type WikiDetailLayoutProps = Readonly<{
   category: CategoryDefinition;
   entity: WikiEntity;
   related: readonly ResolvedContent[];
+  editorial?: { title: string; content: ReactNode; dates: ReactNode };
 }>;
 
-export function WikiDetailLayout({ category, entity, related }: WikiDetailLayoutProps) {
+export function WikiDetailLayout({ category, entity, related, editorial }: WikiDetailLayoutProps) {
   return (
     <article className="wiki-detail-page">
       <Breadcrumbs
@@ -25,13 +27,14 @@ export function WikiDetailLayout({ category, entity, related }: WikiDetailLayout
       <div className="wiki-detail-layout">
         <header className="wiki-detail-layout__header">
           <p className="preview-card__eyebrow">{category.singularLabel}</p>
-          <h1>{entity.name}</h1>
+          <h1>{editorial?.title ?? entity.name}</h1>
           <p>{entity.summary}</p>
+          {editorial?.dates}
         </header>
         <WikiInfobox category={category} entity={entity} />
         <div className="wiki-detail-layout__body">
           <Image alt={entity.imageAlt} className="wiki-detail-layout__image" height={720} src={entity.image} unoptimized width={1280} />
-          {entity.sections.map((section) => <WikiSection key={section.id} section={section} />)}
+          {editorial ? <div className="guide-article-page__body">{editorial.content}</div> : entity.sections.map((section) => <WikiSection key={section.id} section={section} />)}
           <RelatedContent related={related} />
         </div>
       </div>
