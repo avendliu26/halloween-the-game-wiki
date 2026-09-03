@@ -1,0 +1,162 @@
+[
+  {
+    "id": "east-haddonfield",
+    "slug": "east-haddonfield",
+    "name": "East Haddonfield",
+    "category": "locations",
+    "image": "/images/placeholders/entity.svg",
+    "imageAlt": "Neutral fan-made placeholder for East Haddonfield; not official game artwork",
+    "summary": "A rural launch map on the outskirts of Haddonfield.",
+    "tags": [
+      "Launch map",
+      "Confirmed"
+    ],
+    "updatedAt": "2026-09-03",
+    "featured": false,
+    "related": [
+      {
+        "kind": "guide",
+        "slug": "how-to-play"
+      }
+    ],
+    "infobox": {
+      "name": "East Haddonfield",
+      "type": "Launch map",
+      "location": "Haddonfield"
+    },
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Confirmed Information",
+        "type": "prose",
+        "body": "The official September 1 map announcement places the Rabbit in Red Lounge and Phelps Garage in East Haddonfield."
+      },
+      {
+        "id": "tips",
+        "title": "Awaiting Launch Details",
+        "type": "prose",
+        "body": "Detailed escape routes, objective placements, and tested strategies await launch verification. This page does not provide an interactive map."
+      }
+    ]
+  },
+  {
+    "id": "haddonfield-heights",
+    "slug": "haddonfield-heights",
+    "name": "Haddonfield Heights",
+    "category": "locations",
+    "image": "/images/placeholders/entity.svg",
+    "imageAlt": "Neutral fan-made placeholder for Haddonfield Heights; not official game artwork",
+    "summary": "A residential launch map featuring the Myers and Strode houses.",
+    "tags": [
+      "Launch map",
+      "Confirmed"
+    ],
+    "updatedAt": "2026-09-03",
+    "featured": false,
+    "related": [
+      {
+        "kind": "guide",
+        "slug": "how-to-play"
+      }
+    ],
+    "infobox": {
+      "name": "Haddonfield Heights",
+      "type": "Launch map",
+      "location": "Haddonfield"
+    },
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Confirmed Information",
+        "type": "prose",
+        "body": "Haddonfield Heights includes the Myers house and the Strode house, as confirmed in the official map announcement."
+      },
+      {
+        "id": "tips",
+        "title": "Awaiting Launch Details",
+        "type": "prose",
+        "body": "Detailed escape routes, objective placements, and tested strategies await launch verification. This page does not provide an interactive map."
+      }
+    ]
+  },
+  {
+    "id": "orange-grove-estates",
+    "slug": "orange-grove-estates",
+    "name": "Orange Grove Estates",
+    "category": "locations",
+    "image": "/images/placeholders/entity.svg",
+    "imageAlt": "Neutral fan-made placeholder for Orange Grove Estates; not official game artwork",
+    "summary": "An upscale neighborhood featuring the Doyle and Wallace residences.",
+    "tags": [
+      "Launch map",
+      "Confirmed"
+    ],
+    "updatedAt": "2026-09-03",
+    "featured": false,
+    "related": [
+      {
+        "kind": "guide",
+        "slug": "how-to-play"
+      }
+    ],
+    "infobox": {
+      "name": "Orange Grove Estates",
+      "type": "Launch map",
+      "location": "Haddonfield"
+    },
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Confirmed Information",
+        "type": "prose",
+        "body": "The official map overview identifies the Doyle and Wallace residences as landmarks in Orange Grove Estates."
+      },
+      {
+        "id": "tips",
+        "title": "Awaiting Launch Details",
+        "type": "prose",
+        "body": "Detailed escape routes, objective placements, and tested strategies await launch verification. This page does not provide an interactive map."
+      }
+    ]
+  },
+  {
+    "id": "haddonfield-town-center",
+    "slug": "haddonfield-town-center",
+    "name": "Haddonfield Town Center",
+    "category": "locations",
+    "image": "/images/placeholders/entity.svg",
+    "imageAlt": "Neutral fan-made placeholder for Haddonfield Town Center; not official game artwork",
+    "summary": "The downtown launch map, including Nichols Hardware.",
+    "tags": [
+      "Launch map",
+      "Confirmed"
+    ],
+    "updatedAt": "2026-09-03",
+    "featured": false,
+    "related": [
+      {
+        "kind": "guide",
+        "slug": "how-to-play"
+      }
+    ],
+    "infobox": {
+      "name": "Haddonfield Town Center",
+      "type": "Launch map",
+      "location": "Haddonfield"
+    },
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Confirmed Information",
+        "type": "prose",
+        "body": "Nichols Hardware is a confirmed landmark in Haddonfield Town Center. The official overview describes a downtown shopping district."
+      },
+      {
+        "id": "tips",
+        "title": "Awaiting Launch Details",
+        "type": "prose",
+        "body": "Detailed escape routes, objective placements, and tested strategies await launch verification. This page does not provide an interactive map."
+      }
+    ]
+  }
+]

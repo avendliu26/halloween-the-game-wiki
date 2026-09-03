@@ -1,0 +1,82 @@
+[
+  {
+    "id": "michael-myers",
+    "slug": "michael-myers",
+    "name": "Michael Myers",
+    "category": "characters",
+    "image": "/images/placeholders/entity.svg",
+    "imageAlt": "Neutral fan-made placeholder for Michael Myers; not official game artwork",
+    "summary": "The Boogeyman: the solo hunter in the 1v4 multiplayer match.",
+    "tags": [
+      "Hunter",
+      "Confirmed"
+    ],
+    "updatedAt": "2026-09-03",
+    "featured": true,
+    "related": [
+      {
+        "kind": "guide",
+        "slug": "how-to-play"
+      }
+    ],
+    "infobox": {
+      "name": "Michael Myers",
+      "type": "Hunter",
+      "location": "Haddonfield"
+    },
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Confirmed Information",
+        "type": "prose",
+        "body": "One player takes the role of Michael Myers, stalking Haddonfield while four Civilian players try to survive. Single-player content is also confirmed."
+      },
+      {
+        "id": "tips",
+        "title": "Awaiting Launch Details",
+        "type": "prose",
+        "body": "Detailed abilities, progression values, and tested strategies are not yet verified by this wiki."
+      }
+    ]
+  },
+  {
+    "id": "civilians",
+    "slug": "civilians",
+    "name": "Civilians",
+    "category": "characters",
+    "image": "/images/placeholders/entity.svg",
+    "imageAlt": "Neutral fan-made placeholder for Civilians; not official game artwork",
+    "summary": "The cooperative side of the 1v4 multiplayer match.",
+    "tags": [
+      "Survivors",
+      "Confirmed"
+    ],
+    "updatedAt": "2026-09-03",
+    "featured": true,
+    "related": [
+      {
+        "kind": "guide",
+        "slug": "how-to-play"
+      }
+    ],
+    "infobox": {
+      "name": "Civilians",
+      "type": "Survivors",
+      "location": "Haddonfield"
+    },
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Confirmed Information",
+        "type": "prose",
+        "body": "Four players take Civilian roles against Michael Myers. Official materials describe cooperation, scavenging, and escape. Richard and Alexis are confirmed Digital Deluxe Edition Civilians; this is not a complete character roster."
+      },
+      {
+        "id": "tips",
+        "title": "Awaiting Launch Details",
+        "type": "prose",
+        "body": "Detailed abilities, progression values, and tested strategies are not yet verified by this wiki."
+      }
+    ]
+  }
+]

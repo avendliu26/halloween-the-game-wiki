@@ -1,0 +1,12 @@
+.worktrees/
+.superpowers/
+node_modules/
+.next/
+coverage/
+.env*
+.cache/
+tmp/
+artifacts/
+*.log
+*.tsbuildinfo
+.DS_Store
