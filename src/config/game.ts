@@ -15,9 +15,7 @@ export const gameConfig = createGameConfig({
   platforms: ["PS5", "Xbox Series X|S", "PC"],
   officialWebsite: "https://halloweengame.com/",
   steamUrl: "https://store.steampowered.com/app/3219630/Halloween_The_Game/",
-  // Official sources identify Discord and YouTube, but direct reachability
-  // could not be verified in this environment. Keep optional links hidden
-  // until rechecked; confirmed source URLs are recorded in docs/phase-one.md.
+  discordUrl: "https://discord.gg/halloweenthegame",
   locale: "en",
   logoPath: "/images/brand/game-mark.svg",
   heroImagePath: "/images/brand/game-hero.svg",
@@ -58,7 +56,7 @@ export const gameConfig = createGameConfig({
       aboutTitle: "Halloween: The Game Wiki",
       about: "Halloween: The Game Wiki is an independent fan-made knowledge base for players exploring Haddonfield. It covers beginner guides, multiplayer strategies, maps, characters, editions, progression, crossplay, platforms, and frequently searched gameplay questions.",
       description: "Asymmetrical horror set in Haddonfield, featuring Michael Myers, Civilians, 1v4 multiplayer, and four launch maps.",
-      playGame: "Play Halloween: The Game"
+      playGame: "Official Website"
     },
     homepage: {
       meta: { title: "Halloween: The Game Wiki — Release Date, Crossplay & Guides", description },

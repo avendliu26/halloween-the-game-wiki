@@ -21,7 +21,8 @@ const topics = [
   ["/system-requirements", "PC requirements", "Published minimum and recommended specifications, with CPU-label limitations."],
   ["/guides/how-to-play", "How to play", "Civilian rescue objectives, Michael's systems and singleplayer."],
   ["/characters", "Characters", "Standard and Deluxe roster, player roles and NPC residents."],
-  ["/locations", "Maps", "Four launch neighborhoods and confirmed landmarks."]
+  ["/locations", "Maps", "Four launch neighborhoods and confirmed landmarks."],
+  ["/community", "Community", "Find the official Discord server and its announcement."]
 ];
 
 export default function GameInfoPage() {

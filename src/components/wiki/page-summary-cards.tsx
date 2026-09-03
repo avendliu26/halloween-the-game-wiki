@@ -1,4 +1,12 @@
 import Link from "next/link";
+import { Fragment } from "react";
+
+// Official homepage destinations; explicit US listings avoid regional redirects.
+const officialStores = [
+  { label: "PlayStation", href: "https://store.playstation.com/en-us/concept/10014718/" },
+  { label: "Xbox", href: "https://www.xbox.com/en-US/games/store/halloween/9nl5n20r06dv" },
+  { label: "Epic Games", href: "https://store.epicgames.com/p/halloween-f3e2dd?lang=en-US" }
+];
 
 // Condensed from the linked official FAQs; detailed comparisons remain below.
 const editions = [
@@ -24,6 +32,11 @@ export function PageSummaryCards({ slug }: { slug: string }) {
         <Link href={card.href}>{card.action}</Link>
       </div>)}
     </div>
+    {slug === "platforms" ? <p id="official-stores">
+      Official stores: {officialStores.map((store, index) => <Fragment key={store.href}>
+        {index > 0 ? " · " : null}<a className="underline" href={store.href} target="_blank" rel="noopener noreferrer">{store.label}</a>
+      </Fragment>)}
+    </p> : <p className="page-summary__note">Looking for PlayStation, Xbox or Epic Games? <Link className="underline" href="/platforms#official-stores">Platform stores</Link>.</p>}
     <p className="page-summary__note">{slug === "editions" ? <>Announced US prices; local pricing varies. <a href="https://halloweengame.com/news/preorder/" target="_blank" rel="noopener noreferrer">Digital FAQ</a> · <a href="https://halloweengame.com/news/physical-editions/" target="_blank" rel="noopener noreferrer">Physical FAQ</a>.</> : <>Launch details vary by region. The full crossplay matchmaking matrix and cross-progression rules are not officially confirmed; <a href="#what-the-cross-platform-badges-confirm">see the storefront evidence below</a>.</>}</p>
   </section>;
 }

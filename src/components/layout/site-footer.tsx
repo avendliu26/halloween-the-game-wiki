@@ -25,7 +25,7 @@ export function SiteFooter({ config = gameConfig }: Readonly<{ config?: GameConf
           <ul aria-label="External links">
             {configuredExternalLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} rel="noreferrer" target="_blank">
+                <a href={link.href} rel="noopener noreferrer" target="_blank">
                   {link.label}
                 </a>
               </li>

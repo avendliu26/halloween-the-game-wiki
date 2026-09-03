@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: toUrl("/") },
     { url: toUrl("/game-info") },
+    { url: toUrl("/community") },
     { url: toUrl("/guides") },
     { url: toUrl("/privacy-policy") },
     { url: toUrl("/terms-of-service") },
