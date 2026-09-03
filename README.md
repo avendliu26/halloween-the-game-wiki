@@ -57,11 +57,11 @@ Weapons, Bosses, Skills, Items and Quests are hidden, contain empty datasets, an
 
 ## Environment variables
 
-`NEXT_PUBLIC_SITE_URL` is optional locally. Set it to the real production HTTP(S) origin before the production build. No production domain has been selected or invented.
+`NEXT_PUBLIC_SITE_URL` is optional. The Halloween project defaults to its confirmed production origin, `https://halloween-thegame.wiki`, when the variable is missing or blank. An explicit value can override the origin; production builds should leave it unset or use that same official origin.
 
-Without this variable the template deliberately omits canonical URLs, absolute Open Graph URLs/images and the robots sitemap declaration, and returns an empty sitemap. Once configured, canonical, Open Graph, sitemap and JSON-LD absolute URLs use the existing shared builders. Do not treat the empty local sitemap as deployment-ready SEO.
+The shared site configuration supplies canonical, Open Graph, sitemap and JSON-LD absolute URLs, as well as the robots sitemap declaration. The sitemap uses the existing published page, guide and entity registries; hidden categories are excluded. Missing environment configuration no longer produces an empty sitemap. `src/app/sitemap.test.ts` covers the production origin, published pages, duplicate URLs, excluded routes and the robots declaration.
 
-All `.env*` files are ignored. No secrets are needed for local development. There is no Vercel deployment in this phase.
+All `.env*` files are ignored. No secrets are needed for local development. Pushing `main` triggers the existing Vercel Production deployment.
 
 ## Editorial status
 

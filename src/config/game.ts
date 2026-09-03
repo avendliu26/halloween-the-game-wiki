@@ -1,6 +1,7 @@
 import { createGameConfig } from "../lib/config/schema.ts";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || undefined;
+// This deployed wiki has a known origin; missing build-time env must not empty its sitemap.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://halloween-thegame.wiki";
 const description = "Halloween: The Game Wiki covers release details, crossplay, maps, characters, editions, system requirements, beginner tips, and multiplayer survival guides.";
 
 export const gameConfig = createGameConfig({
