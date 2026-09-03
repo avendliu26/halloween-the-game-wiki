@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { IsoDateSchema, LocalImagePathSchema, SlugSchema } from "@/lib/validation/common";
+import { IsoDateSchema, LocalImagePathSchema, SlugSchema } from "../validation/common.ts";
 
 export const categorySlugs = [
   "weapons",

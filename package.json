@@ -7,7 +7,8 @@
     "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
   },
   "scripts": {
-    "prebuild": "vitest run src/lib/content/asset-integrity.test.ts",
+    "prebuild": "npm run validate:assets",
+    "validate:assets": "node scripts/validate-assets.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -16,6 +17,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@mdx-js/mdx": "3.1.1",
     "gray-matter": "4.0.3",
     "next": "16.3.4",
     "next-mdx-remote": "6.0.0",

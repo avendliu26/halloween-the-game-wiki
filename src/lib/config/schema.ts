@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { InternalReferenceSchema } from "@/lib/content/types";
-import { HttpUrlSchema, IsoDateSchema, LocalImagePathSchema } from "@/lib/validation/common";
+import { InternalReferenceSchema } from "../content/types.ts";
+import { HttpUrlSchema, IsoDateSchema, LocalImagePathSchema } from "../validation/common.ts";
 
 type NavigationItemInput = {
   id: string;

@@ -1,6 +1,6 @@
-import { gameConfig } from "@/config/game";
-import type { NavigationItem } from "@/lib/config/schema";
-import { type CategoryDefinition, type CategorySlug } from "@/lib/content/types";
+import { gameConfig } from "./game.ts";
+import type { NavigationItem } from "../lib/config/schema.ts";
+import { type CategoryDefinition, type CategorySlug } from "../lib/content/types.ts";
 
 export const createCategoryDefinitions = (navigation: readonly NavigationItem[]): readonly CategoryDefinition[] => {
   const databaseNavigation = navigation.find((item) => item.id === "database");

@@ -1,6 +1,6 @@
 import { realpathSync, statSync } from "node:fs";
 import path from "node:path";
-import { LocalImagePathSchema } from "@/lib/validation/common";
+import { LocalImagePathSchema } from "./common.ts";
 
 const pathIsInside = (candidate: string, directory: string): boolean => {
   const relative = path.relative(directory, candidate);

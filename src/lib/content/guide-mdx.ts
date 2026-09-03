@@ -1,4 +1,4 @@
-import { LocalImagePathSchema } from "@/lib/validation/common";
+import { LocalImagePathSchema } from "../validation/common.ts";
 import type { GuideHeading } from "@/lib/content/guides";
 
 type MdxNode = {

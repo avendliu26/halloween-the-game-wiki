@@ -1,4 +1,4 @@
-import { createGameConfig } from "@/lib/config/schema";
+import { createGameConfig } from "../lib/config/schema.ts";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || undefined;
 const description = "Halloween: The Game Wiki covers release details, crossplay, maps, characters, editions, system requirements, beginner tips, and multiplayer survival guides.";
