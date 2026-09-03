@@ -2,7 +2,7 @@ import path from "node:path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { ImportantNote } from "@/components/wiki/important-note";
-import { createGuideHeadingPlugin, createGuideImagePathCollector, createSafeGuideMdxPlugin } from "@/lib/content/guide-mdx";
+import { createGuideHeadingPlugin, createGuideImagePathCollector, createSafeGuideMdxPlugin, createRelatedPagesPlugin, type SidebarLink } from "@/lib/content/guide-mdx";
 import { loadGuidesFromDirectory, type GuideRecord } from "./guide-source.ts";
 
 export { GuideFrontmatterSchema, parseGuideSource, validateGuideRecords, loadGuidesFromDirectory } from "./guide-source.ts";
@@ -107,9 +107,10 @@ export const getAllGuides = (): GuideRecord[] => loadGuidesFromDirectory(guidesD
 export const getGuide = (slug: string): GuideRecord | undefined =>
   getAllGuides().find((guide) => guide.slug === slug);
 
-export const compileGuide = async (record: GuideRecord) => {
+export const compileGuide = async (record: GuideRecord, { moveRelatedToSidebar = false } = {}) => {
   const headings: GuideHeading[] = [];
   const imagePaths: string[] = [];
+  const relatedPages: SidebarLink[] = [];
   const compiled = await compileMDX({
     source: record.body,
     components: mdxComponents,
@@ -120,11 +121,12 @@ export const compileGuide = async (record: GuideRecord) => {
           remarkGfm,
           createSafeGuideMdxPlugin(record.slug),
           createGuideHeadingPlugin(headings),
-          createGuideImagePathCollector(imagePaths)
+          createGuideImagePathCollector(imagePaths),
+          ...(moveRelatedToSidebar ? [createRelatedPagesPlugin(relatedPages)] : [])
         ]
       }
     }
   });
 
-  return { ...compiled, headings, imagePaths };
+  return { ...compiled, headings, imagePaths, relatedPages };
 };

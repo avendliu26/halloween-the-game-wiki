@@ -17,7 +17,8 @@ describe("WikiDetailLayout", () => {
     render(<WikiDetailLayout category={category} entity={entity} related={[]} />);
 
     expect(screen.getByRole("heading", { level: 1, name: "Training Sword" })).toBeVisible();
-    expect(screen.getByText("How to Obtain")).toBeVisible();
+    expect(screen.getByRole("heading", { name: "How to Obtain" })).toBeVisible();
+    expect(screen.getByRole("link", { name: "How to Obtain" })).toHaveAttribute("href", "#section-how-to-obtain");
     expect(screen.getByText("Rarity")).toBeVisible();
   });
 

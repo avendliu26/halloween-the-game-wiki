@@ -11,6 +11,7 @@ import { gameConfig } from "@/config/game";
 import { getResearchPage } from "@/lib/content/pages";
 import { compileGuide } from "@/lib/content/guides";
 import { formatDate } from "@/lib/utils/format";
+import { WikiPageLayout } from "@/components/wiki/wiki-page-layout";
 
 type CategoryPageProps = Readonly<{
   params: Promise<{ category: string }>;
@@ -49,7 +50,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const definition = getCategoryDefinition(category);
   const entries = getCategoryEntries(definition.slug);
   const editorial = getResearchPage(category === "locations" ? "maps" : category);
-  const compiled = editorial ? await compileGuide(editorial) : undefined;
+  const compiled = editorial ? await compileGuide(editorial, { moveRelatedToSidebar: true }) : undefined;
 
   return (
     <>
@@ -70,9 +71,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         {!editorial ? <p>{definition.description}</p> : null}
         {editorial ? <p className="editorial-dates">Published {formatDate(editorial.frontmatter.publishedAt!)} · Updated <time dateTime={editorial.frontmatter.updatedAt}>{formatDate(editorial.frontmatter.updatedAt)}</time></p> : null}
       </header>
+      <WikiPageLayout headings={compiled?.headings} related={compiled?.relatedPages}>
       {compiled ? <div className="guide-article-page__body">{compiled.content}</div> : null}
       <p className="category-page__total">{entries.length} {entries.length === 1 ? "entry" : "entries"}</p>
       <CategoryFilter category={definition.slug} entries={entries} />
+      </WikiPageLayout>
     </article>
     </>
   );

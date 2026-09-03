@@ -24,15 +24,9 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   }
 
   return (
-    <>
-      <details className="table-of-contents table-of-contents--mobile">
+      <details className="table-of-contents" open>
         <summary>On this page</summary>
         <TableOfContentsLinks headings={headings} />
       </details>
-      <aside aria-label="Table of contents" className="table-of-contents table-of-contents--desktop">
-        <p>On this page</p>
-        <TableOfContentsLinks headings={headings} />
-      </aside>
-    </>
   );
 }

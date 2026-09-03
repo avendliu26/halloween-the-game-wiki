@@ -49,6 +49,7 @@ export function DesktopNav({ config = gameConfig }: Readonly<{ config?: GameConf
             </li>
           );
         })}
+        {config.steamUrl ? <li className="desktop-nav__steam"><a className="steam-cta" href={config.steamUrl} target="_blank" rel="noopener noreferrer">Buy on Steam <span aria-hidden="true">↗</span></a></li> : null}
       </ul>
     </nav>
   );

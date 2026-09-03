@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import { gameConfig } from "@/config/game";
 import { JsonLdScript } from "@/components/seo/json-ld-script";
 import { Breadcrumbs } from "@/components/wiki/breadcrumbs";
-import { TableOfContents } from "@/components/wiki/table-of-contents";
+import { WikiPageLayout } from "@/components/wiki/wiki-page-layout";
+import { PageSummaryCards } from "@/components/wiki/page-summary-cards";
 import { compileGuide } from "@/lib/content/guides";
 import { getResearchPage, standalonePages } from "@/lib/content/pages";
 import { buildArticleJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
@@ -30,7 +31,7 @@ export function researchMetadata(slug: string): Metadata {
 export async function ResearchArticle({ slug }: { slug: string }) {
   const { route, record } = requirePage(slug);
   const { title, description, updatedAt, publishedAt } = record.frontmatter;
-  const { content, headings } = await compileGuide(record);
+  const { content, headings, relatedPages } = await compileGuide(record, { moveRelatedToSidebar: true });
   return <>
     <JsonLdScript data={buildArticleJsonLd({
       title, description, updatedAt, publishedAt,
@@ -50,10 +51,10 @@ export async function ResearchArticle({ slug }: { slug: string }) {
           <time dateTime={updatedAt}>Updated {formatDate(updatedAt)}</time>
         </p>
       </header>
-      <div className="guide-article-page__layout">
-        <TableOfContents headings={headings} />
+      <WikiPageLayout headings={headings} related={relatedPages}>
+        <PageSummaryCards slug={slug} />
         <div className="guide-article-page__body">{content}</div>
-      </div>
+      </WikiPageLayout>
     </article>
   </>;
 }

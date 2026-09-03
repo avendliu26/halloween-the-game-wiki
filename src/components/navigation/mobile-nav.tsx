@@ -63,6 +63,7 @@ export function MobileNav({ config = gameConfig }: Readonly<{ config?: GameConfi
                 </li>
               )
             )}
+            {config.steamUrl ? <li><a className="steam-cta" href={config.steamUrl} target="_blank" rel="noopener noreferrer" onClick={close}>Buy on Steam <span aria-hidden="true">↗</span></a></li> : null}
           </ul>
         </nav>
       ) : null}

@@ -4,8 +4,8 @@
     "slug": "michael-myers",
     "name": "Michael Myers",
     "category": "characters",
-    "image": "/images/placeholders/entity.svg",
-    "imageAlt": "Neutral fan-made placeholder for Michael Myers; not official game artwork",
+    "image": "/images/characters/michael-myers-official.webp",
+    "imageAlt": "Michael Myers standing at the top of a staircase in official Halloween: The Game artwork",
     "summary": "The Boogeyman: the solo hunter in the 1v4 multiplayer match.",
     "tags": [
       "Hunter",
@@ -44,8 +44,8 @@
     "slug": "civilians",
     "name": "Civilians",
     "category": "characters",
-    "image": "/images/placeholders/entity.svg",
-    "imageAlt": "Neutral fan-made placeholder for Civilians; not official game artwork",
+    "image": "/images/characters/civilians-official.webp",
+    "imageAlt": "Five playable Civilians in the official Heroes of Haddonfield character lineup",
     "summary": "The cooperative side of the 1v4 multiplayer match.",
     "tags": [
       "Survivors",

@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/wiki/breadcrumbs";
 import { gameConfig } from "@/config/game";
 import { getAllGuides } from "@/lib/content/guides";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { WikiPageLayout } from "@/components/wiki/wiki-page-layout";
 
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
@@ -25,9 +26,11 @@ export default function GuidesPage() {
         <h1>Guides</h1>
         <p>{gameConfig.content.guideIndexDescription}</p>
       </header>
+      <WikiPageLayout related={[{ title: "Release date and early access", href: "/release-date" }, { title: "Playable characters", href: "/characters" }, { title: "All four launch maps", href: "/locations" }]}>
       <div className="preview-grid preview-grid--guides">
         {guides.map((guide) => <GuideCard guide={guide} key={guide.slug} />)}
       </div>
+      </WikiPageLayout>
     </article>
   );
 }

@@ -7,6 +7,7 @@ import { GuideCard } from "@/components/cards/guide-card";
 import { JsonLdScript } from "@/components/seo/json-ld-script";
 import { categoryDefinitions } from "@/config/categories";
 import { gameConfig } from "@/config/game";
+import { officialTrailer } from "@/config/media";
 import type { GameConfig } from "@/lib/config/schema";
 import { getAllGuides } from "@/lib/content/guides";
 import { getCategoryEntries, getFeaturedEntities, resolveInternalHref } from "@/lib/content/queries";
@@ -74,11 +75,23 @@ export function HomePageContent({ config }: Readonly<{ config: GameConfig }>) {
               {homepage.tertiaryAction.label}
             </Link> : null}
           </div>
-          {config.youtubeUrl ? <a href={config.youtubeUrl} rel="noreferrer" target="_blank">Official Media — Announce Trailer</a> : null}
         </div>
-        <div className="home-hero__art">
+        {config.name === officialTrailer.gameName ? <div className="home-hero__media">
+          <p className="preview-card__eyebrow">Official Media</p>
+          <div className="home-hero__video">
+            <iframe
+              allow="encrypted-media; picture-in-picture; fullscreen"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              src={officialTrailer.embedUrl}
+              title={officialTrailer.title}
+            />
+          </div>
+          <a href={officialTrailer.watchUrl} rel="noopener noreferrer" target="_blank">Official Announce Trailer · Watch on YouTube ↗</a>
+        </div> : <div className="home-hero__art">
           <Image alt={getHeroImageAlt(config.name)} fill priority sizes="(min-width: 64rem) 42vw, 100vw" src={config.heroImagePath} />
-        </div>
+        </div>}
       </section>
 
       <section className="home-section" aria-labelledby="start-here-heading">

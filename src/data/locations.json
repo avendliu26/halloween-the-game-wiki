@@ -4,8 +4,8 @@
     "slug": "east-haddonfield",
     "name": "East Haddonfield",
     "category": "locations",
-    "image": "/images/placeholders/entity.svg",
-    "imageAlt": "Neutral fan-made placeholder for East Haddonfield; not official game artwork",
+    "image": "/images/maps/east-haddonfield-official.webp",
+    "imageAlt": "Phelps Garage at night in East Haddonfield, an official Halloween: The Game screenshot",
     "summary": "A rural launch map on the outskirts of Haddonfield.",
     "tags": [
       "Launch map",
@@ -44,8 +44,8 @@
     "slug": "haddonfield-heights",
     "name": "Haddonfield Heights",
     "category": "locations",
-    "image": "/images/placeholders/entity.svg",
-    "imageAlt": "Neutral fan-made placeholder for Haddonfield Heights; not official game artwork",
+    "image": "/images/maps/haddonfield-heights-official.webp",
+    "imageAlt": "A glowing jack-o'-lantern outside a house in the official Haddonfield Heights map screenshot",
     "summary": "A residential launch map featuring the Myers and Strode houses.",
     "tags": [
       "Launch map",
@@ -84,8 +84,8 @@
     "slug": "orange-grove-estates",
     "name": "Orange Grove Estates",
     "category": "locations",
-    "image": "/images/placeholders/entity.svg",
-    "imageAlt": "Neutral fan-made placeholder for Orange Grove Estates; not official game artwork",
+    "image": "/images/maps/orange-grove-estates-official.webp",
+    "imageAlt": "A multi-story suburban house at night in the official Orange Grove Estates map screenshot",
     "summary": "An upscale neighborhood featuring the Doyle and Wallace residences.",
     "tags": [
       "Launch map",
@@ -124,8 +124,8 @@
     "slug": "haddonfield-town-center",
     "name": "Haddonfield Town Center",
     "category": "locations",
-    "image": "/images/placeholders/entity.svg",
-    "imageAlt": "Neutral fan-made placeholder for Haddonfield Town Center; not official game artwork",
+    "image": "/images/maps/haddonfield-town-center-official.webp",
+    "imageAlt": "A-Side Music Store and Patty's Pub on a nighttime street in the official Haddonfield Town Center screenshot",
     "summary": "The downtown launch map, including Nichols Hardware.",
     "tags": [
       "Launch map",

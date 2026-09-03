@@ -3,8 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { JsonLdScript } from "@/components/seo/json-ld-script";
 import { Breadcrumbs } from "@/components/wiki/breadcrumbs";
-import { RelatedContent } from "@/components/wiki/related-content";
-import { TableOfContents } from "@/components/wiki/table-of-contents";
+import { WikiPageLayout } from "@/components/wiki/wiki-page-layout";
 import { compileGuide, getAllGuides, getGuide } from "@/lib/content/guides";
 import { resolveContentReferences } from "@/lib/content/queries";
 import { buildArticleJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
@@ -53,7 +52,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
     notFound();
   }
 
-  const { content, headings } = await compileGuide(guide);
+  const { content, headings, relatedPages } = await compileGuide(guide, { moveRelatedToSidebar: true });
   const related = resolveContentReferences(guide.frontmatter.related);
 
   return (
@@ -88,8 +87,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
         {guide.frontmatter.publishedAt ? <time dateTime={guide.frontmatter.publishedAt}>Published {formatDate(guide.frontmatter.publishedAt)}</time> : null}
         <time dateTime={guide.frontmatter.updatedAt}>Updated {formatDate(guide.frontmatter.updatedAt)}</time>
       </header>
-      <div className="guide-article-page__layout">
-        <TableOfContents headings={headings} />
+      <WikiPageLayout headings={headings} related={relatedPages.length ? relatedPages : related} relatedHeading={relatedPages.length ? "Related Pages" : "Related Content"}>
         <div className="guide-article-page__body">
           {guide.frontmatter.image && guide.frontmatter.imageAlt ? (
             <Image
@@ -102,9 +100,8 @@ export default async function GuidePage({ params }: GuidePageProps) {
             />
           ) : null}
           {content}
-          <RelatedContent heading="Related Content" related={related} />
         </div>
-      </div>
+      </WikiPageLayout>
     </article>
     </>
   );

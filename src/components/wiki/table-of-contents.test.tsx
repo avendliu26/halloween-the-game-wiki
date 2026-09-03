@@ -38,6 +38,7 @@ describe("guide table of contents", () => {
   it("renders semantic anchor navigation", () => {
     render(<TableOfContents headings={[{ depth: 2, text: "First Route", id: "first-route" }]} />);
 
-    expect(screen.getAllByRole("link", { name: "First Route" })[0]).toHaveAttribute("href", "#first-route");
+    expect(screen.getByRole("link", { name: "First Route" })).toHaveAttribute("href", "#first-route");
+    expect(screen.getAllByText(/on this page/i)).toHaveLength(1);
   });
 });

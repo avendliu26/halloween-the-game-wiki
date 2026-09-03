@@ -60,7 +60,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
   }
 
   const editorial = category === "characters" && slug === "michael-myers" ? getResearchPage(slug) : undefined;
-  const compiled = editorial ? await compileGuide(editorial) : undefined;
+  const compiled = editorial ? await compileGuide(editorial, { moveRelatedToSidebar: true }) : undefined;
   return (
     <>
       {editorial ? <JsonLdScript data={buildArticleJsonLd({
@@ -81,6 +81,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
       <WikiDetailLayout category={definition} entity={entity} related={resolveContentReferences(entity.related)}
         editorial={editorial && compiled ? {
           title: editorial.frontmatter.title, content: compiled.content,
+          headings: compiled.headings, relatedPages: compiled.relatedPages,
           dates: <p className="editorial-dates">Published {formatDate(editorial.frontmatter.publishedAt!)} · Updated <time dateTime={editorial.frontmatter.updatedAt}>{formatDate(editorial.frontmatter.updatedAt)}</time></p>
         } : undefined} />
     </>

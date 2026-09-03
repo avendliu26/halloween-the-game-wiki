@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { GuideRecord } from "@/lib/content/guides";
 import { formatDate } from "@/lib/utils/format";
 
@@ -12,6 +13,7 @@ export function GuideCard({ guide }: GuideCardProps) {
   return (
     <article className="preview-card guide-card">
       <Link aria-label={frontmatter.title} className="preview-card__link" href={`/guides/${guide.slug}`}>
+        {frontmatter.image ? <Image alt={frontmatter.imageAlt ?? frontmatter.title} className="guide-card__image" height={360} src={frontmatter.image} unoptimized width={640} /> : null}
         <p className="preview-card__eyebrow">Guide</p>
         <h3>{frontmatter.title}</h3>
         <p>{frontmatter.description}</p>

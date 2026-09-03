@@ -55,7 +55,7 @@ a:hover {
 }
 
 .content-shell {
-  width: min(100% - 2 * var(--page-gutter), 85rem);
+  width: min(100% - 2 * var(--page-gutter), 82rem);
   margin-inline: auto;
 }
 
@@ -514,10 +514,33 @@ a:hover {
 
 .entity-card__image {
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
   border-bottom: 1px solid var(--color-border);
   object-fit: cover;
 }
+
+.guide-card__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: 50% 25%;
+}
+
+.home-hero__media {
+  display: grid;
+  align-content: center;
+  gap: 0.9rem;
+  min-width: 0;
+  padding: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.home-hero__media > a { font-size: 0.875rem; }
+.home-hero__video { aspect-ratio: 16 / 9; width: 100%; background: #000; }
+.home-hero__video iframe { display: block; width: 100%; height: 100%; border: 0; }
 
 .entity-card__content {
   display: grid;
@@ -738,7 +761,8 @@ a:hover {
 .guide-article-page__body {
   display: grid;
   gap: 1.25rem;
-  max-width: 72ch;
+  min-width: 0;
+  width: 100%;
 }
 
 .guide-article-page__body > h2,
@@ -892,6 +916,217 @@ a:hover {
   height: auto;
   border: 1px solid var(--color-border);
   object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+/* One shared article/sidebar layout; no duplicate mobile TOC markup. */
+.wiki-page-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.wiki-page-layout__main {
+  display: grid;
+  align-content: start;
+  gap: 1.5rem;
+  min-width: 0;
+  order: 2;
+}
+
+.page-sidebar {
+  display: contents;
+}
+
+.page-sidebar > .table-of-contents {
+  order: 1;
+}
+
+.page-sidebar__modules {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+  order: 3;
+}
+
+.sidebar-panel {
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.sidebar-panel h2 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+}
+
+.sidebar-panel ul {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-panel a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.sidebar-panel a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.sidebar-panel dl {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+}
+
+.sidebar-panel dt {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.sidebar-panel dd {
+  margin: 0.15rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.wiki-detail-layout.wiki-detail-layout--shared {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.page-sidebar .wiki-infobox {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+.guide-article-page__body > p,
+.guide-article-page__body > ul,
+.guide-article-page__body > ol {
+  max-width: 80ch;
+}
+
+.guide-article-page__header,
+.wiki-detail-layout__header {
+  max-width: 60rem;
+}
+
+.page-header h1,
+.guide-article-page__header h1,
+.wiki-detail-layout__header h1 {
+  max-width: 26ch;
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.wiki-page-layout :is(h2, h3) {
+  scroll-margin-top: 6rem;
+}
+
+.page-summary__grid {
+  display: grid;
+  gap: 0.875rem;
+}
+
+.page-summary-card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.875rem;
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-primary);
+  background: var(--color-surface);
+}
+
+.page-summary-card__title {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+.page-summary-card ul {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.page-summary-card > a {
+  margin-top: auto;
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.page-summary__note {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.desktop-nav > ul > .desktop-nav__steam > .steam-cta,
+.mobile-nav__panel .steam-cta {
+  border: 1px solid var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.desktop-nav__steam {
+  margin-left: 0.5rem;
+}
+
+.desktop-nav > ul > .desktop-nav__steam > .steam-cta:hover,
+.mobile-nav__panel .steam-cta:hover {
+  background: var(--color-surface-raised);
+  color: var(--color-primary);
+}
+
+.mobile-nav__panel {
+  max-height: calc(100dvh - 6rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@media (min-width: 48rem) {
+  .page-summary__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .page-sidebar__modules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 68.75rem) {
+  .wiki-page-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(17rem, 3fr);
+    align-items: start;
+    gap: 2rem;
+  }
+  .wiki-page-layout__main { grid-column: 1; grid-row: 1; }
+  .page-sidebar {
+    display: grid;
+    grid-column: 2;
+    grid-row: 1;
+    gap: 1.25rem;
+    position: sticky;
+    top: 6rem;
+    max-height: calc(100dvh - 7rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  .page-sidebar__modules { grid-template-columns: minmax(0, 1fr); }
+  .wiki-page-layout .category-filter__grid,
+  .wiki-page-layout .preview-grid--guides { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 .wiki-infobox {
@@ -975,9 +1210,12 @@ a:hover {
 
 @media (min-width: 48rem) {
   .start-here-grid,
-  .preview-grid--guides,
   .preview-grid--entities {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .preview-grid--guides {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   }
 
   .preview-grid--categories {
@@ -998,8 +1236,10 @@ a:hover {
 
 @media (min-width: 64rem) {
   .home-hero {
-    grid-template-columns: minmax(0, 58fr) minmax(0, 42fr);
+    grid-template-columns: minmax(0, 61fr) minmax(0, 39fr);
   }
+
+  .home-hero__media { border-top: 0; border-left: 1px solid var(--color-border); }
 
   .home-hero__art {
     min-height: 25rem;
@@ -1058,7 +1298,7 @@ a:hover {
   }
 }
 
-@media (max-width: 63.9375rem) {
+@media (max-width: 68.6875rem) {
   .desktop-nav {
     display: none;
   }

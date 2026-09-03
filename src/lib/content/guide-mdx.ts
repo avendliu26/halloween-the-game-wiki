@@ -107,6 +107,28 @@ const textContent = (node: MdxNode): string => {
   return node.children?.map(textContent).join("") ?? "";
 };
 
+export type SidebarLink = { title: string; href: string };
+
+/** Move only a pure internal-link list; unexpected prose stays in the article. */
+export const createRelatedPagesPlugin = (related: SidebarLink[]) => () => (tree: MdxNode): void => {
+  const nodes = tree.children;
+  if (!nodes) return;
+  const index = nodes.findIndex((node) => node.type === "heading" && node.depth === 2 && textContent(node).trim() === "Related Pages");
+  if (index < 0 || nodes[index].data?.hProperties?.id !== "related-pages") return;
+  const list = nodes[index + 1];
+  const following = nodes[index + 2];
+  if (list?.type !== "list" || !list.children?.length || (following && !(following.type === "heading" && following.depth === 2))) return;
+  const links: SidebarLink[] = [];
+  for (const item of list.children) {
+    const paragraph = item.children?.[0];
+    const link = paragraph?.children?.[0];
+    if (item.type !== "listItem" || item.children?.length !== 1 || paragraph?.type !== "paragraph" || paragraph.children?.length !== 1 || link?.type !== "link" || !link.url?.startsWith("/") || link.url.startsWith("//")) return;
+    links.push({ title: textContent(link), href: link.url });
+  }
+  related.push(...links);
+  nodes.splice(index, 2);
+};
+
 const slugifyHeading = (text: string): string => {
   const slug = text
     .toLowerCase()
