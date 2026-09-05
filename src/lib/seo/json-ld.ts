@@ -22,8 +22,8 @@ export type ArticleJsonLdInput = {
 };
 
 export type BreadcrumbJsonLdInput = {
-  items: { name: string; pathname: string }[];
-  siteUrl?: string;
+  items: readonly { name: string; pathname: string }[];
+  siteUrl: string | undefined;
 };
 
 type JsonLdRecord = Record<string, unknown>;
@@ -87,17 +87,47 @@ export const buildArticleJsonLd = ({
   };
 };
 
-export const buildBreadcrumbJsonLd = ({ items, siteUrl }: BreadcrumbJsonLdInput): JsonLdRecord => ({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: items.map(({ name, pathname }, index) => {
-    const item = getAbsoluteUrl(pathname, siteUrl);
+export const buildBreadcrumbJsonLd = ({ items, siteUrl }: BreadcrumbJsonLdInput): JsonLdRecord => {
+  if (!siteUrl) {
+    throw new Error("Cannot build breadcrumb JSON-LD without a site URL");
+  }
+  if (items.length < 2) {
+    throw new Error("Breadcrumb JSON-LD requires at least two items");
+  }
+
+  const origin = new URL(siteUrl);
+  const itemListElement = items.map(({ name, pathname }, index) => {
+    const normalizedName = name.trim();
+    if (!normalizedName) {
+      throw new Error(`Breadcrumb item ${index + 1} requires a non-empty name`);
+    }
+    if (!pathname.startsWith("/") || pathname.startsWith("//")) {
+      throw new Error(`Breadcrumb item ${index + 1} requires an internal absolute pathname`);
+    }
+
+    const item = new URL(pathname, origin);
+    const hasNonCanonicalPathname =
+      (pathname !== "/" && pathname.endsWith("/")) ||
+      pathname.slice(1).includes("//") ||
+      item.pathname !== pathname;
+    if (hasNonCanonicalPathname) {
+      throw new Error(`Breadcrumb item ${index + 1} requires a canonical pathname`);
+    }
+    if (item.origin !== origin.origin || item.search || item.hash) {
+      throw new Error(`Breadcrumb item ${index + 1} must resolve to a canonical URL on the site origin`);
+    }
 
     return {
       "@type": "ListItem",
       position: index + 1,
-      name,
-      ...(item ? { item } : {})
+      name: normalizedName,
+      item: item.toString()
     };
-  })
-});
+  });
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement
+  };
+};
