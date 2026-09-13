@@ -10,6 +10,7 @@ import { buildArticleJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { formatDate } from "@/lib/utils/format";
 import { gameConfig } from "@/config/game";
+import { AdsterraBanner, ResponsiveAdsterraTop } from "@/components/ads/adsterra-banner";
 
 type GuidePageProps = Readonly<{
   params: Promise<{ slug: string }>;
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
       author: guide.frontmatter.author
     }
     }),
-    ...(guide.frontmatter.title.startsWith(gameConfig.name) ? { title: { absolute: guide.frontmatter.title } } : {})
+    ...(guide.frontmatter.title.includes(gameConfig.name) ? { title: { absolute: guide.frontmatter.title } } : {})
   };
 }
 
@@ -54,6 +55,8 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
   const { content, headings, relatedPages } = await compileGuide(guide, { moveRelatedToSidebar: true });
   const related = resolveContentReferences(guide.frontmatter.related);
+  const heading = guide.frontmatter.heading ?? guide.frontmatter.title;
+  const showRectangleAd = guide.body.length >= 4000;
 
   return (
     <>
@@ -74,20 +77,22 @@ export default async function GuidePage({ params }: GuidePageProps) {
           items: [
             { name: "Home", pathname: "/" },
             { name: "Guides", pathname: "/guides" },
-            { name: guide.frontmatter.title, pathname: `/guides/${guide.slug}` }
+            { name: heading, pathname: `/guides/${guide.slug}` }
           ],
           siteUrl: gameConfig.siteUrl
         })}
       />
     <article className="guide-article-page">
-      <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/guides", label: "Guides" }, { label: guide.frontmatter.title }]} />
+      <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/guides", label: "Guides" }, { label: heading }]} />
       <header className="guide-article-page__header">
         <p className="preview-card__eyebrow">Guide</p>
-        <h1>{guide.frontmatter.title}</h1>
+        <h1>{heading}</h1>
         {guide.frontmatter.publishedAt ? <time dateTime={guide.frontmatter.publishedAt}>Published {formatDate(guide.frontmatter.publishedAt)}</time> : null}
         <time dateTime={guide.frontmatter.updatedAt}>Updated {formatDate(guide.frontmatter.updatedAt)}</time>
       </header>
-      <WikiPageLayout headings={headings} related={relatedPages.length ? relatedPages : related} relatedHeading={relatedPages.length ? "Related Pages" : "Related Content"}>
+      <ResponsiveAdsterraTop />
+      <WikiPageLayout headings={headings} related={relatedPages.length ? relatedPages : related} relatedHeading={relatedPages.length ? "Related Pages" : "Related Content"}
+        sidebarAd={showRectangleAd ? <AdsterraBanner size="300x250" /> : undefined}>
         <div className="guide-article-page__body">
           {guide.frontmatter.image && guide.frontmatter.imageAlt ? (
             <Image

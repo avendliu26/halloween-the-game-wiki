@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/wiki/breadcrumbs";
+import { ResponsiveAdsterraTop } from "@/components/ads/adsterra-banner";
 import { gameConfig } from "@/config/game";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { formatDate } from "@/lib/utils/format";
@@ -33,6 +34,7 @@ export default function GameInfoPage() {
       <h1>Halloween: The Game Information</h1>
       <p>{gameConfig.description}</p>
     </header>
+    <ResponsiveAdsterraTop />
     <section aria-labelledby="facts-heading" className="game-info-section">
       <h2 id="facts-heading">At a glance</h2>
       <dl className="facts-list">

@@ -45,6 +45,12 @@ export const buildPageMetadata = ({
         : {}),
       ...(url ? { url } : {}),
       ...(openGraphImage ? { images: [{ url: openGraphImage }] } : {})
+    },
+    twitter: {
+      card: openGraphImage ? "summary_large_image" : "summary",
+      title,
+      description,
+      ...(openGraphImage ? { images: [openGraphImage] } : {})
     }
   };
 };

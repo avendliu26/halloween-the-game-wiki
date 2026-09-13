@@ -34,6 +34,18 @@ describe("guide content", () => {
     });
   });
 
+  it("accepts a distinct visible heading without changing the SEO title", () => {
+    const record = parseGuideSource(
+      `${frontmatter('heading: "How to Read the Field Notes"\n')}Body`,
+      "test-guide"
+    );
+
+    expect(record.frontmatter).toMatchObject({
+      title: "Test Guide",
+      heading: "How to Read the Field Notes"
+    });
+  });
+
   it("discovers guides from an independent fixture directory", () => {
     const loadGuidesFromDirectory = (guidesModule as typeof guidesModule & {
       loadGuidesFromDirectory?: (directory: string) => ReturnType<typeof guidesModule.getAllGuides>;

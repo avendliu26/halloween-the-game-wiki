@@ -61,7 +61,7 @@ export function HomePageContent({ config }: Readonly<{ config: GameConfig }>) {
           <p className="home-hero__eyebrow">{homepage.hero?.eyebrow ?? config.wikiName}</p>
           <h1 id="home-title">{homepage.hero?.title ?? config.tagline}</h1>
           <p className="home-hero__description">{homepage.hero?.description ?? config.description}</p>
-          {homepage.hero ? <ul className="tag-list" aria-label="Confirmed launch facts">
+          {homepage.hero ? <ul className="tag-list" aria-label="Current game facts">
             {homepage.hero.stats.map((stat) => <li key={stat}>{stat}</li>)}
           </ul> : null}
           <div className="home-hero__actions">
@@ -116,7 +116,7 @@ export function HomePageContent({ config }: Readonly<{ config: GameConfig }>) {
       <section className="home-section" aria-labelledby="popular-guides-heading">
         <div className="section-heading">
           <p>Recommended reading</p>
-          <h2 id="popular-guides-heading">Essential Guides</h2>
+          <h2 id="popular-guides-heading">Popular Guides</h2>
         </div>
         <div className="preview-grid preview-grid--guides">
           {popularGuides.map((guide) => <GuideCard guide={guide} key={guide.slug} />)}

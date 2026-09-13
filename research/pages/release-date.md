@@ -2,7 +2,7 @@
 
 Research Status: RESEARCHED
 Proposed URL: /release-date
-Accessed: 2026-09-03
+Accessed: 2026-09-13
 
 ## Search Intent
 
@@ -12,6 +12,21 @@ Secondary keywords: None.
 Research method: official-domain game/intent queries described in ../README.md, followed by direct reading of the relevant official pages/storefronts below. Related keywords reuse the same primary evidence; no competitor prose is a factual source.
 
 ## Confirmed Facts
+
+- Fact: Official launch is September 8, 2026 at 9 AM PT; Deluxe advance access began September 4 at 9 AM PT.
+  - Source: Halloween: The Game Launch and Early Access (published 2026-09-03)
+  - URL: https://halloweengame.com/news/halloween-the-game-launch-and-early-access/
+  - Accessed date: 2026-09-07
+
+- Fact: The game is now out and Patch 1.0.1 addressed crossplay parties, NPC pathing, and challenge/achievement tracking.
+  - Source: Halloween: The Game Out Now
+  - URL: https://halloweengame.com/news/halloween-the-game-out-now/
+  - Accessed date: 2026-09-13
+
+- Fact: Early Access Hotfix 1 lists crash, challenge, offline/login-queue and other fixes; a larger patch was in progress.
+  - Source: Early Access Hotfix 1 (published 2026-09-05)
+  - URL: https://halloweengame.com/news/early-access-hotfix-1/
+  - Accessed date: 2026-09-07
 
 - Fact: Latest September 1 announcement confirms September 8, 2026 digital release on PS5, Xbox Series X|S, Steam and Epic; Deluxe preorder early access September 4 at 9 AM PT.
   - Source: The Locations of Halloween: The Game (published 2026-09-01)
@@ -44,7 +59,7 @@ None used as page evidence. Search-result community discussions were leads only,
 
 ## Unconfirmed / Conflicting Information
 
-No verified universal Standard unlock hour or preload schedule. Regional availability is not universal; Japan official statement direct retrieval blocked, see platforms research.
+No verified preload schedule. Regional availability is not universal; Japan official statement direct retrieval blocked, see platforms research.
 
 ## Useful Official Media
 

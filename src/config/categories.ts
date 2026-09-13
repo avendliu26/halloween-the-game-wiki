@@ -94,7 +94,7 @@ export const createCategoryDefinitions = (navigation: readonly NavigationItem[])
     slug: "locations",
     label: labelFor("locations"),
     singularLabel: "Map",
-    description: "Four launch maps confirmed by the official September 1 announcement. Explore Haddonfield landmarks; detailed routes and objectives await launch.",
+    description: "Explore the four multiplayer maps, their Haddonfield landmarks, randomized objectives, escape opportunities, and practical navigation tips.",
     glyph: "MP",
     cardFields: ["type", "location", "rarity"],
     infoboxFields: [

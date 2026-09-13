@@ -11,9 +11,10 @@ type SidebarProps = Readonly<{
   related?: readonly SidebarLink[];
   relatedHeading?: string;
   details?: ReactNode;
+  sidebarAd?: ReactNode;
 }>;
 
-export function PageSidebar({ headings = [], related = [], relatedHeading = "Related Pages", details }: SidebarProps) {
+export function PageSidebar({ headings = [], related = [], relatedHeading = "Related Pages", details, sidebarAd }: SidebarProps) {
   const facts = [
     { label: "Release Date", value: gameConfig.releaseDate ? formatDate(gameConfig.releaseDate) : undefined },
     { label: "Platforms", value: gameConfig.platforms?.join(", ") },
@@ -33,6 +34,7 @@ export function PageSidebar({ headings = [], related = [], relatedHeading = "Rel
         <h2 id="related-pages">{relatedHeading}</h2>
         <ul>{links.map((link) => <li key={link.href}><Link href={link.href}>{link.title}</Link></li>)}</ul>
       </section> : null}
+      {sidebarAd}
       {details}
       {facts.length ? <section className="sidebar-panel" aria-labelledby="sidebar-game-info">
         <h2 id="sidebar-game-info">Game Info</h2>

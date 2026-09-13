@@ -29,6 +29,7 @@ const guideFixture = vi.hoisted(() => ({
   frontmatter: {
     slug: "field-notes",
     title: "Field Notes",
+    heading: "How to Use Field Notes",
     description: "Neutral guide content for a page test.",
     updatedAt: "2026-09-01",
     publishedAt: "2026-08-28",
@@ -86,6 +87,7 @@ describe("GuidePage", () => {
     expect(
       screen.getByRole("img", { name: "A neutral guide illustration" })
     ).toHaveAttribute("src", "/images/placeholders/entity.svg");
+    expect(screen.getByRole("heading", { level: 1, name: "How to Use Field Notes" })).toBeVisible();
     expect(jsonLd).toMatchObject({
       headline: "Field Notes",
       datePublished: "2026-08-28",

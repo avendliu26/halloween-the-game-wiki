@@ -26,7 +26,7 @@ export default function GuidesPage() {
         <h1>Guides</h1>
         <p>{gameConfig.content.guideIndexDescription}</p>
       </header>
-      <WikiPageLayout related={[{ title: "Release date and early access", href: "/release-date" }, { title: "Playable characters", href: "/characters" }, { title: "All four launch maps", href: "/locations" }]}>
+      <WikiPageLayout related={[{ title: "Story Challenges", href: "/challenges" }, { title: "Perks and decks", href: "/perks" }, { title: "Michael Myers abilities", href: "/characters/michael-myers" }, { title: "Playable characters", href: "/characters" }, { title: "Crossplay status", href: "/crossplay" }]}>
       <div className="preview-grid preview-grid--guides">
         {guides.map((guide) => <GuideCard guide={guide} key={guide.slug} />)}
       </div>

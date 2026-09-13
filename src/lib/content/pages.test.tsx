@@ -5,10 +5,11 @@ import { ResearchArticle, researchMetadata } from "@/components/wiki/research-ar
 
 describe("researched fact-page delivery", () => {
   it("does not resolve missing or traversal slugs", () => {
-    expect(getResearchPage("crossplay")).toBeUndefined();
+    expect(getResearchPage("missing-page")).toBeUndefined();
     expect(getResearchPage("../guides/how-to-play")).toBeUndefined();
   });
   it.each([
+    ["crossplay", "/crossplay", "Guide"],
     ["release-date", "/release-date", "Release"],
     ["editions", "/editions", "Edition"],
     ["physical-editions", "/physical-editions", "Edition"],

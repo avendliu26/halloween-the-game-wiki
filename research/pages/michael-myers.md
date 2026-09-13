@@ -2,7 +2,7 @@
 
 Research Status: RESEARCHED
 Proposed URL: /characters/michael-myers
-Accessed: 2026-09-03
+Accessed: 2026-09-13
 
 ## Search Intent
 
@@ -40,11 +40,25 @@ Research method: official-domain game/intent queries described in ../README.md, 
 
 ## Community Information
 
-None used as page evidence. Search-result community discussions were leads only, not facts or reported hands-on experience.
+- Current players consistently report a normal Shape Jump cooldown of approximately 5 seconds after exit. This is published only as an approximate community-tested value, with the current on-screen timer taking priority.
+  - Source: https://www.reddit.com/r/TheHalloweenGame/comments/1w5z5ni/shape_jump_question/
+  - Accessed: 2026-09-13
+- Current reports place Reality Tear at roughly 3.5–4 minutes. Because reports vary and no official number is published, the page uses a range.
+  - Sources: https://steamcommunity.com/app/3219630/discussions/0/592940620292686681/ and https://www.reddit.com/r/TheHalloweenGame/comments/1wcoo5u/my_recommendation_for_both_pocket_knives_and/
+  - Accessed: 2026-09-13
+- Players report occasional multi-minute Shape Jump lockouts that are inconsistent with the normal short cooldown. The page labels this as a reported bug, not intended behavior.
+  - Source: https://www.reddit.com/r/TheHalloweenGame/comments/1wcmzb6/wtf/
+  - Accessed: 2026-09-13
+
+## Post-launch patch evidence
+
+- Patch 1.0.1 increased Detection Pulse effectiveness for residents in hiding spots and improved resident/police NPC pathing. It did not announce a Shape Jump or Reality Tear balance change.
+  - Source: https://halloweengame.com/news/halloween-the-game-out-now/
+  - Accessed: 2026-09-13
 
 ## Unconfirmed / Conflicting Information
 
-March 2026 overview describes entering/exiting in darkness OR outside resident sight, whereas September 2025 dedicated article has stricter wording. Use newer high-level description, disclose unresolved precise light/visibility rule; no fabricated cooldown, damage or stat values.
+March 2026 overview describes entering/exiting in darkness OR outside resident sight, whereas September 2025 dedicated article has stricter wording. Use the safer practical rule—seek darkness and break line of sight—and keep community cooldowns clearly labeled rather than presenting them as official values.
 
 ## Useful Official Media
 

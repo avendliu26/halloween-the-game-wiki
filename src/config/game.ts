@@ -2,7 +2,7 @@ import { createGameConfig } from "../lib/config/schema.ts";
 
 // This deployed wiki has a known origin; missing build-time env must not empty its sitemap.
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://halloween-thegame.wiki";
-const description = "Halloween: The Game Wiki covers release details, crossplay, maps, characters, editions, system requirements, beginner tips, and multiplayer survival guides.";
+const description = "Halloween: The Game Wiki covers characters, challenges, perks, Michael Myers abilities, Civilian objectives, police respawns, crossplay, and gameplay guides.";
 
 export const gameConfig = createGameConfig({
   name: "Halloween: The Game",
@@ -41,6 +41,8 @@ export const gameConfig = createGameConfig({
     { id: "guides", label: "Guides", href: "/guides" },
     { id: "database", label: "Explore", href: "/locations", children: [
       { id: "characters", label: "Characters", href: "/characters" },
+      { id: "challenges", label: "Challenges", href: "/challenges" },
+      { id: "perks", label: "Perks", href: "/perks" },
       { id: "locations", label: "Maps", href: "/locations" }
     ] },
     { id: "game-info", label: "Game Info", href: "/game-info", children: [
@@ -51,7 +53,7 @@ export const gameConfig = createGameConfig({
     ] }
   ],
   content: {
-    guideIndexDescription: "Confirmed launch information and a first look at both sides of Halloween: The Game. Detailed controls and tested strategies will follow launch.",
+    guideIndexDescription: "Practical Halloween: The Game guides for Michael Myers, Civilians, residents, police, escapes, challenges, XP, skill checks, crossplay, and troubleshooting.",
     footerDisclaimer: "Independent fan-made website. Not affiliated with, endorsed by, or owned by IllFonic, Gun Interactive, or the Halloween rights holders. All game names and trademarks belong to their respective owners.",
     footer: {
       aboutTitle: "Halloween: The Game Wiki",
@@ -60,36 +62,43 @@ export const gameConfig = createGameConfig({
       playGame: "Official Website"
     },
     homepage: {
-      meta: { title: "Halloween: The Game Wiki — Release Date, Crossplay & Guides", description },
+      meta: { title: "Halloween: The Game Wiki — Characters & Gameplay Guides", description },
       hero: {
-        eyebrow: "Fan-Made Halloween: The Game Community Wiki",
-        title: "Halloween: The Game",
-        description: "Enter Haddonfield on Halloween night, 1978, and experience an asymmetrical horror sandbox inspired by the original film. Play as Michael Myers and stalk the town, or work together as Civilians to survive, escape, and fight back.",
-        stats: ["Releases Sep 8, 2026", "4 Launch Maps", "1v4 Multiplayer", "$39.99 Standard Edition"]
+        eyebrow: "Independent Gameplay Wiki",
+        title: "Halloween: The Game Wiki",
+        description: "Characters, Challenges, Perks, Michael Myers Abilities & Gameplay Guides for surviving — or stalking — Haddonfield after launch.",
+        stats: ["Out Now", "1v4 Multiplayer", "6-Chapter Story Mode", "PS5 / Xbox Series X|S / PC"]
       },
-      startHereEyebrow: "Start Here",
-      startHereTitle: "Your Halloween: The Game Journey",
-      primaryAction: { label: "Start Beginner Guide", reference: { kind: "guide", slug: "beginner-guide" } },
-      secondaryAction: { label: "Explore Maps", reference: { kind: "category", category: "locations" } },
+      startHereEyebrow: "Gameplay Help",
+      startHereTitle: "Find the Answer You Need",
+      primaryAction: { label: "Read How to Play", reference: { kind: "guide", slug: "how-to-play" } },
+      secondaryAction: { label: "Browse Characters", reference: { kind: "category", category: "characters" } },
       tertiaryAction: { label: "Learn How to Play", reference: { kind: "guide", slug: "how-to-play" } },
       startHereLinks: [
-        { label: "Beginner Guide", description: "Prepare for your first night: check your platform, edition and PC requirements, then choose what to read before entering Haddonfield.", reference: { kind: "guide", slug: "beginner-guide" } },
-        { label: "How to Play", description: "Understand both sides of the 1v4 match: stalking Haddonfield as Michael Myers or cooperating with other Civilians to survive and escape.", reference: { kind: "guide", slug: "how-to-play" } },
-        { label: "Maps & Locations", description: "Explore the four confirmed launch maps and recognizable landmarks from the original Halloween film. Detailed escape routes await launch.", reference: { kind: "category", category: "locations" } },
-        { label: "Characters & Roster", description: "Meet Michael Myers, the ten Standard Edition Civilians and two Deluxe additions. Separate playable roles from NPCs and cosmetic appearances.", reference: { kind: "category", category: "characters" } }
+        { label: "Challenges", description: "Find chapter objectives, execution tips, and help with challenges that do not complete.", reference: { kind: "page", slug: "challenges" } },
+        { label: "Characters", description: "Compare the playable Civilian roster, unlock availability, roles, traits, and Michael Myers.", reference: { kind: "category", category: "characters" } },
+        { label: "Michael Myers", description: "Learn Killer Sense, Stalk, Shape Jump, loadout abilities, cooldowns, and practical hunting tactics.", reference: { kind: "entity", category: "characters", slug: "michael-myers" } },
+        { label: "Perks", description: "Learn how Perk Points, card rolls, temporary upgrades, and Civilian Perk Decks work.", reference: { kind: "page", slug: "perks" } },
+        { label: "How to Play", description: "Follow the Michael and Civilian match loops, from residents and police to escapes and reinforcements.", reference: { kind: "guide", slug: "how-to-play" } },
+        { label: "Police Respawn", description: "Stay in the match after death and learn how the community-observed reinforcement-card loop works.", reference: { kind: "guide", slug: "how-to-respawn-as-police" } },
+        { label: "Crossplay", description: "Check PS5, Xbox, Steam, and Epic crossplay status, settings, progression limits, and party fixes.", reference: { kind: "page", slug: "crossplay" } }
       ],
       databaseAction: { label: "Explore Maps", reference: { kind: "category", category: "locations" } },
       popularQuestions: [
-        { label: "When does Halloween: The Game release?", reference: { kind: "page", slug: "release-date" } },
-        { label: "How does the 1v4 match work?", reference: { kind: "guide", slug: "how-to-play", anchor: "core-match-structure" } },
-        { label: "Is crossplay confirmed?", reference: { kind: "guide", slug: "how-to-play", anchor: "crossplay" } },
-        { label: "What are the four launch maps?", reference: { kind: "category", category: "locations" } }
+        { label: "What should I do first as a beginner?", reference: { kind: "guide", slug: "beginner-guide", anchor: "what-beginners-should-do-first" } },
+        { label: "How does the 1v4 match work?", reference: { kind: "guide", slug: "how-to-play", anchor: "quick-answer" } },
+        { label: "Is Halloween: The Game crossplay?", reference: { kind: "page", slug: "crossplay" } },
+        { label: "How do challenges and XP work?", reference: { kind: "guide", slug: "how-to-get-xp", anchor: "complete-passive-progressive-and-singleplayer-challenges" } },
+        { label: "How do you respawn as police?", reference: { kind: "guide", slug: "how-to-respawn-as-police" } },
+        { label: "How do you fix backend authentication errors?", reference: { kind: "guide", slug: "backend-authentication-error" } },
+        { label: "How do you escape?", reference: { kind: "guide", slug: "how-to-escape" } },
+        { label: "How do skill checks work?", reference: { kind: "guide", slug: "how-skill-checks-work" } }
       ],
       aboutGame: {
         title: "What is Halloween: The Game?",
         paragraphs: [
           "Halloween: The Game is an asymmetrical horror action game developed by IllFonic and set in Haddonfield on Halloween night, 1978. Its multiplayer mode pits Michael Myers against a group of Civilians in a 1v4 sandbox built around stalking, survival, cooperation, exploration, and escape.",
-          "Players can become the Boogeyman and hunt residents across Haddonfield or work together as Civilians, scavenging equipment and completing escape objectives. The game also includes single-player content and recreates iconic locations from the original Halloween alongside new areas designed for gameplay."
+          "Players can become the Boogeyman and hunt residents across Haddonfield or work together as Civilians, scavenging equipment and completing escape objectives. The released game also includes a six-chapter Michael-led Story Mode, character progression, challenges, and Civilian Perk Decks."
         ],
         stats: [
           { label: "Developer", value: "IllFonic" },

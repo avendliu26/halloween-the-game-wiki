@@ -1,6 +1,6 @@
 # Research provenance
 
-Accessed: 2026-09-03 (Asia/Shanghai). Primary input: user-provided 19 keywords; original at `/Users/bulinlin/Desktop/刘志强/游戏模板库/Halloween The Game/keywords.json`. Earlier context: user-provided `首页diaoyan.md` and `docs/phase-one.md`. Project originally had neither keywords.json nor research directory.
+Initial audit accessed 2026-09-03; launch-sprint refresh accessed 2026-09-07; post-launch gameplay refresh accessed 2026-09-13 (Asia/Shanghai). Primary input: user-provided 19 keywords; original at `/Users/bulinlin/Desktop/刘志强/游戏模板库/Halloween The Game/keywords.json`. Earlier context: user-provided `首页diaoyan.md` and `docs/phase-one.md`. Project originally had neither keywords.json nor research directory.
 
 Official pages and storefronts were freshly opened, not reused as stale snapshots. Steam API app 3219630 was also refreshed with English/US parameters. Regional prices differ: euro amounts in generic Steam rendering are not USD contradictions. Sources below are unique documents, not independent publishers. Word counts in final audit exclude navigation and metadata.
 
@@ -22,6 +22,11 @@ Official pages and storefronts were freshly opened, not reused as stale snapshot
 - **stealth** — Stealth, Stalking, and Scares; published 2025-10-01; accessed 2026-09-03. https://halloweengame.com/news/stealth-stalking-and-scares/
 - **trailer** — Halloween Gameplay + Release Date Trailer; published 2025-09-24; accessed 2026-09-03. https://halloweengame.com/news/halloween-gameplay-release-date-trailer/
 - **japan** — Official Japan PS5 statement (embedded quotation accessed through news report); published 2026-08-30; accessed 2026-09-03. https://x.com/HalloweenTVG/status/2094138154626203718
+- **launch** — Halloween: The Game Launch and Early Access; published 2026-09-03; accessed 2026-09-07. https://halloweengame.com/news/halloween-the-game-launch-and-early-access/
+- **progression** — Progression & Customization Overview; accessed 2026-09-07. https://halloweengame.com/news/progression-customization-overview/
+- **hotfix-1** — Early Access Hotfix 1; published 2026-09-05; accessed 2026-09-07. https://halloweengame.com/news/early-access-hotfix-1/
+- **support** — Support & Socials; accessed 2026-09-07. https://halloweengame.com/support-and-socials/
+- **out-now-1.0.1** — Halloween: The Game Out Now / Patch 1.0.1; accessed 2026-09-13. https://halloweengame.com/news/halloween-the-game-out-now/
 
 ## Retrieval / editorial limits
 

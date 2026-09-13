@@ -8,6 +8,7 @@ import { IsoDateSchema, LocalImagePathSchema, SlugSchema } from "../validation/c
 export const GuideFrontmatterSchema = z.strictObject({
   slug: SlugSchema,
   title: z.string().min(1),
+  heading: z.string().min(1).optional(),
   description: z.string().min(1),
   updatedAt: IsoDateSchema,
   publishedAt: IsoDateSchema.optional(),

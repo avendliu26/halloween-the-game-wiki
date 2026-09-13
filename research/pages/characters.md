@@ -2,7 +2,7 @@
 
 Research Status: RESEARCHED
 Proposed URL: /characters
-Accessed: 2026-09-03
+Accessed: 2026-09-13
 
 ## Search Intent
 
@@ -35,11 +35,17 @@ Research method: official-domain game/intent queries described in ../README.md, 
 
 ## Community Information
 
-None used as page evidence. Search-result community discussions were leads only, not facts or reported hands-on experience.
+- Current guides and player reports consistently identify Profile Level unlocks for Jennifer (5), Thomas (10), Lynda (25), Bob (40), and Annie (55). These are published as community-tested rather than official values.
+  - Source: https://www.reddit.com/r/TheHalloweenGame/comments/1w5nxam/sooo_why_are_they_locked_dont_you_unlock_them_at/
+  - Corroborating guide: https://www.allthings.how/halloween-the-game-how-to-unlock-every-playable-character/
+  - Accessed: 2026-09-13
+- Current players report Lynda Civilian Level 10 unlocks Pocket Knife as an available starting item.
+  - Source: https://www.reddit.com/r/TheHalloweenGame/comments/1wap1kt/unlocking_starting_items/
+  - Accessed: 2026-09-13
 
 ## Unconfirmed / Conflicting Information
 
-No support for tier list or numerical character builds. Eric not given invented biography; Alexis/Richard only confirmed edition access.
+No complete current-build trait, stat, or starting-item table was independently verified. Eric is not given an invented biography; Alexis/Richard use only confirmed edition access. The page uses official stat definitions and labels all numeric unlocks as community-tested.
 
 ## Useful Official Media
 

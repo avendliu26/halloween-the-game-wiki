@@ -1298,6 +1298,51 @@ a:hover {
   }
 }
 
+/* Adsterra slots reserve their published dimensions and never affect page flow horizontally. */
+.adsterra-banner {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.adsterra-banner[data-adsterra-enabled="false"] {
+  display: none;
+}
+
+.adsterra-responsive-top {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.adsterra-responsive-top__desktop,
+.adsterra-responsive-top__mobile {
+  min-width: 0;
+}
+
+.adsterra-responsive-top__mobile {
+  display: none;
+}
+
+@media (max-width: 47.999rem) {
+  .adsterra-responsive-top__desktop {
+    display: none;
+  }
+
+  .adsterra-responsive-top__mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 299px) {
+  .adsterra-banner--300x250 {
+    display: none;
+  }
+}
+
 @media (max-width: 68.6875rem) {
   .desktop-nav {
     display: none;

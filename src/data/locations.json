@@ -6,12 +6,12 @@
     "category": "locations",
     "image": "/images/maps/east-haddonfield-official.webp",
     "imageAlt": "Phelps Garage at night in East Haddonfield, an official Halloween: The Game screenshot",
-    "summary": "A rural launch map on the outskirts of Haddonfield.",
+    "summary": "Halloween: The Game map featuring the Rabbit in Red Lounge and Phelps Garage, with randomized objectives and escape opportunities each match.",
     "tags": [
       "Launch map",
       "Confirmed"
     ],
-    "updatedAt": "2026-09-03",
+    "updatedAt": "2026-09-13",
     "featured": false,
     "related": [
       {
@@ -33,9 +33,9 @@
       },
       {
         "id": "tips",
-        "title": "Awaiting Launch Details",
+        "title": "Gameplay Notes",
         "type": "prose",
-        "body": "Detailed escape routes, objective placements, and tested strategies await launch verification. This page does not provide an interactive map."
+        "body": "Use the Rabbit in Red Lounge and Phelps Garage as orientation landmarks. Objectives, required items, and available escapes can vary between matches, so this page does not present one fixed route as universal."
       }
     ]
   },
@@ -46,12 +46,12 @@
     "category": "locations",
     "image": "/images/maps/haddonfield-heights-official.webp",
     "imageAlt": "A glowing jack-o'-lantern outside a house in the official Haddonfield Heights map screenshot",
-    "summary": "A residential launch map featuring the Myers and Strode houses.",
+    "summary": "Halloween: The Game residential map featuring the Myers and Strode houses, with randomized objectives and escape opportunities across the neighborhood.",
     "tags": [
       "Launch map",
       "Confirmed"
     ],
-    "updatedAt": "2026-09-03",
+    "updatedAt": "2026-09-13",
     "featured": false,
     "related": [
       {
@@ -73,9 +73,9 @@
       },
       {
         "id": "tips",
-        "title": "Awaiting Launch Details",
+        "title": "Gameplay Notes",
         "type": "prose",
-        "body": "Detailed escape routes, objective placements, and tested strategies await launch verification. This page does not provide an interactive map."
+        "body": "Use the Myers and Strode houses to establish your position before searching adjacent streets. Objectives, required items, and available escapes vary, so one fixed route will not apply to every match."
       }
     ]
   },
@@ -86,12 +86,12 @@
     "category": "locations",
     "image": "/images/maps/orange-grove-estates-official.webp",
     "imageAlt": "A multi-story suburban house at night in the official Orange Grove Estates map screenshot",
-    "summary": "An upscale neighborhood featuring the Doyle and Wallace residences.",
+    "summary": "Halloween: The Game neighborhood map featuring the Doyle and Wallace residences, with randomized objectives and escape opportunities between homes.",
     "tags": [
       "Launch map",
       "Confirmed"
     ],
-    "updatedAt": "2026-09-03",
+    "updatedAt": "2026-09-13",
     "featured": false,
     "related": [
       {
@@ -113,9 +113,9 @@
       },
       {
         "id": "tips",
-        "title": "Awaiting Launch Details",
+        "title": "Gameplay Notes",
         "type": "prose",
-        "body": "Detailed escape routes, objective placements, and tested strategies await launch verification. This page does not provide an interactive map."
+        "body": "Use the Doyle and Wallace residences as stable landmarks while searching surrounding homes. Objectives, required items, and available escapes vary, so verify the active match rather than following a fixed route."
       }
     ]
   },
@@ -126,12 +126,12 @@
     "category": "locations",
     "image": "/images/maps/haddonfield-town-center-official.webp",
     "imageAlt": "A-Side Music Store and Patty's Pub on a nighttime street in the official Haddonfield Town Center screenshot",
-    "summary": "The downtown launch map, including Nichols Hardware.",
+    "summary": "Halloween: The Game downtown map featuring Nichols Hardware and its shopping district, with randomized objectives and escape opportunities each match.",
     "tags": [
       "Launch map",
       "Confirmed"
     ],
-    "updatedAt": "2026-09-03",
+    "updatedAt": "2026-09-13",
     "featured": false,
     "related": [
       {
@@ -153,9 +153,9 @@
       },
       {
         "id": "tips",
-        "title": "Awaiting Launch Details",
+        "title": "Gameplay Notes",
         "type": "prose",
-        "body": "Detailed escape routes, objective placements, and tested strategies await launch verification. This page does not provide an interactive map."
+        "body": "Use Nichols Hardware and the shopping district to orient between streets and interiors. Objectives, required items, and available escapes vary, so do not assume a route from one match will repeat exactly."
       }
     ]
   }

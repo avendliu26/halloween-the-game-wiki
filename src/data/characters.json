@@ -11,7 +11,7 @@
       "Hunter",
       "Confirmed"
     ],
-    "updatedAt": "2026-09-03",
+    "updatedAt": "2026-09-13",
     "featured": true,
     "related": [
       {
@@ -27,15 +27,15 @@
     "sections": [
       {
         "id": "overview",
-        "title": "Confirmed Information",
+        "title": "How Michael Plays",
         "type": "prose",
-        "body": "One player takes the role of Michael Myers, stalking Haddonfield while four Civilian players try to survive. Single-player content is also confirmed."
+        "body": "One player takes the role of Michael Myers, stalking four Civilian players and the town's NPC residents. Use Killer Sense and Stalk to find targets, Shape Jump to cross darkness unseen, and three selected loadout abilities to control encounters."
       },
       {
         "id": "tips",
-        "title": "Awaiting Launch Details",
+        "title": "Beginner Priorities",
         "type": "prose",
-        "body": "Killer Sense, Stalk, Shape Jump and Shape Dash are described in the official multiplayer overview. Numerical values and tested strategies remain outside the verified evidence."
+        "body": "Hunt residents and Special Targets instead of committing to long chases against one player. Create darkness, stalk before using Shape Jump, and save long-cooldown loadout abilities for high-impact situations."
       }
     ]
   },
@@ -46,12 +46,12 @@
     "category": "characters",
     "image": "/images/characters/civilians-official.webp",
     "imageAlt": "Five playable Civilians in the official Heroes of Haddonfield character lineup",
-    "summary": "The cooperative side of the 1v4 multiplayer match.",
+    "summary": "Four-player side of Halloween: The Game: warn and escort residents, call police, prepare randomized escapes, use Perk Decks, and survive Michael Myers.",
     "tags": [
       "Survivors",
       "Confirmed"
     ],
-    "updatedAt": "2026-09-03",
+    "updatedAt": "2026-09-13",
     "featured": true,
     "related": [
       {
@@ -67,15 +67,15 @@
     "sections": [
       {
         "id": "overview",
-        "title": "Confirmed Information",
+        "title": "How Civilians Play",
         "type": "prose",
-        "body": "Four players take Civilian roles against Michael Myers. The official multiplayer overview describes locating and warning NPC residents, scavenging equipment, helping residents escape and contacting police. The Characters directory lists the confirmed Standard and Deluxe roster."
+        "body": "Four players locate and warn NPC residents, search for tools and escape items, call police, and move residents toward randomized exits while Michael hunts the town. Each Civilian combines different stats, a signature trait, and a customizable Perk Deck."
       },
       {
         "id": "tips",
-        "title": "Awaiting Launch Details",
+        "title": "Beginner Priorities",
         "type": "prose",
-        "body": "Detailed abilities, progression values, and tested strategies are not yet verified by this wiki."
+        "body": "Split tasks without becoming isolated: one player can warn residents while another searches phones or escape objectives. Avoid unnecessary noise, carry a defensive item when possible, and stay after death for spectator support and a possible reinforcement return."
       }
     ]
   }

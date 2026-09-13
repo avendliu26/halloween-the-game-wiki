@@ -2,7 +2,7 @@
 
 Research Status: RESEARCHED
 Proposed URL: /platforms
-Accessed: 2026-09-03
+Accessed: 2026-09-07
 
 ## Search Intent
 
@@ -70,4 +70,4 @@ Media not downloaded or represented as personally watched; direct playback verif
 
 ## Content Opportunities
 
-Choose supported hardware/store and understand online requirements. Answer first, explain confirmed distinctions, cite the supporting documents, and link related pages instead of duplicating their primary answers.
+Choose supported hardware/store and understand online requirements. Keep crossplay to a short, qualified summary and link `/crossplay` so the platform page does not compete for the cross-platform query.

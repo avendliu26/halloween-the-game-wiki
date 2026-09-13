@@ -10,6 +10,7 @@ import { gameConfig } from "@/config/game";
 import { compileGuide } from "@/lib/content/guides";
 import { getResearchPage } from "@/lib/content/pages";
 import { formatDate } from "@/lib/utils/format";
+import { AdsterraBanner, ResponsiveAdsterraTop } from "@/components/ads/adsterra-banner";
 
 type EntityPageProps = Readonly<{
   params: Promise<{ category: string; slug: string }>;
@@ -61,6 +62,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
 
   const editorial = category === "characters" && slug === "michael-myers" ? getResearchPage(slug) : undefined;
   const compiled = editorial ? await compileGuide(editorial, { moveRelatedToSidebar: true }) : undefined;
+  const showAds = Boolean(editorial && editorial.body.length >= 4000);
   return (
     <>
       {editorial ? <JsonLdScript data={buildArticleJsonLd({
@@ -79,8 +81,9 @@ export default async function EntityPage({ params }: EntityPageProps) {
         })}
       />
       <WikiDetailLayout category={definition} entity={entity} related={resolveContentReferences(entity.related)}
+        ads={showAds ? { top: <ResponsiveAdsterraTop />, sidebar: <AdsterraBanner size="300x250" /> } : undefined}
         editorial={editorial && compiled ? {
-          title: editorial.frontmatter.title, content: compiled.content,
+          title: editorial.frontmatter.heading ?? editorial.frontmatter.title, content: compiled.content,
           headings: compiled.headings, relatedPages: compiled.relatedPages,
           dates: <p className="editorial-dates">Published {formatDate(editorial.frontmatter.publishedAt!)} · Updated <time dateTime={editorial.frontmatter.updatedAt}>{formatDate(editorial.frontmatter.updatedAt)}</time></p>
         } : undefined} />

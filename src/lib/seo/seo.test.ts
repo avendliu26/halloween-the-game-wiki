@@ -31,6 +31,28 @@ describe("SEO builders", () => {
 
     expect(metadata.alternates?.canonical).toBe("https://wiki.example/weapons");
     expect(metadata.openGraph?.url).toBe("https://wiki.example/weapons");
+    expect(metadata.twitter).toEqual({
+      card: "summary",
+      title: "Weapons",
+      description: "Weapon database"
+    });
+  });
+
+  it("uses a large Twitter card when a page image is available", () => {
+    const metadata = buildPageMetadata({
+      title: "Weapons",
+      description: "Weapon database",
+      pathname: "/weapons",
+      siteUrl: "https://wiki.example",
+      image: "/images/weapons.jpg"
+    });
+
+    expect(metadata.twitter).toEqual({
+      card: "summary_large_image",
+      title: "Weapons",
+      description: "Weapon database",
+      images: ["https://wiki.example/images/weapons.jpg"]
+    });
   });
 
   it("does not invent unavailable VideoGame or Article properties", () => {

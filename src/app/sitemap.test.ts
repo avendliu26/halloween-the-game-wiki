@@ -4,11 +4,14 @@ const productionOrigin = "https://halloween-thegame.wiki";
 const publishedPaths = [
   "/", "/guides", "/characters", "/locations", "/game-info", "/community",
   "/release-date", "/editions", "/physical-editions", "/platforms", "/system-requirements",
-  "/guides/beginner-guide", "/guides/how-to-play",
+  "/crossplay", "/guides/beginner-guide", "/guides/how-to-play",
+  "/guides/how-to-respawn-as-police", "/guides/backend-authentication-error",
+  "/guides/how-to-call-the-police", "/guides/how-to-escape",
+  "/guides/how-skill-checks-work", "/guides/how-to-get-xp",
+  "/guides/halloween-the-game-crashing",
   "/characters/michael-myers", "/characters/civilians",
   "/locations/east-haddonfield", "/locations/haddonfield-heights",
-  "/locations/orange-grove-estates", "/locations/haddonfield-town-center",
-  "/privacy-policy", "/terms-of-service"
+  "/locations/orange-grove-estates", "/locations/haddonfield-town-center"
 ];
 
 afterEach(() => {
@@ -28,6 +31,9 @@ describe("production sitemap and robots", () => {
 
       expect(urls.length).toBeGreaterThan(0);
       expect(urls).toEqual(expect.arrayContaining(publishedPaths.map((pathname) => productionOrigin + pathname)));
+      expect(urls).not.toContain(`${productionOrigin}/en/modes/halloween-the-game-crossplay`);
+      expect(urls).not.toContain(`${productionOrigin}/privacy-policy`);
+      expect(urls).not.toContain(`${productionOrigin}/terms-of-service`);
       expect(new Set(urls).size).toBe(urls.length);
       for (const url of urls) {
         const parsed = new URL(url);

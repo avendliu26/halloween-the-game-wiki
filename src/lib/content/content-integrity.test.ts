@@ -62,5 +62,13 @@ describe("template content integrity", () => {
     for (const reference of references) {
       expect(referenceExists(reference), JSON.stringify(reference)).toBe(true);
     }
+
+    expect(references).toEqual(expect.arrayContaining([
+      { kind: "page", slug: "crossplay" },
+      { kind: "guide", slug: "how-to-respawn-as-police" },
+      { kind: "guide", slug: "backend-authentication-error" },
+      { kind: "guide", slug: "how-to-escape" },
+      { kind: "guide", slug: "how-skill-checks-work" }
+    ]));
   });
 });

@@ -14,9 +14,10 @@ type WikiDetailLayoutProps = Readonly<{
   entity: WikiEntity;
   related: readonly ResolvedContent[];
   editorial?: { title: string; content: ReactNode; dates: ReactNode; headings?: GuideHeading[]; relatedPages?: SidebarLink[] };
+  ads?: { top: ReactNode; sidebar: ReactNode };
 }>;
 
-export function WikiDetailLayout({ category, entity, related, editorial }: WikiDetailLayoutProps) {
+export function WikiDetailLayout({ category, entity, related, editorial, ads }: WikiDetailLayoutProps) {
   return (
     <article className="wiki-detail-page">
       <Breadcrumbs
@@ -33,9 +34,11 @@ export function WikiDetailLayout({ category, entity, related, editorial }: WikiD
           <p>{entity.summary}</p>
           {editorial?.dates}
         </header>
+        {ads?.top}
         <WikiPageLayout
           headings={editorial?.headings ?? entity.sections.map((section) => ({ depth: 2, text: section.title, id: `section-${section.id}` }))}
           related={editorial?.relatedPages?.length ? editorial.relatedPages : related}
+          sidebarAd={ads?.sidebar}
           details={<WikiInfobox category={category} entity={entity} />}
         >
         <div className="wiki-detail-layout__body">

@@ -59,7 +59,7 @@ for (const asset of assets) {
   assert.equal(response.status, 200, asset);
   assert.ok(response.headers.get("content-type")?.startsWith("image/"), asset);
 }
-for (const path of ["/weapons", "/bosses", "/skills", "/items", "/quests", "/codes", "/missing-page", "/crossplay", "/characters/alexis", "/trailers", "/maps"]) {
+for (const path of ["/weapons", "/bosses", "/skills", "/items", "/quests", "/codes", "/missing-page", "/characters/alexis", "/trailers", "/maps"]) {
   assert.equal((await fetch(new URL(path, base))).status, 404, path);
 }
 const home = pages.get("/");
@@ -78,7 +78,7 @@ const builtPages = Object.entries(prerender.routes)
   .filter(([path, info]) => !path.startsWith("/_") && info.routeType === "page")
   .map(([path]) => path);
 for (const path of builtPages) assert.ok(pages.has(path), `Orphan built page: ${path}`);
-assert.equal(home.title, "Halloween: The Game Wiki — Release Date, Crossplay & Guides");
+assert.equal(home.title, "Halloween: The Game Wiki — Characters & Gameplay Guides");
 assert.ok(home.title.length <= 60);
 const descriptionLength = home.querySelector('meta[name="description"]').content.length;
 assert.ok(descriptionLength >= 140 && descriptionLength <= 160);
@@ -94,7 +94,15 @@ if (expectedSite) {
   assert.ok(robots.includes(new URL("/sitemap.xml", expectedSite).href));
   const xml = new JSDOM(sitemap, { contentType: "text/xml" }).window.document;
   const urls = [...xml.querySelectorAll("loc")].map((el) => el.textContent);
-  for (const path of pages.keys()) assert.ok(urls.includes(new URL(path, expectedSite).href), path);
+  const noindexPaths = new Set(["/privacy-policy", "/terms-of-service"]);
+  for (const path of pages.keys()) {
+    if (!noindexPaths.has(path)) assert.ok(urls.includes(new URL(path, expectedSite).href), path);
+  }
+  for (const path of noindexPaths) {
+    assert.equal(urls.includes(new URL(path, expectedSite).href), false, `Noindex URL in sitemap: ${path}`);
+    assert.ok(pages.get(path)?.querySelector('meta[name="robots"]')?.content.includes("noindex"), `Noindex metadata: ${path}`);
+    assert.ok(pages.get(path)?.querySelector('meta[name="robots"]')?.content.includes("follow"), `Follow metadata: ${path}`);
+  }
   for (const url of urls) assert.ok(pages.has(new URL(url).pathname), `Orphan sitemap URL: ${url}`);
   assert.equal(new Set(urls).size, urls.length, "Duplicate sitemap URLs");
 } else {

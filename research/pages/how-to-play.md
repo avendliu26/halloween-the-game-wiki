@@ -2,7 +2,7 @@
 
 Research Status: RESEARCHED
 Proposed URL: /guides/how-to-play
-Accessed: 2026-09-03
+Accessed: 2026-09-13
 
 ## Search Intent
 
@@ -12,6 +12,11 @@ Secondary keywords: halloween the game gameplay.
 Research method: official-domain game/intent queries described in ../README.md, followed by direct reading of the relevant official pages/storefronts below. Related keywords reuse the same primary evidence; no competitor prose is a factual source.
 
 ## Confirmed Facts
+
+- Fact: Patch 1.0.1 improved resident pathing into escapes and police NPC pathing.
+  - Source: Halloween: The Game Out Now / Patch 1.0.1
+  - URL: https://halloweengame.com/news/halloween-the-game-out-now/
+  - Accessed date: 2026-09-13
 
 - Fact: One Michael faces four playable Civilians plus NPC residents; Civilians convince residents, locate loot, use changing escape opportunities and may return as deputy or Loomis. Michael has Special Targets, Killer Sense, Stalk, Shape Jump and Shape Dash. Escape activation reveals its location by noise; Michael can be detained, not killed.
   - Source: Multiplayer Gameplay Overview (published 2026-03-26)

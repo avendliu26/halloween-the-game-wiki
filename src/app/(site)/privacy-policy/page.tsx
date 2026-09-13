@@ -3,12 +3,15 @@ import { Breadcrumbs } from "@/components/wiki/breadcrumbs";
 import { gameConfig } from "@/config/game";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildPageMetadata({
+export const metadata: Metadata = {
+  ...buildPageMetadata({
   title: "Privacy Policy",
   description: "How this independent fan-made Halloween: The Game Wiki handles information and external links.",
   pathname: "/privacy-policy",
   siteUrl: gameConfig.siteUrl
-});
+  }),
+  robots: { index: false, follow: true }
+};
 
 export default function PrivacyPolicyPage() {
   return <article className="game-info-page">
