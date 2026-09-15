@@ -37,6 +37,6 @@ export function PageSummaryCards({ slug }: { slug: string }) {
         {index > 0 ? " · " : null}<a className="underline" href={store.href} target="_blank" rel="noopener noreferrer">{store.label}</a>
       </Fragment>)}
     </p> : <p className="page-summary__note">Looking for PlayStation, Xbox or Epic Games? <Link className="underline" href="/platforms#official-stores">Platform stores</Link>.</p>}
-    <p className="page-summary__note">{slug === "editions" ? <>Announced US prices; local pricing varies. <a href="https://halloweengame.com/news/preorder/" target="_blank" rel="noopener noreferrer">Digital FAQ</a> · <a href="https://halloweengame.com/news/physical-editions/" target="_blank" rel="noopener noreferrer">Physical FAQ</a>.</> : <>Launch details vary by region. The full crossplay matchmaking matrix and cross-progression rules are not officially confirmed; <a href="#what-the-cross-platform-badges-confirm">see the storefront evidence below</a>.</>}</p>
+    <p className="page-summary__note">{slug === "editions" ? <>Announced US prices; local pricing varies. <a href="https://halloweengame.com/news/preorder/" target="_blank" rel="noopener noreferrer">Digital FAQ</a> · <a href="https://halloweengame.com/news/physical-editions/" target="_blank" rel="noopener noreferrer">Physical FAQ</a>.</> : <>Crossplay connects PS5, Xbox Series X|S and PC. See the <Link href="/crossplay">crossplay guide for party support and cross-save status</Link>.</>}</p>
   </section>;
 }
