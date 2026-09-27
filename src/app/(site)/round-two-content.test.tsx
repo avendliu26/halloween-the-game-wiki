@@ -22,7 +22,7 @@ describe("Round 2 gameplay delivery", () => {
     expect(html.match(/<h1[ >]/g)).toHaveLength(1);
     expect(html).toContain("application/ld+json");
     expect(html).toContain("Sources checked");
-    expect(html).toContain("2026-09-13");
+    expect(html).toContain(record.frontmatter.updatedAt);
     expect(researchMetadata(slug).alternates?.canonical).toBe(`https://halloween-thegame.wiki${pathname}`);
     expect(sitemap().some(({ url }) => url === `https://halloween-thegame.wiki${pathname}`)).toBe(true);
     if (pathname.startsWith("/challenges/")) {

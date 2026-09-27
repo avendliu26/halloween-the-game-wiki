@@ -15,8 +15,9 @@ export function generateMetadata(): Metadata {
 }
 
 const topics = [
-  ["/release-date", "Release dates", "Digital launch, Deluxe early access and the later disc release."],
-  ["/editions", "Digital editions and price", "Standard versus Deluxe, exclusive characters and pre-order bonuses."],
+  ["/guides/patch-notes", "Patch notes and updates", "Patch 1.0.4 fixes, 1.0.3 balance changes and the post-launch update history."],
+  ["/release-date", "Release dates", "September 8 digital release, historical Early Access and the later disc release."],
+  ["/editions", "Digital editions and price", "Standard versus Deluxe, exclusive characters and historical pre-order bonuses."],
   ["/physical-editions", "Physical copies", "Standard and Limited Collector's disc packages and their contents."],
   ["/platforms", "Platforms", "PS5, Xbox Series X|S and PC stores, subscriptions and regional caveats."],
   ["/system-requirements", "PC requirements", "Published minimum and recommended specifications, with CPU-label limitations."],
@@ -40,11 +41,11 @@ export default function GameInfoPage() {
       <dl className="facts-list">
         <div><dt>Developer</dt><dd>{gameConfig.developer}</dd></div>
         <div><dt>Publisher</dt><dd>{gameConfig.publisher}</dd></div>
-        <div><dt>Announced digital launch</dt><dd>{formatDate(gameConfig.releaseDate!)} in supported regions</dd></div>
+        <div><dt>Digital release</dt><dd>{formatDate(gameConfig.releaseDate!)} in supported regions</dd></div>
         <div><dt>Setting</dt><dd>Haddonfield, Halloween night in 1978</dd></div>
         <div><dt>Modes</dt><dd>1v4 multiplayer and a Michael Myers singleplayer story</dd></div>
       </dl>
-      <p>Based on the <a href="https://halloweengame.com/news/multiplayer-gameplay-overview/">official multiplayer overview</a>, <a href="https://halloweengame.com/news/unleash-hell-upon-haddonfield/">singleplayer reveal</a> and <a href={gameConfig.steamUrl}>Steam listing</a>, checked September 3, 2026.</p>
+      <p>The <a href="https://halloweengame.com/news/halloween-the-game-out-now/">official launch announcement</a> confirms the release. Current update: <Link href="/guides/patch-notes">Patch 1.0.4, September 26</Link>. Reviewed September 27, 2026.</p>
     </section>
     <section aria-labelledby="topics-heading" className="game-info-section">
       <h2 id="topics-heading">Find the specific answer</h2>
@@ -52,8 +53,8 @@ export default function GameInfoPage() {
     </section>
     <section aria-labelledby="limits-heading" className="game-info-section">
       <h2 id="limits-heading">Evidence and remaining gaps</h2>
-      <p>Xbox and Epic list cross-platform functionality, but the reviewed sources do not establish the full platform pairing and cross-progression rules. The <Link href="/platforms">platform page</Link> explains the scope and regional exceptions.</p>
-      <p>Numerical character builds, tested escape routes and a detailed Alexis profile remain outside our verified evidence. This independent fan-made wiki does not present prerelease source descriptions as hands-on results.</p>
+      <p>Crossplay connects PS5, Xbox Series X|S and PC. The official launch patch corrected party-follow matchmaking; cross-save is a separate, unconfirmed feature. See <Link href="/crossplay">crossplay support</Link> or <Link href="/platforms">hardware and store availability</Link>.</p>
+      <p>Exact cooldowns, hidden combat formulas and fixed escape-item spawn routes remain outside our verified evidence. Official patch facts and dated community observations are kept separate throughout this independent fan-made wiki.</p>
     </section>
     <section aria-labelledby="links-heading" className="game-info-section">
       <h2 id="links-heading">Official links</h2>

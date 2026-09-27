@@ -2,14 +2,14 @@
 slug: challenges-not-working
 title: "Halloween: The Game Challenges Not Working?"
 heading: "Halloween: The Game Challenges Not Working?"
-description: "Diagnose Halloween: The Game challenges that will not complete: fixed 1.0.2 bugs, execution requirements, missing saved progress and unresolved player reports."
-updatedAt: "2026-09-13"
+description: "Fix Halloween: The Game challenge confusion: changed requirements, Passive tracking after Prestige, Story crashes, weapon conditions and missing saved progress."
+updatedAt: "2026-09-27"
 publishedAt: "2026-09-13"
 tags: [gameplay, progression]
 related: []
 ---
 
-Update to Patch 1.0.2, restart the game, and compare the exact objective with what happened. Then distinguish a challenge that never triggered from one that triggered but disappeared from the saved menu. They need different troubleshooting.
+Update through Patch 1.0.4, restart, and compare the exact objective with what happened. A reduced Progressive requirement may need one more qualifying action; a Passive Challenge can track after Prestige even while appearing locked. Separate those cases from an objective that never triggers or a completed Story run that fails to save.
 
 ## Identify the Failure
 
@@ -20,6 +20,16 @@ Update to Patch 1.0.2, restart the game, and compare the exact objective with wh
 | Achievement unlocks but chapter remains incomplete | Platform trophy and in-game progress disagree |
 | Prestige objective is blank | Restart after the September 11 server-side correction |
 | Chapter repeats at the ending | Capture the loop and saved state; do not assume one missed kill |
+
+## Current Fixes: Requirements, Prestige, and Crashes
+
+[Patch 1.0.3](https://halloweengame.com/news/patch-notes-1-0-3/) changed Progressive requirements. If your recorded progress already exceeds the new target, make one additional qualifying contribution to trigger completion. Use the [Challenges hub](/challenges) for selected exact requirements rather than repeating an obsolete target count.
+
+Passive Challenges now continue tracking after Prestige, even if the interface temporarily shows them as locked. This is a stated temporary tracking fix, not a promise that every Prestige display problem or lost reward is resolved. The same patch fixed private-match hosts being unable to unlock trophies/achievements and eased knockdown, blind, disorient, and stun challenge completion.
+
+The [September 17 clarification](https://halloweengame.com/news/whats-coming-next/) says weapon Progressive Challenges require the corresponding weapon even where the description omits it. Story chapter conditions remain a separate category.
+
+[Patch 1.0.4](https://halloweengame.com/news/patch-notes-1-0-4/) fixes crashes after Story Missions and during loading. It does not announce a universal challenge-save repair or automatic restoration of old progress.
 
 ## Officially Fixed in 1.0.2
 
@@ -59,7 +69,7 @@ Do not delete local saves, unlink accounts, or reset all progression as an initi
 
 ## What Remains Unresolved
 
-[September 11–12 player reports](https://www.reddit.com/r/TheHalloweenGame/comments/1wdj42t/these_challenges_are_so_a/) still describe missing credit, alongside reports of successful completion. These establish ongoing complaints, not a confirmed universal bug or one reliable workaround.
+[September 11–12 player reports](https://www.reddit.com/r/TheHalloweenGame/comments/1wdj42t/these_challenges_are_so_a/) describe missing credit alongside successful completion. They are historical complaints, not evidence that the same failures persist on 1.0.4. Current-build reproduction is needed before classifying an individual issue as unresolved.
 
 The developer acknowledges unclear challenge wording. The official notes also list achievement fixes for Purist, Close Quarters, No Friend Left Behind, Natural Observer, and Stalker; they do not promise automatic retroactive credit for every previously failed attempt.
 
@@ -82,4 +92,4 @@ If the failure also blocks matchmaking, include the active Prestige objective an
 
 ## Sources checked
 
-Official Patch 1.0.2 including its September 11 follow-up, plus dated player reports linked above. Checked September 13, 2026.
+Official Patches 1.0.2–1.0.4 and the September 17 development update, checked September 27, 2026. Linked launch-week player reports retain their original dates and have not been independently reproduced on 1.0.4.

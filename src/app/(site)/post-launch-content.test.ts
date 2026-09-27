@@ -25,6 +25,7 @@ describe("post-launch gameplay content", () => {
     );
     expect(gameConfig.content.homepage.hero?.title).toBe("Halloween: The Game Wiki");
     expect(gameConfig.content.homepage.startHereLinks.map(({ label }) => label)).toEqual([
+      "Patch Notes",
       "Challenges",
       "Characters",
       "Michael Myers",
@@ -66,8 +67,8 @@ describe("post-launch gameplay content", () => {
     const characters = requirePage("characters");
 
     expect(michael.body).toMatch(/community-tested/i);
-    expect(michael.body).toMatch(/approximately 5 seconds/i);
-    expect(michael.body).toMatch(/3½–4 minutes/i);
+    expect(michael.body).toContain("Patch 1.0.3");
+    expect(michael.body).toContain("Patch 1.0.4");
     expect(michael.body).toContain("Patch 1.0.1");
 
     expect(police.body).toContain("## Step-by-Step");

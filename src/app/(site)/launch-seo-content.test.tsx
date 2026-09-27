@@ -7,6 +7,8 @@ import { ResearchArticle, researchMetadata } from "@/components/wiki/research-ar
 import sitemap from "@/app/sitemap";
 
 const guidePages = [
+  ["patch-notes", "Halloween: The Game Patch Notes & Updates"],
+  ["how-to-struggle-free", "How to Struggle Free From Michael"],
   ["how-to-respawn-as-police", "How to Respawn as Police in Halloween: The Game"],
   ["backend-authentication-error", "How to Fix the Backend Authentication Error"],
   ["how-to-call-the-police", "How to Call the Police"],
@@ -59,7 +61,7 @@ describe("launch SEO content cluster", () => {
     const metadata = await guideMetadata({ params: Promise.resolve({ slug }) });
 
     expect(record).toBeDefined();
-    expect(html).toContain(`<h1>${heading}</h1>`);
+    expect(html).toContain(renderToStaticMarkup(<h1>{heading}</h1>));
     expect(html).toContain("Quick Answer");
     expect(html).toContain("Sources checked");
     expect(html).toContain("Related Pages");

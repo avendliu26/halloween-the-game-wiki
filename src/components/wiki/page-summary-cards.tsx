@@ -11,7 +11,7 @@ const officialStores = [
 // Condensed from the linked official FAQs; detailed comparisons remain below.
 const editions = [
   { title: "Standard Edition", eyebrow: "$39.99 USD · Digital", facts: ["September 8, 2026", "PS5, Xbox Series X|S and PC", "Base game"], href: "#standard-versus-digital-deluxe", action: "Compare digital editions" },
-  { title: "Digital Deluxe Edition", eyebrow: "$59.99 USD · Digital", facts: ["Eligible pre-orders: September 4, 9 AM PT", "Two exclusive Civilians + Inmate Myers skin", "See the full list of contents and conditions below"], href: "#which-benefits-depend-on-pre-ordering", action: "Check early-access conditions" },
+  { title: "Digital Deluxe Edition", eyebrow: "$59.99 USD · Digital", facts: ["Available now; Early Access has ended", "Two exclusive Civilians + Inmate Myers skin", "See the full list of contents and conditions below"], href: "#standard-versus-digital-deluxe", action: "Compare Deluxe contents" },
   { title: "Physical / Collector Edition", eyebrow: "$39.99 / $149.99 USD", facts: ["October 6, 2026", "PS5 and Xbox Series X disc editions", "Standard and limited Collector packages differ"], href: "/physical-editions", action: "Compare physical packages" }
 ];
 const platforms = [

@@ -67,14 +67,15 @@ export const gameConfig = createGameConfig({
         eyebrow: "Independent Gameplay Wiki",
         title: "Halloween: The Game Wiki",
         description: "Characters, Challenges, Perks, Michael Myers Abilities & Gameplay Guides for surviving — or stalking — Haddonfield after launch.",
-        stats: ["Out Now", "1v4 Multiplayer", "6-Chapter Story Mode", "PS5 / Xbox Series X|S / PC"]
+        stats: ["Released September 8, 2026", "1v4 Multiplayer", "6-Chapter Story Mode", "PS5 / Xbox Series X|S / PC"]
       },
       startHereEyebrow: "Gameplay Help",
       startHereTitle: "Find the Answer You Need",
       primaryAction: { label: "Read How to Play", reference: { kind: "guide", slug: "how-to-play" } },
       secondaryAction: { label: "Browse Characters", reference: { kind: "category", category: "characters" } },
-      tertiaryAction: { label: "Learn How to Play", reference: { kind: "guide", slug: "how-to-play" } },
+      tertiaryAction: { label: "Patch 1.0.4 · Sep 26", reference: { kind: "guide", slug: "patch-notes" } },
       startHereLinks: [
+        { label: "Patch Notes", description: "Patch 1.0.4 grab and Xbox fixes, plus 1.0.3 balance and challenge changes. Reviewed September 27.", reference: { kind: "guide", slug: "patch-notes" } },
         { label: "Challenges", description: "Find chapter objectives, execution tips, and help with challenges that do not complete.", reference: { kind: "page", slug: "challenges" } },
         { label: "Characters", description: "Compare the playable Civilian roster, unlock availability, roles, traits, and Michael Myers.", reference: { kind: "category", category: "characters" } },
         { label: "Michael Myers", description: "Learn Killer Sense, Stalk, Shape Jump, loadout abilities, cooldowns, and practical hunting tactics.", reference: { kind: "entity", category: "characters", slug: "michael-myers" } },
@@ -85,6 +86,7 @@ export const gameConfig = createGameConfig({
       ],
       databaseAction: { label: "Explore Maps", reference: { kind: "category", category: "locations" } },
       popularQuestions: [
+        { label: "How do I struggle free from Michael?", reference: { kind: "guide", slug: "how-to-struggle-free" } },
         { label: "What should I do first as a beginner?", reference: { kind: "guide", slug: "beginner-guide", anchor: "what-beginners-should-do-first" } },
         { label: "How does the 1v4 match work?", reference: { kind: "guide", slug: "how-to-play", anchor: "quick-answer" } },
         { label: "Is Halloween: The Game crossplay?", reference: { kind: "page", slug: "crossplay" } },

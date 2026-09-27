@@ -5,6 +5,7 @@ const publishedPaths = [
   "/", "/guides", "/characters", "/locations", "/game-info", "/community",
   "/release-date", "/editions", "/physical-editions", "/platforms", "/system-requirements",
   "/crossplay", "/guides/beginner-guide", "/guides/how-to-play",
+  "/guides/patch-notes", "/guides/how-to-struggle-free",
   "/guides/how-to-respawn-as-police", "/guides/backend-authentication-error",
   "/guides/how-to-call-the-police", "/guides/how-to-escape",
   "/guides/how-skill-checks-work", "/guides/how-to-get-xp",
