@@ -1311,6 +1311,18 @@ a:hover {
   display: none;
 }
 
+/* Keep the live iframe measurable so late creatives can recover. Removing the
+   failed slot from flow also removes its grid gap without unloading scripts. */
+.adsterra-banner[data-adsterra-state="failed"] {
+  position: absolute;
+  visibility: hidden;
+  height: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
 .adsterra-responsive-top {
   display: grid;
   width: 100%;
@@ -1327,6 +1339,16 @@ a:hover {
   display: none;
 }
 
+@media (min-width: 48rem) {
+  .adsterra-responsive-top:has(.adsterra-responsive-top__desktop > [data-adsterra-state="failed"]) {
+    position: absolute;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
 @media (max-width: 47.999rem) {
   .adsterra-responsive-top__desktop {
     display: none;
@@ -1334,6 +1356,14 @@ a:hover {
 
   .adsterra-responsive-top__mobile {
     display: block;
+  }
+
+  .adsterra-responsive-top:has(.adsterra-responsive-top__mobile > [data-adsterra-state="failed"]) {
+    position: absolute;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
   }
 }
 

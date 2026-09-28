@@ -30,7 +30,76 @@ const buildFrameDocument = (size: AdsterraBannerSize): string => {
   const config = adsterraBannerConfig[size];
   const invokeUrl = `https://www.highrevenueformat.com/${config.key}/invoke.js`;
 
-  return `<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}body{display:flex;justify-content:center;min-height:100vh}</style></head><body><script>window.atOptions=${JSON.stringify({ key: config.key, format: "iframe", height: config.height, width: config.width, params: {} })};</script><script src="${invokeUrl}"></script></body></html>`;
+  // The existing sandbox gives srcdoc an opaque origin. Observe from inside it;
+  // do not weaken the sandbox or rely on the outer iframe's load event.
+  const monitor = `(() => {
+    let state = 'loading';
+    let expired = false;
+    let graceTimer;
+    const report = (next) => {
+      if (state === 'filled' || state === next) return;
+      state = next;
+      window.parent.postMessage({type:'adsterra-slot-status',state:next}, 'https://${productionHostname}');
+      if (next === 'filled') window.clearTimeout(graceTimer);
+    };
+    const substantial = (element) => {
+      const style = window.getComputedStyle(element);
+      const box = element.getBoundingClientRect();
+      return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0' && box.width > 8 && box.height > 8;
+    };
+    const inspect = (root) => {
+      let pending = false;
+      for (const element of root.querySelectorAll('iframe,img,video,canvas,svg,a,div,span')) {
+        if (!substantial(element)) continue;
+        if (element.tagName === 'IFRAME') {
+          // A sized remote frame can be loading or cross-origin. Even its load
+          // event cannot prove fill: preserve it rather than risk an impression.
+          try {
+            const hasSource = element.srcdoc.trim() || (element.getAttribute('src') || '').trim().replace(/^about:blank$/, '');
+            const inner = element.contentDocument;
+            if (inner && inner.body) {
+              const result = inspect(inner.body);
+              if (result === 'filled') return result;
+              pending = pending || Boolean(hasSource) || result === 'pending' || inner.readyState !== 'complete';
+            } else if (hasSource) {
+              pending = true;
+            }
+          } catch { pending = true; }
+        } else if (element.tagName === 'IMG') {
+          if (element.complete && element.naturalWidth > 8 && element.naturalHeight > 8) return 'filled';
+          if (!element.complete && element.getAttribute('src')) pending = true;
+        } else if (element.tagName === 'VIDEO') {
+          if (element.readyState >= 2) return 'filled';
+          pending = true;
+        } else {
+          const background = window.getComputedStyle(element).backgroundImage;
+          const hasText = Array.from(element.childNodes).some(node => node.nodeType === 3 && node.textContent.trim());
+          if (element.tagName === 'CANVAS' || element.tagName === 'svg' || hasText || (background && background !== 'none')) return 'filled';
+        }
+      }
+      return pending ? 'pending' : 'empty';
+    };
+    const check = () => {
+      if (state === 'filled' || !document.body) return;
+      const result = inspect(document.body);
+      if (result === 'filled') report('filled');
+      else if (result === 'pending') report('loading');
+      else if (expired) report('failed');
+    };
+    const onResource = (event) => {
+      if (event.target.tagName === 'SCRIPT' && event.target.getAttribute('src') === ${JSON.stringify(invokeUrl)}) {
+        if (event.type === 'error') expired = true;
+        else graceTimer = window.setTimeout(() => { expired = true; check(); }, 60000);
+      }
+      check();
+    };
+    document.addEventListener('load', onResource, true);
+    document.addEventListener('error', onResource, true);
+    document.addEventListener('loadeddata', check, true);
+    new window.MutationObserver(check).observe(document.documentElement, {childList:true,subtree:true,attributes:true,characterData:true});
+  })();`;
+
+  return `<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;padding:0;overflow:hidden;background:#110e0d}body{display:flex;justify-content:center;min-height:100vh}</style></head><body><script>${monitor}</script><script>window.atOptions=${JSON.stringify({ key: config.key, format: "iframe", height: config.height, width: config.width, params: {} })};</script><script src="${invokeUrl}"></script></body></html>`;
 };
 
 type AdsterraBannerProps = Readonly<{
@@ -52,6 +121,17 @@ export function AdsterraBanner({ size, active = true }: AdsterraBannerProps) {
     }
 
     const iframe = document.createElement("iframe");
+    container.dataset.adsterraState = "loading";
+    container.style.minHeight = `${config.height}px`;
+    const onMessage = (event: MessageEvent) => {
+      if (event.source !== iframe.contentWindow || event.origin !== "null" || event.data?.type !== "adsterra-slot-status") return;
+      const state: unknown = event.data.state;
+      if (state !== "filled" && state !== "failed" && state !== "loading") return;
+      if (container.dataset.adsterraState === "filled") return;
+      container.dataset.adsterraState = state;
+      container.style.minHeight = state === "failed" ? "0px" : `${config.height}px`;
+    };
+    window.addEventListener("message", onMessage);
     iframe.title = "Advertisement";
     iframe.width = String(config.width);
     iframe.height = String(config.height);
@@ -66,7 +146,10 @@ export function AdsterraBanner({ size, active = true }: AdsterraBannerProps) {
     iframe.srcdoc = buildFrameDocument(size);
     container.appendChild(iframe);
 
-    return () => iframe.remove();
+    return () => {
+      window.removeEventListener("message", onMessage);
+      iframe.remove();
+    };
   }, [active, config.height, config.width, size]);
 
   return (
@@ -75,6 +158,7 @@ export function AdsterraBanner({ size, active = true }: AdsterraBannerProps) {
       aria-label="Advertisement"
       className={`adsterra-banner adsterra-banner--${size}`}
       data-adsterra-enabled="true"
+      data-adsterra-state="loading"
       data-adsterra-size={size}
       style={{ minHeight: `${config.height}px` }}
     />
