@@ -89,7 +89,9 @@ describe("launch SEO content cluster", () => {
     ];
 
     for (const record of records) {
-      const internalLinks = [...record.body.matchAll(/\]\((\/[^\s)#?]+)/g)].map((match) => match[1]);
+      const internalLinks = [...record.body.matchAll(/\]\((\/[^\s)#?]+)/g)]
+        .map((match) => match[1])
+        .filter((href) => !href.startsWith("/images/"));
       expect(internalLinks.length, record.slug).toBeGreaterThan(0);
       for (const href of internalLinks) expect(publishedPaths, `${record.slug}: ${href}`).toContain(href);
     }

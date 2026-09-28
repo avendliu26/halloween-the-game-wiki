@@ -164,6 +164,35 @@ describe("guide content", () => {
     );
   });
 
+  it("reserves 16:9 space and lazy-loads optimized official Markdown images", async () => {
+    const record = parseGuideSource(`${frontmatter()}![Official still](/images/official/po-character.webp)`, "test-guide");
+    const compiled = await compileGuide(record);
+    render(compiled.content);
+    expect(screen.getByRole("img", { name: "Official still" })).toHaveAttribute("width", "1600");
+    expect(screen.getByRole("img", { name: "Official still" })).toHaveAttribute("height", "900");
+    expect(screen.getByRole("img", { name: "Official still" })).toHaveAttribute("loading", "lazy");
+    expect(screen.getByRole("img", { name: "Official still" })).toHaveAttribute("decoding", "async");
+  });
+
+  it("allows only a known official video with a literal video key", async () => {
+    const record = parseGuideSource(`${frontmatter()}<OfficialVideo video="howToPlay" />`, "test-guide");
+    const compiled = await compileGuide(record);
+    render(compiled.content);
+    expect(screen.getByRole("button", { name: /play multiplayer gameplay overview/i })).toBeVisible();
+    expect(screen.queryByTitle("Multiplayer Gameplay Overview")).not.toBeInTheDocument();
+  });
+
+  it.each([
+    '<OfficialVideo video="missing" />',
+    '<OfficialVideo video="https://example.com" />',
+    '<OfficialVideo video={"howToPlay"} />',
+    '<OfficialVideo video="howToPlay" src="https://example.com" />',
+    '<OfficialVideo />'
+  ])("rejects unsafe OfficialVideo props: %s", async (body) => {
+    const record = parseGuideSource(`${frontmatter()}${body}`, "test-guide");
+    await expect(compileGuide(record)).rejects.toThrow(/guide "test-guide"/i);
+  });
+
   it("collects direct and reference-style local image paths from the MDX AST", async () => {
     const record = parseGuideSource(
       `${frontmatter()}![Direct art](/images/placeholders/entity.svg)\n\n![Reference art][art]\n\n[art]: /images/placeholders/entity.svg`,

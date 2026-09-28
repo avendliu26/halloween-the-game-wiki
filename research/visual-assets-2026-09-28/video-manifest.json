@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Halloween Gameplay + Release Date Trailer",
+    "youtube_id": "715qsd1qIFg",
+    "placement": [
+      "/"
+    ],
+    "poster": "extendedfirstlooktrailerv4.png",
+    "source": "https://halloweengame.com/news/halloween-gameplay-release-date-trailer/",
+    "watch_url": "https://www.youtube.com/watch?v=715qsd1qIFg",
+    "embed_url": "https://www.youtube.com/embed/715qsd1qIFg"
+  },
+  {
+    "title": "Multiplayer Gameplay Overview",
+    "youtube_id": "BPJ83MKWJuc",
+    "placement": [
+      "/guides/how-to-play"
+    ],
+    "poster": "michael-stairs-pv1.jpg",
+    "source": "https://halloweengame.com/news/multiplayer-gameplay-overview/",
+    "watch_url": "https://www.youtube.com/watch?v=BPJ83MKWJuc",
+    "embed_url": "https://www.youtube.com/embed/BPJ83MKWJuc"
+  },
+  {
+    "title": "Progression & Customization Overview",
+    "youtube_id": "AdwC7tve3gc",
+    "placement": [
+      "/perks",
+      "/challenges",
+      "/guides/how-to-get-xp"
+    ],
+    "poster": "po-character.jpg",
+    "source": "https://halloweengame.com/news/progression-customization-overview/",
+    "watch_url": "https://www.youtube.com/watch?v=AdwC7tve3gc",
+    "embed_url": "https://www.youtube.com/embed/AdwC7tve3gc"
+  },
+  {
+    "title": "Singleplayer Story Mode",
+    "youtube_id": "1NqGLjfpYtI",
+    "placement": [
+      "/challenges"
+    ],
+    "poster": "michael-hk.jpg",
+    "source": "https://halloweengame.com/news/unleash-hell-upon-haddonfield/",
+    "watch_url": "https://www.youtube.com/watch?v=1NqGLjfpYtI",
+    "embed_url": "https://www.youtube.com/embed/1NqGLjfpYtI"
+  },
+  {
+    "title": "East Haddonfield Map Flythrough",
+    "youtube_id": "3F4jgkffEwY",
+    "placement": [
+      "/locations/east-haddonfield"
+    ],
+    "poster": "phelps-v2.jpg",
+    "source": "https://halloweengame.com/news/the-locations-of-halloween-the-game/",
+    "watch_url": "https://www.youtube.com/watch?v=3F4jgkffEwY",
+    "embed_url": "https://www.youtube.com/embed/3F4jgkffEwY"
+  },
+  {
+    "title": "Haddonfield Heights Map Flythrough",
+    "youtube_id": "C2iqQykoqB8",
+    "placement": [
+      "/locations/haddonfield-heights"
+    ],
+    "poster": "haddonfield-heights-s1.jpg",
+    "source": "https://halloweengame.com/news/haddonfield-heights-map-flythrough/",
+    "watch_url": "https://www.youtube.com/watch?v=C2iqQykoqB8",
+    "embed_url": "https://www.youtube.com/embed/C2iqQykoqB8"
+  },
+  {
+    "title": "Orange Grove Estates Map Flythrough",
+    "youtube_id": "xpKU4u7F2hY",
+    "placement": [
+      "/locations/orange-grove-estates"
+    ],
+    "poster": "orange-grove-wh.jpg",
+    "source": "https://halloweengame.com/news/orange-grove-estates/",
+    "watch_url": "https://www.youtube.com/watch?v=xpKU4u7F2hY",
+    "embed_url": "https://www.youtube.com/embed/xpKU4u7F2hY"
+  },
+  {
+    "title": "Haddonfield Town Center Map Flythrough",
+    "youtube_id": "eiwC78qe84o",
+    "placement": [
+      "/locations/haddonfield-town-center"
+    ],
+    "poster": "wthtc-msc.jpg",
+    "source": "https://halloweengame.com/news/haddonfield-town-center/",
+    "watch_url": "https://www.youtube.com/watch?v=eiwC78qe84o",
+    "embed_url": "https://www.youtube.com/embed/eiwC78qe84o"
+  }
+]

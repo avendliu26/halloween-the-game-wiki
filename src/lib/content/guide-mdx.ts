@@ -1,4 +1,5 @@
 import { LocalImagePathSchema } from "../validation/common.ts";
+import { isOfficialVideoKey } from "../../config/media.ts";
 import type { GuideHeading } from "@/lib/content/guides";
 
 type MdxNode = {
@@ -73,8 +74,17 @@ export const createSafeGuideMdxPlugin = (slug: string) => () => (tree: MdxNode):
     }
 
     if (node.type === "mdxJsxFlowElement" || node.type === "mdxJsxTextElement") {
-      if (node.name !== "ImportantNote") {
-        unsafe(slug, `only the ImportantNote MDX component is allowed (received "${node.name ?? "fragment"}")`);
+      if (node.name !== "ImportantNote" && node.name !== "OfficialVideo") {
+        unsafe(slug, `only the ImportantNote and OfficialVideo MDX components are allowed (received "${node.name ?? "fragment"}")`);
+      }
+
+      if (node.name === "OfficialVideo") {
+        const attributes = node.attributes ?? [];
+        const key = attributes[0]?.value;
+        if (node.type !== "mdxJsxFlowElement" || node.children?.length || attributes.length !== 1 || attributes[0].type !== "mdxJsxAttribute" || attributes[0].name !== "video" || typeof key !== "string" || !isOfficialVideoKey(key)) {
+          unsafe(slug, "OfficialVideo requires exactly one literal, known video key");
+        }
+        return;
       }
 
       for (const attribute of node.attributes ?? []) {

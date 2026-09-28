@@ -4,6 +4,8 @@ import { Breadcrumbs } from "@/components/wiki/breadcrumbs";
 import { WikiPageLayout } from "@/components/wiki/wiki-page-layout";
 import { WikiInfobox } from "@/components/wiki/wiki-infobox";
 import { WikiSection } from "@/components/wiki/wiki-section";
+import { OfficialVideo } from "@/components/media/official-video";
+import { locationVisuals } from "@/config/media";
 import type { ResolvedContent } from "@/lib/content/queries";
 import type { CategoryDefinition, WikiEntity } from "@/lib/content/types";
 import type { GuideHeading } from "@/lib/content/guides";
@@ -18,6 +20,7 @@ type WikiDetailLayoutProps = Readonly<{
 }>;
 
 export function WikiDetailLayout({ category, entity, related, editorial, ads }: WikiDetailLayoutProps) {
+  const locationVisual = category.slug === "locations" ? locationVisuals[entity.slug] : undefined;
   return (
     <article className="wiki-detail-page">
       <Breadcrumbs
@@ -43,6 +46,10 @@ export function WikiDetailLayout({ category, entity, related, editorial, ads }: 
         >
         <div className="wiki-detail-layout__body">
           <Image alt={entity.imageAlt} className="wiki-detail-layout__image" height={720} src={entity.image} unoptimized width={1280} />
+          {locationVisual ? <div className="location-visuals">
+            <Image alt={locationVisual.alt} className="wiki-detail-layout__image" height={900} src={locationVisual.image} unoptimized width={1600} />
+            <OfficialVideo video={locationVisual.video} />
+          </div> : null}
           {editorial ? <div className="guide-article-page__body">{editorial.content}</div> : entity.sections.map((section) => <WikiSection key={section.id} section={section} />)}
         </div>
         </WikiPageLayout>
