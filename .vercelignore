@@ -1,0 +1,3 @@
+# Research manifests are versioned in Git, but are not needed in the runtime bundle.
+# In particular, local high-resolution source originals must not be uploaded.
+research/
