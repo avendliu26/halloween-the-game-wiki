@@ -7,16 +7,16 @@
     ],
     "type": "Guide",
     "pathname": "/guides/how-to-play",
-    "title": "Halloween: The Game How to Play — Roles & Objectives",
+    "title": "How to Play Halloween: The Game — Gameplay Basics",
     "status": "PUBLISHED",
     "sourceUrls": [
       "https://halloweengame.com/news/multiplayer-gameplay-overview/",
       "https://halloweengame.com/news/unleash-hell-upon-haddonfield/",
-      "https://halloweengame.com/news/stealth-stalking-and-scares/",
       "https://halloweengame.com/news/the-locations-of-halloween-the-game/",
-      "https://www.xbox.com/en-US/games/store/halloween/9nl5n20r06dv",
-      "https://store.epicgames.com/p/halloween-f3e2dd?lang=en-US"
-    ]
+      "https://halloweengame.com/news/halloween-the-game-out-now/",
+      "https://halloweengame.com/news/patch-notes-1-0-4/"
+    ],
+    "heading": "How to Play Halloween: The Game"
   },
   {
     "id": "release-date",
@@ -73,11 +73,14 @@
     "primaryKeyword": "halloween the game platforms",
     "secondaryKeywords": [
       "halloween the game ps5",
-      "halloween the game xbox"
+      "halloween the game xbox",
+      "is halloween the game cross platform",
+      "halloween the game crossplay",
+      "is halloween the game on ps4"
     ],
     "type": "Platform",
     "pathname": "/platforms",
-    "title": "Halloween: The Game Platforms — PS5, Xbox & PC",
+    "title": "Halloween: The Game Platforms & Crossplay",
     "status": "PUBLISHED",
     "sourceUrls": [
       "https://halloweengame.com/news/the-locations-of-halloween-the-game/",

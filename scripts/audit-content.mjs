@@ -5,8 +5,14 @@ import { countContentWords } from "./audit-word-count.mjs";
 
 const base = new URL(process.argv[2] ?? "http://127.0.0.1:3106");
 const intents = JSON.parse(readFileSync(new URL("../research/intent-map.json", import.meta.url), "utf8"));
+// Optional canonical paths keep controlled batches separate from other content.
+const requestedPaths = new Set(process.argv.slice(3));
+for (const pathname of requestedPaths) {
+  assert.ok(intents.some((intent) => intent.pathname === pathname), `Unknown audit path: ${pathname}`);
+}
 const rows = [];
 for (const intent of intents) {
+  if (requestedPaths.size && !requestedPaths.has(intent.pathname)) continue;
   const response = await fetch(new URL(intent.pathname, base));
   if (intent.status !== "PUBLISHED") {
     assert.equal(response.status, 404, `Unpublished intent leaked: ${intent.pathname}`);
@@ -16,7 +22,7 @@ for (const intent of intents) {
   assert.equal(response.status, 200, intent.pathname);
   const doc = new JSDOM(await response.text()).window.document;
   assert.equal(doc.title, intent.title, `SEO title: ${intent.pathname}`);
-  assert.equal(doc.querySelector("h1").textContent, intent.title);
+  assert.equal(doc.querySelector("h1").textContent, intent.heading ?? intent.title);
   assert.ok(doc.title.length >= 40 && doc.title.length <= 60);
   const descriptionLength = doc.querySelector('meta[name="description"]').content.length;
   assert.ok(descriptionLength >= 140 && descriptionLength <= 160, `Description length: ${intent.pathname}`);

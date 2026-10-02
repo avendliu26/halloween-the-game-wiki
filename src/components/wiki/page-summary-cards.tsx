@@ -24,6 +24,7 @@ export function PageSummaryCards({ slug }: { slug: string }) {
   const cards = slug === "editions" ? editions : slug === "platforms" ? platforms : undefined;
   if (!cards) return null;
   return <section className="page-summary" aria-label={slug === "editions" ? "Edition summary" : "Platform summary"}>
+    {slug === "platforms" ? <p className="page-summary__note">Halloween: The Game is available on PS5, Xbox Series X|S and Windows PC (Steam and Epic), with crossplay across these platforms. No PS4 version is announced. See the <Link href="/crossplay">crossplay guide for party support and cross-save status</Link>.</p> : null}
     <div className="page-summary__grid">
       {cards.map((card) => <div className="page-summary-card" key={card.title}>
         <p className="preview-card__eyebrow">{card.eyebrow}</p>
@@ -37,6 +38,6 @@ export function PageSummaryCards({ slug }: { slug: string }) {
         {index > 0 ? " · " : null}<a className="underline" href={store.href} target="_blank" rel="noopener noreferrer">{store.label}</a>
       </Fragment>)}
     </p> : <p className="page-summary__note">Looking for PlayStation, Xbox or Epic Games? <Link className="underline" href="/platforms#official-stores">Platform stores</Link>.</p>}
-    <p className="page-summary__note">{slug === "editions" ? <>Announced US prices; local pricing varies. <a href="https://halloweengame.com/news/preorder/" target="_blank" rel="noopener noreferrer">Digital FAQ</a> · <a href="https://halloweengame.com/news/physical-editions/" target="_blank" rel="noopener noreferrer">Physical FAQ</a>.</> : <>Crossplay connects PS5, Xbox Series X|S and PC. See the <Link href="/crossplay">crossplay guide for party support and cross-save status</Link>.</>}</p>
+    {slug === "editions" ? <p className="page-summary__note">Announced US prices; local pricing varies. <a href="https://halloweengame.com/news/preorder/" target="_blank" rel="noopener noreferrer">Digital FAQ</a> · <a href="https://halloweengame.com/news/physical-editions/" target="_blank" rel="noopener noreferrer">Physical FAQ</a>.</p> : null}
   </section>;
 }

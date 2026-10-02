@@ -26,7 +26,7 @@ describe("researched content in existing layouts", () => {
   it("does not append the brand twice to a researched guide title", async () => {
     const params = Promise.resolve({ slug: "how-to-play" });
     const meta = await guideMetadata({ params });
-    expect(meta.title).toEqual({ absolute: "How to Play Halloween: The Game — Michael & Civilians" });
+    expect(meta.title).toEqual({ absolute: "How to Play Halloween: The Game — Gameplay Basics" });
     const html = renderToStaticMarkup(await GuidePage({ params }));
     expect(html).toContain("Published");
     expect(html).toContain("Residents are part of the objective");
@@ -48,4 +48,34 @@ describe("researched content in existing layouts", () => {
     expect(platformHtml).toContain('href="/crossplay"');
     expect(platformHtml).not.toContain("keeping a separate detailed crossplay page unpublished");
   });
+  it("answers gameplay before media while retaining the video poster and social image", async () => {
+    const params = Promise.resolve({ slug: "how-to-play" });
+    const doc = document.createElement("div");
+    doc.innerHTML = renderToStaticMarkup(await GuidePage({ params }));
+    const body = doc.querySelector(".guide-article-page__body")!;
+    const firstParagraph = body.querySelector("p")!;
+    expect(firstParagraph.textContent).toMatch(/one of four Civilians in 1v4 multiplayer/);
+    expect(firstParagraph.textContent).toMatch(/gather escape items, call police/);
+    expect(firstParagraph.compareDocumentPosition(body.querySelector("img")!) & 4).toBe(4);
+    expect(body.querySelectorAll('img[src="/images/characters/michael-myers-official.webp"]')).toHaveLength(1);
+    expect(body.querySelector('a[href="/locations"]')).not.toBeNull();
+    const meta = await guideMetadata({ params });
+    expect(meta.alternates?.canonical).toBe("https://halloween-thegame.wiki/guides/how-to-play");
+    expect(meta.openGraph?.images).toEqual([{ url: "https://halloween-thegame.wiki/images/characters/michael-myers-official.webp" }]);
+  });
+
+  it("answers platform, crossplay and PS4 intents before the platform cards", async () => {
+    const doc = document.createElement("div");
+    doc.innerHTML = renderToStaticMarkup(await ResearchArticle({ slug: "platforms" }));
+    const summary = doc.querySelector(".page-summary")!;
+    expect(summary.firstElementChild?.textContent).toMatch(/PS5, Xbox Series X\|S and Windows PC.*with crossplay/);
+    expect(summary.firstElementChild?.textContent).toContain("No PS4 version is announced");
+    expect(doc.querySelector('a[href="/crossplay#cross-progression-and-cross-save"]')).not.toBeNull();
+    expect(doc.textContent).toContain("No cross-progression or cross-save policy");
+    expect(doc.textContent).toContain("planned October 6, 2026 disc release");
+    const meta = researchMetadata("platforms");
+    expect(meta.title).toEqual({ absolute: "Halloween: The Game Platforms & Crossplay" });
+    expect(meta.alternates?.canonical).toBe("https://halloween-thegame.wiki/platforms");
+  });
+
 });

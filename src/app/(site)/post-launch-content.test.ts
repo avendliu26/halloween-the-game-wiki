@@ -44,8 +44,8 @@ describe("post-launch gameplay content", () => {
     const beginner = requireGuide("beginner-guide");
 
     expect(howToPlay.body).toContain("## Quick Answer");
-    expect(howToPlay.body).toContain("## Steps");
-    expect(howToPlay.body).toContain("## Key Mechanics");
+    expect(howToPlay.body).toContain("## How to Play Each Role");
+    expect(howToPlay.body).toContain("## Objectives, Escapes and Winning");
     expect(howToPlay.body).toContain("## Beginner Mistakes");
     expect(howToPlay.body).toMatch(/residents/i);
     expect(howToPlay.body).toMatch(/Sheriff's Deputy/i);
