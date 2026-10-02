@@ -94,8 +94,8 @@ export default async function GuidePage({ params }: GuidePageProps) {
       <WikiPageLayout headings={headings} related={relatedPages.length ? relatedPages : related} relatedHeading={relatedPages.length ? "Related Pages" : "Related Content"}
         sidebarAd={showRectangleAd ? <AdsterraBanner size="300x250" /> : undefined}>
         <div className="guide-article-page__body">
-          {/* How to Play uses this image as its video poster after the answer. */}
-          {guide.slug !== "how-to-play" && guide.frontmatter.image && guide.frontmatter.imageAlt ? (
+          {/* These guides place their media in MDX after the direct answer. */}
+          {!["how-to-play", "how-to-respawn-as-police"].includes(guide.slug) && guide.frontmatter.image && guide.frontmatter.imageAlt ? (
             <Image
               alt={guide.frontmatter.imageAlt}
               className="guide-article-page__image"

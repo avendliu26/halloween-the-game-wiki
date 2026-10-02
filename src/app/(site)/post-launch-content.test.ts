@@ -71,9 +71,11 @@ describe("post-launch gameplay content", () => {
     expect(michael.body).toContain("Patch 1.0.4");
     expect(michael.body).toContain("Patch 1.0.1");
 
-    expect(police.body).toContain("## Step-by-Step");
+    expect(police.body).toContain("## How to Return as a Sheriff's Deputy");
     expect(police.body).toContain("## Officially Confirmed");
-    expect(police.body).toContain("## Community-Tested Behavior");
+    expect(police.body).toContain("## Can You Return as Police After Escaping?");
+    expect(police.body).toContain("## Why Police Reinforcements May Not Appear");
+    expect(police.body).toContain("## Sheriff's Deputy vs Dr. Loomis");
     expect(police.body).toContain("## What Is Still Uncertain");
 
     expect(crossplay.body).toContain("Patch 1.0.1");
