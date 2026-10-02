@@ -42,7 +42,7 @@ while (pending.length) {
   }
   for (const image of doc.querySelectorAll("img")) {
     assert.ok(image.hasAttribute("alt"), `Image alt attribute: ${path}`);
-    assert.ok(image.alt || image.closest("a[aria-label]"), `Image accessible label: ${path}`);
+    assert.ok(image.alt || image.closest('a[aria-label], [aria-hidden="true"]'), `Image accessible label or decorative image: ${path}`);
     assets.add(new URL(image.src, base).href);
   }
   for (const link of doc.querySelectorAll("a[href]")) {

@@ -8,6 +8,7 @@ import { JsonLdScript } from "@/components/seo/json-ld-script";
 import { categoryDefinitions } from "@/config/categories";
 import { gameConfig } from "@/config/game";
 import { OfficialVideo } from "@/components/media/official-video";
+import { HomeMotion } from "@/components/layout/home-motion";
 import type { GameConfig } from "@/lib/config/schema";
 import { getAllGuides } from "@/lib/content/guides";
 import { getCategoryEntries, getFeaturedEntities, resolveInternalHref } from "@/lib/content/queries";
@@ -55,8 +56,11 @@ export function HomePageContent({ config }: Readonly<{ config: GameConfig }>) {
           image: config.heroImagePath
         })}
       />
-    <div className="home-page">
+    <HomeMotion>
       <section className="home-hero" aria-labelledby="home-title">
+        {config.name === "Halloween: The Game" ? <div aria-hidden="true" className="home-hero__backdrop">
+          <Image alt="" fill priority sizes="(min-width: 64rem) 82rem, 100vw" src="/images/official/haddonfield-heights-s2.webp" unoptimized />
+        </div> : null}
         <div className="home-hero__content">
           <p className="home-hero__eyebrow">{homepage.hero?.eyebrow ?? config.wikiName}</p>
           <h1 id="home-title">{homepage.hero?.title ?? config.tagline}</h1>
@@ -187,7 +191,7 @@ export function HomePageContent({ config }: Readonly<{ config: GameConfig }>) {
           {config.officialWebsite ? <a className="button button--secondary" href={config.officialWebsite} rel="noreferrer" target="_blank">{homepage.finalCta.secondary}</a> : null}
         </div>
       </section> : null}
-    </div>
+    </HomeMotion>
     </>
   );
 }

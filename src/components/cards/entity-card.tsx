@@ -28,7 +28,9 @@ export function EntityCard({ category, entity }: EntityCardProps) {
   return (
     <article className="preview-card entity-card">
       <Link aria-label={entity.name} className="preview-card__link entity-card__link" href={`/${entity.category}/${entity.slug}`}>
-        <Image alt={entity.imageAlt} className="entity-card__image" height={360} src={entity.image} unoptimized width={640} />
+        <div className="preview-card__media">
+          <Image alt={entity.imageAlt} className="entity-card__image" height={360} src={entity.image} unoptimized width={640} />
+        </div>
         <div className="entity-card__content">
           <p className="preview-card__eyebrow">{category.label}</p>
           <h3>{entity.name}</h3>
