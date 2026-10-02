@@ -24,9 +24,15 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   }
 
   return (
-      <details className="table-of-contents" open>
+    <>
+      <details className="table-of-contents table-of-contents--mobile">
         <summary>On this page</summary>
         <TableOfContentsLinks headings={headings} />
       </details>
+      <details className="table-of-contents table-of-contents--desktop" open>
+        <summary>On this page</summary>
+        <TableOfContentsLinks headings={headings} />
+      </details>
+    </>
   );
 }

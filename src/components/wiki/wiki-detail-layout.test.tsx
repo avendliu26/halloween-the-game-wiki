@@ -18,7 +18,8 @@ describe("WikiDetailLayout", () => {
 
     expect(screen.getByRole("heading", { level: 1, name: "Training Sword" })).toBeVisible();
     expect(screen.getByRole("heading", { name: "How to Obtain" })).toBeVisible();
-    expect(screen.getByRole("link", { name: "How to Obtain" })).toHaveAttribute("href", "#section-how-to-obtain");
+    expect(document.querySelector(".table-of-contents--mobile a[href='#section-how-to-obtain']")).not.toBeNull();
+    expect(document.querySelector(".table-of-contents--desktop a[href='#section-how-to-obtain']")).not.toBeNull();
     expect(screen.getByText("Rarity")).toBeVisible();
   });
 

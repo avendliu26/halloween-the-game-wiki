@@ -35,10 +35,16 @@ describe("guide table of contents", () => {
     ]);
   });
 
-  it("renders semantic anchor navigation", () => {
-    render(<TableOfContents headings={[{ depth: 2, text: "First Route", id: "first-route" }]} />);
+  it("keeps the mobile table of contents compact and the desktop one expanded", () => {
+    const { container } = render(<TableOfContents headings={[{ depth: 2, text: "First Route", id: "first-route" }]} />);
 
-    expect(screen.getByRole("link", { name: "First Route" })).toHaveAttribute("href", "#first-route");
-    expect(screen.getAllByText(/on this page/i)).toHaveLength(1);
+    const mobileToc = container.querySelector(".table-of-contents--mobile");
+    const desktopToc = container.querySelector(".table-of-contents--desktop");
+
+    expect(mobileToc).not.toHaveAttribute("open");
+    expect(desktopToc).toHaveAttribute("open");
+    expect(mobileToc?.querySelector("a")).toHaveAttribute("href", "#first-route");
+    expect(desktopToc?.querySelector("a")).toHaveAttribute("href", "#first-route");
+    expect(screen.getAllByText(/on this page/i)).toHaveLength(2);
   });
 });

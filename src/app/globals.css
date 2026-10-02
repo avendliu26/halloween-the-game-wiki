@@ -880,6 +880,10 @@ a:hover {
   display: none;
 }
 
+.table-of-contents--mobile {
+  display: block;
+}
+
 .wiki-detail-layout {
   display: grid;
   gap: 1.5rem;
@@ -929,7 +933,7 @@ a:hover {
   aspect-ratio: 16 / 9;
 }
 
-/* One shared article/sidebar layout; no duplicate mobile TOC markup. */
+/* Responsive TOC variants keep mobile compact and desktop expanded. */
 .wiki-page-layout {
   display: flex;
   flex-direction: column;
@@ -1122,6 +1126,8 @@ a:hover {
     gap: 2rem;
   }
   .wiki-page-layout__main { grid-column: 1; grid-row: 1; }
+  .table-of-contents--mobile { display: none; }
+  .table-of-contents--desktop { display: block; }
   .page-sidebar {
     display: grid;
     grid-column: 2;
@@ -1277,17 +1283,6 @@ a:hover {
     grid-row: 1;
   }
 
-  .table-of-contents--mobile {
-    display: none;
-  }
-
-  .table-of-contents--desktop {
-    display: block;
-    grid-column: 2;
-    grid-row: 1;
-    position: sticky;
-    top: 6rem;
-  }
 }
 
 @media (min-width: 40rem) {

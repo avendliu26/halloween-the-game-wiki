@@ -10,13 +10,15 @@ vi.mock("next/navigation", async (importOriginal) => ({
 }));
 
 describe("shared article improvements", () => {
-  it("places a single TOC and existing Related Pages in one sidebar", async () => {
+  it("places responsive TOC variants and existing Related Pages in one sidebar", async () => {
     const { container } = render(await ResearchArticle({ slug: "release-date" }));
     const sidebar = screen.getByRole("complementary", { name: "Page sidebar" });
     expect(within(sidebar).getByRole("heading", { name: "Related Pages" })).toHaveAttribute("id", "related-pages");
     expect(screen.getAllByRole("heading", { name: "Related Pages" })).toHaveLength(1);
     expect(container.querySelector("#related-links #related-pages")).not.toBeNull();
-    expect(screen.getAllByText(/on this page/i)).toHaveLength(1);
+    expect(screen.getAllByText(/on this page/i)).toHaveLength(2);
+    expect(container.querySelector(".table-of-contents--mobile:not([open])")).not.toBeNull();
+    expect(container.querySelector(".table-of-contents--desktop[open]")).not.toBeNull();
     expect(within(sidebar).getByRole("heading", { name: "Game Info" })).toBeVisible();
     expect(within(sidebar).getByRole("link", { name: "Official Website" })).toHaveAttribute("rel", "noopener noreferrer");
     for (const link of container.querySelectorAll<HTMLAnchorElement>('.table-of-contents a')) {
