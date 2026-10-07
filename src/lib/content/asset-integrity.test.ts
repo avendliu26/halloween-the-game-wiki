@@ -12,12 +12,7 @@ describe("production content asset integrity", () => {
     const result = await validateAssets();
     expect(result.checkedImages).toBeGreaterThan(0);
     expect(result.checkedDocuments).toBeGreaterThan(0);
-    expect((result as typeof result & { fallbackGuides?: unknown }).fallbackGuides).toEqual([
-      { slug: "halloween-the-game-crashing", cover: "/images/brand/guide-troubleshooting.webp" },
-      { slug: "backend-authentication-error", cover: "/images/brand/guide-troubleshooting.webp" },
-      { slug: "how-skill-checks-work", cover: "/images/brand/guide-gameplay.webp" },
-      { slug: "how-to-call-the-police", cover: "/images/brand/guide-police.webp" }
-    ]);
+    expect((result as typeof result & { fallbackGuides?: unknown }).fallbackGuides).toEqual([]);
   });
 
   describe("independent validator fixtures", () => {

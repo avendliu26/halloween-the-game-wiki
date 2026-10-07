@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-10-07",
+  "purpose": "Guide card cover provenance for newly assigned topic-specific covers.",
+  "assets": [
+    {
+      "guide": "halloween-the-game-crashing",
+      "site_path": "/images/guides/crashing-blue-screen.webp",
+      "source_title": "Blue Screen of Death",
+      "creator": "taberandrew",
+      "source_page": "https://www.flickr.com/photos/88442983@N00/2228633614",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "notes": "Downloaded via Image Source Agent/Openverse and cropped to 16:9 for the site."
+    },
+    {
+      "guide": "backend-authentication-error",
+      "site_path": "/images/guides/backend-auth-login.webp",
+      "source_title": "BOQ Broke",
+      "creator": "Mountain/ \\Ash",
+      "source_page": "https://commons.wikimedia.org/wiki/File:BOQ_Broke.jpg",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "notes": "Downloaded via Image Source Agent/Wikimedia Commons and cropped to 16:9 for the site."
+    },
+    {
+      "guide": "how-to-call-the-police",
+      "site_path": "/images/guides/call-police-emergency-phone.webp",
+      "source_title": "City Police Emergency Telephone sign 2015-05-03",
+      "creator": "JonChanLondon",
+      "source_page": "https://commons.wikimedia.org/w/index.php?curid=197592978",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "notes": "Downloaded via Image Source Agent/Openverse/Wikimedia Commons and cropped to 16:9 for the site."
+    },
+    {
+      "guide": "how-skill-checks-work",
+      "site_path": "/images/official/po-perk-cards.webp",
+      "source_title": "Existing Halloween: The Game perk-card asset",
+      "creator": "Pre-existing project asset",
+      "license": "Pre-existing provenance unchanged",
+      "notes": "Reuses an existing project image already used for progression/perk-card content."
+    }
+  ]
+}
