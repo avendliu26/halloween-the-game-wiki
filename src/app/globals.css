@@ -1228,24 +1228,6 @@ a:hover {
   font-weight: 700;
 }
 
-.guides-text-only {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border);
-}
-
-.guides-text-only > h2 {
-  margin: 0 0 1rem;
-}
-
-.preview-grid--guides-compact .preview-card {
-  align-self: start;
-}
-
-.preview-grid--guides-compact .preview-card__link {
-  height: auto;
-}
-
 @media (min-width: 48rem) {
   .start-here-grid,
   .preview-grid--entities {

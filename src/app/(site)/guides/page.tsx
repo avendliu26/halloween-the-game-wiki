@@ -17,8 +17,6 @@ export function generateMetadata(): Metadata {
 
 export default function GuidesPage() {
   const guides = getAllGuides();
-  const illustratedGuides = guides.filter((guide) => Boolean(guide.frontmatter.image));
-  const textGuides = guides.filter((guide) => !guide.frontmatter.image);
 
   return (
     <article className="guides-page">
@@ -29,17 +27,9 @@ export default function GuidesPage() {
         <p>{gameConfig.content.guideIndexDescription}</p>
       </header>
       <WikiPageLayout related={[{ title: "Story Challenges", href: "/challenges" }, { title: "Perks and decks", href: "/perks" }, { title: "Michael Myers abilities", href: "/characters/michael-myers" }, { title: "Playable characters", href: "/characters" }, { title: "Crossplay status", href: "/crossplay" }]}>
-        <div className="preview-grid preview-grid--guides">
-          {illustratedGuides.map((guide) => <GuideCard guide={guide} key={guide.slug} />)}
-        </div>
-        {textGuides.length > 0 ? (
-          <section className="guides-text-only" aria-labelledby="more-guides-heading">
-            <h2 id="more-guides-heading">More guides</h2>
-            <div className="preview-grid preview-grid--guides preview-grid--guides-compact">
-              {textGuides.map((guide) => <GuideCard guide={guide} key={guide.slug} />)}
-            </div>
-          </section>
-        ) : null}
+      <div className="preview-grid preview-grid--guides">
+        {guides.map((guide) => <GuideCard guide={guide} key={guide.slug} />)}
+      </div>
       </WikiPageLayout>
     </article>
   );
