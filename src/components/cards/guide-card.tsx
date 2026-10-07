@@ -17,12 +17,7 @@ export function GuideCard({ guide }: GuideCardProps) {
           <div className="preview-card__media">
             <Image alt={frontmatter.imageAlt ?? frontmatter.title} className="guide-card__image" height={360} src={frontmatter.image} unoptimized width={640} />
           </div>
-        ) : (
-          <div aria-hidden="true" className="preview-card__media guide-card__placeholder">
-            <span className="guide-card__placeholder-mark">H</span>
-            <span className="guide-card__placeholder-label">Field Guide</span>
-          </div>
-        )}
+        ) : null}
         <p className="preview-card__eyebrow">Guide</p>
         <h3>{frontmatter.title}</h3>
         <p>{frontmatter.description}</p>
