@@ -10,14 +10,19 @@ type GuideCardProps = Readonly<{
 export function GuideCard({ guide }: GuideCardProps) {
   const { frontmatter } = guide;
 
-  const hasImage = Boolean(frontmatter.image);
-
   return (
-    <article className={`preview-card guide-card${hasImage ? "" : " guide-card--no-image"}`}>
+    <article className="preview-card guide-card">
       <Link aria-label={frontmatter.title} className="preview-card__link" href={`/guides/${guide.slug}`}>
-        {frontmatter.image ? <div className="preview-card__media">
-          <Image alt={frontmatter.imageAlt ?? frontmatter.title} className="guide-card__image" height={360} src={frontmatter.image} unoptimized width={640} />
-        </div> : null}
+        {frontmatter.image ? (
+          <div className="preview-card__media">
+            <Image alt={frontmatter.imageAlt ?? frontmatter.title} className="guide-card__image" height={360} src={frontmatter.image} unoptimized width={640} />
+          </div>
+        ) : (
+          <div aria-hidden="true" className="preview-card__media guide-card__placeholder">
+            <span className="guide-card__placeholder-mark">H</span>
+            <span className="guide-card__placeholder-label">Field Guide</span>
+          </div>
+        )}
         <p className="preview-card__eyebrow">Guide</p>
         <h3>{frontmatter.title}</h3>
         <p>{frontmatter.description}</p>
