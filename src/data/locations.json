@@ -158,5 +158,45 @@
         "body": "Use Nichols Hardware and the shopping district to orient between streets and interiors. Objectives, required items, and available escapes vary, so do not assume a route from one match will repeat exactly."
       }
     ]
+  },
+  {
+    "id": "tower-farm",
+    "slug": "tower-farm",
+    "name": "Tower Farm",
+    "category": "locations",
+    "image": "/images/placeholders/entity.svg",
+    "imageAlt": "Neutral site placeholder; no approved official Tower Farm image is available",
+    "summary": "Free Halloween: The Game post-launch map arriving October 27, 2026, inspired by Halloween 5 settings, with country roads, cornfields, farmhouses, barns, a trailer park and a harvest festival.",
+    "tags": [
+      "Post-launch map",
+      "Announced"
+    ],
+    "updatedAt": "2026-10-06",
+    "featured": false,
+    "related": [
+      {
+        "kind": "guide",
+        "slug": "how-to-play"
+      }
+    ],
+    "infobox": {
+      "name": "Tower Farm",
+      "type": "Post-launch map (free)",
+      "location": "Haddonfield outskirts"
+    },
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Confirmed Information",
+        "type": "prose",
+        "body": "The official October 5, 2026 content update announcement adds Tower Farm as a free multiplayer map scheduled for October 27, 2026. It is map 5 and takes inspiration from Halloween 5 settings. Confirmed elements include rural country roads, a filling station, cornfields, roadside ditches, farmhouses, farm equipment, hay bales, brush, barns and sheds, a harvest festival, a trailer park, and pumpkin gardens. No official gameplay statistics accompany the announcement."
+      },
+      {
+        "id": "tips",
+        "title": "Gameplay Notes",
+        "type": "prose",
+        "body": "The announcement describes open rural areas with exposed crossings and longer sightlines than the launch neighborhoods. Spawn behavior, escape routes, objective placement, dimensions, and tested balance are not established before release, so this page makes no claims about them. Check the October 27 update overview for release status."
+      }
+    ]
   }
 ]

@@ -7,6 +7,9 @@ import type { InternalReference } from "@/lib/content/types";
 import { standalonePages } from "@/lib/content/pages";
 
 const referenceExists = (reference: InternalReference): boolean => {
+  if (reference.kind === "pathname") {
+    return standalonePages.some((page) => page.pathname === reference.pathname);
+  }
   if (reference.kind === "page") {
     return standalonePages.some((page) => page.slug === reference.slug);
   }

@@ -94,7 +94,7 @@ export const createCategoryDefinitions = (navigation: readonly NavigationItem[])
     slug: "locations",
     label: labelFor("locations"),
     singularLabel: "Map",
-    description: "Explore the four multiplayer maps, their Haddonfield landmarks, randomized objectives, escape opportunities, and practical navigation tips.",
+    description: "Explore the four launch multiplayer maps, the free Tower Farm map arriving October 27, their landmarks, randomized objectives, escape opportunities, and practical navigation tips.",
     glyph: "MP",
     cardFields: ["type", "location", "rarity"],
     infoboxFields: [

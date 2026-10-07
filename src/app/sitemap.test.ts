@@ -4,6 +4,7 @@ const productionOrigin = "https://halloween-thegame.wiki";
 const publishedPaths = [
   "/", "/guides", "/characters", "/locations", "/game-info", "/community",
   "/release-date", "/editions", "/physical-editions", "/platforms", "/system-requirements",
+  "/updates/patch-1-1-0", "/updates/october-27-2026",
   "/crossplay", "/guides/beginner-guide", "/guides/how-to-play",
   "/guides/patch-notes", "/guides/how-to-struggle-free",
   "/guides/how-to-respawn-as-police", "/guides/backend-authentication-error",
@@ -12,7 +13,7 @@ const publishedPaths = [
   "/guides/halloween-the-game-crashing",
   "/characters/michael-myers", "/characters/civilians",
   "/locations/east-haddonfield", "/locations/haddonfield-heights",
-  "/locations/orange-grove-estates", "/locations/haddonfield-town-center"
+  "/locations/orange-grove-estates", "/locations/haddonfield-town-center", "/locations/tower-farm"
 ];
 
 afterEach(() => {

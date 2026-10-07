@@ -73,9 +73,11 @@ export const gameConfig = createGameConfig({
       startHereTitle: "Find the Answer You Need",
       primaryAction: { label: "Read How to Play", reference: { kind: "guide", slug: "how-to-play" } },
       secondaryAction: { label: "Browse Characters", reference: { kind: "category", category: "characters" } },
-      tertiaryAction: { label: "Patch 1.0.4 · Sep 26", reference: { kind: "guide", slug: "patch-notes" } },
+      tertiaryAction: { label: "Patch 1.1.0 · Oct 6", reference: { kind: "pathname", pathname: "/updates/patch-1-1-0" } },
       startHereLinks: [
-        { label: "Patch Notes", description: "Patch 1.0.4 grab and Xbox fixes, plus 1.0.3 balance and challenge changes. Reviewed September 27.", reference: { kind: "guide", slug: "patch-notes" } },
+        { label: "Patch Notes", description: "Patch 1.1.0 performance, escape and Bloodthirst tuning, plus the post-launch update history. Reviewed October 6.", reference: { kind: "pathname", pathname: "/updates/patch-1-1-0" } },
+        { label: "October 27 Update", description: "The scheduled free Tower Farm map, Michael skins, Michelle and Eugene DLC, costumes, fixes and QoL.", reference: { kind: "pathname", pathname: "/updates/october-27-2026" } },
+        { label: "Tower Farm", description: "The free map 5 arriving October 27: country roads, cornfields, farmhouses, barns, a trailer park and a harvest festival.", reference: { kind: "entity", category: "locations", slug: "tower-farm" } },
         { label: "Challenges", description: "Find chapter objectives, execution tips, and help with challenges that do not complete.", reference: { kind: "page", slug: "challenges" } },
         { label: "Characters", description: "Compare the playable Civilian roster, unlock availability, roles, traits, and Michael Myers.", reference: { kind: "category", category: "characters" } },
         { label: "Michael Myers", description: "Learn Killer Sense, Stalk, Shape Jump, loadout abilities, cooldowns, and practical hunting tactics.", reference: { kind: "entity", category: "characters", slug: "michael-myers" } },

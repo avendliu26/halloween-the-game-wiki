@@ -26,6 +26,8 @@ describe("post-launch gameplay content", () => {
     expect(gameConfig.content.homepage.hero?.title).toBe("Halloween: The Game Wiki");
     expect(gameConfig.content.homepage.startHereLinks.map(({ label }) => label)).toEqual([
       "Patch Notes",
+      "October 27 Update",
+      "Tower Farm",
       "Challenges",
       "Characters",
       "Michael Myers",

@@ -15,7 +15,8 @@ export function generateMetadata(): Metadata {
 }
 
 const topics = [
-  ["/guides/patch-notes", "Patch notes and updates", "Patch 1.0.4 fixes, 1.0.3 balance changes and the post-launch update history."],
+  ["/updates/patch-1-1-0", "Patch notes and updates", "Patch 1.1.0 performance, stability and balance changes, plus the post-launch update history."],
+  ["/updates/october-27-2026", "October 27 update", "The scheduled free Tower Farm map, Michael skins, Michelle and Eugene DLC, costumes, fixes and QoL."],
   ["/release-date", "Release dates", "September 8 digital release, historical Early Access and the later disc release."],
   ["/editions", "Digital editions and price", "Standard versus Deluxe, exclusive characters and historical pre-order bonuses."],
   ["/physical-editions", "Physical copies", "Standard and Limited Collector's disc packages and their contents."],
@@ -23,7 +24,7 @@ const topics = [
   ["/system-requirements", "PC requirements", "Published minimum and recommended specifications, with CPU-label limitations."],
   ["/guides/how-to-play", "How to play", "Civilian rescue objectives, Michael's systems and singleplayer."],
   ["/characters", "Characters", "Standard and Deluxe roster, player roles and NPC residents."],
-  ["/locations", "Maps", "Four launch neighborhoods and confirmed landmarks."],
+  ["/locations", "Maps", "Four launch neighborhoods, plus the free Tower Farm map arriving October 27."],
   ["/community", "Community", "Find the official Discord server and its announcement."]
 ];
 
@@ -45,7 +46,7 @@ export default function GameInfoPage() {
         <div><dt>Setting</dt><dd>Haddonfield, Halloween night in 1978</dd></div>
         <div><dt>Modes</dt><dd>1v4 multiplayer and a Michael Myers singleplayer story</dd></div>
       </dl>
-      <p>The <a href="https://halloweengame.com/news/halloween-the-game-out-now/">official launch announcement</a> confirms the release. Current update: <Link href="/guides/patch-notes">Patch 1.0.4, September 26</Link>. Reviewed September 27, 2026.</p>
+      <p>The <a href="https://halloweengame.com/news/halloween-the-game-out-now/">official launch announcement</a> confirms the release. Current update: <Link href="/updates/patch-1-1-0">Patch 1.1.0, October 6</Link>. An <Link href="/updates/october-27-2026">October 27 update</Link> is scheduled to add the free <Link href="/locations/tower-farm">Tower Farm</Link> map and new DLC. Reviewed October 6, 2026.</p>
     </section>
     <section aria-labelledby="topics-heading" className="game-info-section">
       <h2 id="topics-heading">Find the specific answer</h2>

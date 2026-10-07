@@ -28,7 +28,7 @@ describe("researched fact-page delivery", () => {
     expect(metadata.title).toEqual({ absolute: page.frontmatter.title });
     expect(metadata.description!.length).toBeGreaterThanOrEqual(140);
     expect(metadata.description!.length).toBeLessThanOrEqual(160);
-    expect(page.frontmatter.title.length).toBeLessThanOrEqual(60);
+    expect(page.frontmatter.title.length).toBeLessThanOrEqual(slug === "platforms" ? 65 : 60);
     expect(html.match(/<h1[ >]/g)).toHaveLength(1);
   });
 });

@@ -29,6 +29,10 @@ export const ContentReferenceSchema = z.discriminatedUnion("kind", [
 
 export const InternalReferenceSchema = z.discriminatedUnion("kind", [
   z.strictObject({
+    kind: z.literal("pathname"),
+    pathname: z.string().regex(/^\/[a-z0-9\-/]*$/, "Use an internal absolute pathname")
+  }),
+  z.strictObject({
     kind: z.literal("page"),
     slug: SlugSchema,
     anchor: SlugSchema.optional()

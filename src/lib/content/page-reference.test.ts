@@ -7,4 +7,6 @@ it("links homepage questions to fact pages without a guides prefix", () => {
   expect(resolveInternalHref(reference)).toBe("/release-date");
   const anchored = InternalReferenceSchema.parse({ kind: "page", slug: "platforms", anchor: "what-the-cross-platform-badges-confirm" });
   expect(resolveInternalHref(anchored)).toBe("/platforms#what-the-cross-platform-badges-confirm");
+  const update = InternalReferenceSchema.parse({ kind: "pathname", pathname: "/updates/patch-1-1-0" });
+  expect(resolveInternalHref(update)).toBe("/updates/patch-1-1-0");
 });

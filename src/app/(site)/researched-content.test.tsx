@@ -72,9 +72,9 @@ describe("researched content in existing layouts", () => {
     expect(summary.firstElementChild?.textContent).toContain("No PS4 version is announced");
     expect(doc.querySelector('a[href="/crossplay#cross-progression-and-cross-save"]')).not.toBeNull();
     expect(doc.textContent).toContain("No cross-progression or cross-save policy");
-    expect(doc.textContent).toContain("planned October 6, 2026 disc release");
+    expect(doc.textContent).toContain("October 6, 2026 disc release, which has now happened");
     const meta = researchMetadata("platforms");
-    expect(meta.title).toEqual({ absolute: "Halloween: The Game Platforms & Crossplay" });
+    expect(meta.title).toEqual({ absolute: "Halloween: The Game Crossplay & Platforms: PS5, Xbox, PC, PS4?" });
     expect(meta.alternates?.canonical).toBe("https://halloween-thegame.wiki/platforms");
   });
 

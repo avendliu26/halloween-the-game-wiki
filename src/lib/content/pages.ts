@@ -16,7 +16,9 @@ export const standalonePages = [
   { slug: "editions", pathname: "/editions", type: "Edition" },
   { slug: "physical-editions", pathname: "/physical-editions", type: "Edition" },
   { slug: "platforms", pathname: "/platforms", type: "Platform" },
-  { slug: "system-requirements", pathname: "/system-requirements", type: "Platform" }
+  { slug: "system-requirements", pathname: "/system-requirements", type: "Platform" },
+  { slug: "patch-1-1-0", pathname: "/updates/patch-1-1-0", type: "Update" },
+  { slug: "october-27-2026", pathname: "/updates/october-27-2026", type: "Update" }
 ] as const;
 
 export const getResearchPages = () =>
