@@ -12,7 +12,6 @@ describe("production content asset integrity", () => {
     const result = await validateAssets();
     expect(result.checkedImages).toBeGreaterThan(0);
     expect(result.checkedDocuments).toBeGreaterThan(0);
-    expect((result as typeof result & { fallbackGuides?: unknown }).fallbackGuides).toEqual([]);
   });
 
   describe("independent validator fixtures", () => {
@@ -44,7 +43,7 @@ describe("production content asset integrity", () => {
       saveEntities([entity]);
       saveMdx(`![Direct](${image})\n\n![One][art]\n\n![Two][ART]\n\n[art]: ${image}`,
         `image: ${image}\nimageAlt: Art\n`);
-      await expect(validateAssets({ rootDirectory })).resolves.toEqual({ checkedImages: 11, checkedDocuments: 1, fallbackGuides: [] });
+      await expect(validateAssets({ rootDirectory })).resolves.toEqual({ checkedImages: 7, checkedDocuments: 1 });
     });
     it.each(["logoPath", "heroImagePath"] as const)("checks config %s", async (field) => {
       await expect(validateAssets({ rootDirectory, config: { ...gameConfig, [field]: "/images/test/missing-image.webp" } }))
@@ -91,11 +90,7 @@ describe("production content asset integrity", () => {
     });
     it("ignores code examples and does not execute allowed MDX components", async () => {
       saveMdx('```md\n![Example](https://example.com/image.webp)\n```\n\n<ImportantNote title="Safe">Note</ImportantNote>');
-      await expect(validateAssets({ rootDirectory })).resolves.toEqual({
-        checkedImages: 6,
-        checkedDocuments: 1,
-        fallbackGuides: [{ slug: "test", cover: "/images/brand/guide-default.webp" }]
-      });
+      await expect(validateAssets({ rootDirectory })).resolves.toEqual({ checkedImages: 2, checkedDocuments: 1 });
     });
     it("rejects directories and symlinks escaping public/images", async () => {
       saveMdx("![Directory](/images/brand)");

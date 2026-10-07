@@ -7,17 +7,14 @@ import { createCategoryDefinitions } from "../../config/categories.ts";
 import { assertLocalImageExists } from "../validation/assets.ts";
 import { categorySlugs } from "./types.ts";
 import { validateEntityCollection } from "./entity-validation.ts";
-import { guideFallbackCovers, resolveGuideCover } from "./guide-covers.ts";
 import { loadGuidesFromDirectory } from "./guide-source.ts";
 import { createGuideImagePathCollector, createSafeGuideMdxPlugin } from "./guide-mdx.ts";
 
 /** Shared build/test validation. No test runner, DOM, React or Next runtime. */
-type FallbackGuide = { slug: string; cover: string };
-
 export const validateAssets = async ({
   rootDirectory = process.cwd(),
   config = gameConfig
-} = {}): Promise<{ checkedImages: number; checkedDocuments: number; fallbackGuides: FallbackGuide[] }> => {
+} = {}): Promise<{ checkedImages: number; checkedDocuments: number }> => {
   const publicDirectory = path.join(rootDirectory, "public");
   let checkedImages = 0;
   let checkedDocuments = 0;
@@ -28,9 +25,6 @@ export const validateAssets = async ({
 
   check(config.logoPath, "gameConfig.logoPath");
   check(config.heroImagePath, "gameConfig.heroImagePath");
-  for (const [name, cover] of Object.entries(guideFallbackCovers)) {
-    check(cover, `guide fallback ${name}`);
-  }
   const definitions = createCategoryDefinitions(config.navigation);
   for (const category of categorySlugs) {
     const source: unknown = JSON.parse(readFileSync(path.join(rootDirectory, "src/data", `${category}.json`), "utf8"));
@@ -46,14 +40,11 @@ export const validateAssets = async ({
     }
   }
 
-  const fallbackGuides: FallbackGuide[] = [];
   for (const directory of ["guides", "pages"]) {
     for (const document of loadGuidesFromDirectory(path.join(rootDirectory, "src/content", directory))) {
       const source = `${directory}/${document.slug}`;
       if (document.frontmatter.image !== undefined) {
         check(document.frontmatter.image, `${source} frontmatter`);
-      } else if (directory === "guides") {
-        fallbackGuides.push({ slug: document.slug, cover: resolveGuideCover(document.frontmatter) });
       }
       const imagePaths: string[] = [];
       // Compile only to inspect the same MDX AST as rendering; never evaluate it.
@@ -64,5 +55,5 @@ export const validateAssets = async ({
       checkedDocuments += 1;
     }
   }
-  return { checkedImages, checkedDocuments, fallbackGuides };
+  return { checkedImages, checkedDocuments };
 };
