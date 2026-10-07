@@ -110,4 +110,56 @@ describe("Wiki preview cards", () => {
     expect(screen.getByText("Updated Sep 1, 2026")).toBeVisible();
     expect(screen.getByText("combat")).toBeVisible();
   });
+
+  it("keeps an explicit guide cover unchanged", () => {
+    render(
+      <GuideCard
+        guide={{
+          slug: "patch-notes",
+          body: "",
+          frontmatter: {
+            slug: "patch-notes",
+            title: "Patch Notes",
+            description: "Official updates.",
+            updatedAt: "2026-09-01",
+            image: "/images/official/day-one-patch-notes.webp",
+            imageAlt: "Official patch note art",
+            tags: ["updates"],
+            related: []
+          }
+        }}
+      />
+    );
+
+    expect(screen.getByRole("img")).toHaveAttribute("src", "/images/official/day-one-patch-notes.webp");
+  });
+
+  it.each([
+    ["troubleshooting", ["guide", "troubleshooting"], "/images/brand/guide-troubleshooting.webp"],
+    ["police", ["guide", "police"], "/images/brand/guide-police.webp"],
+    ["skill checks", ["guide", "skill-checks"], "/images/brand/guide-gameplay.webp"],
+    ["unmatched", ["guide", "beginner"], "/images/brand/guide-default.webp"]
+  ])("uses the %s fallback cover when a guide has no explicit image", (_name, tags, expectedCover) => {
+    const { container } = render(
+      <GuideCard
+        guide={{
+          slug: "field-notes",
+          body: "",
+          frontmatter: {
+            slug: "field-notes",
+            title: "Field Notes",
+            description: "Start safely.",
+            updatedAt: "2026-09-01",
+            tags,
+            related: []
+          }
+        }}
+      />
+    );
+
+    expect(container.querySelector("img")).toHaveAttribute("src", expectedCover);
+    expect(container.querySelector(".preview-card__media")).toBeInTheDocument();
+    expect(container.querySelector("[class*='no-image']")).toBeNull();
+    expect(container).not.toHaveTextContent(/field guide/i);
+  });
 });
