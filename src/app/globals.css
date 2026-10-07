@@ -443,6 +443,11 @@ a:hover {
   text-decoration: none;
 }
 
+.guide-card--no-image .preview-card__link {
+  grid-template-rows: auto auto 1fr auto;
+  align-content: start;
+}
+
 .guide-card__meta,
 .entity-card__details {
   display: flex;

@@ -88,8 +88,8 @@ describe("Wiki preview cards", () => {
     expect(screen.queryByText("Mythic")).not.toBeInTheDocument();
   });
 
-  it("shows a guide's formatted update date and tags", () => {
-    render(
+  it("shows a guide's formatted update date and tags without reserving media space when no image exists", () => {
+    const { container } = render(
       <GuideCard
         guide={{
           slug: "field-notes",
@@ -109,5 +109,7 @@ describe("Wiki preview cards", () => {
     expect(screen.getByRole("link", { name: /field notes/i })).toHaveAttribute("href", "/guides/field-notes");
     expect(screen.getByText("Updated Sep 1, 2026")).toBeVisible();
     expect(screen.getByText("combat")).toBeVisible();
+    expect(container.querySelector(".guide-card")).toHaveClass("guide-card--no-image");
+    expect(container.querySelector(".preview-card__media")).not.toBeInTheDocument();
   });
 });
