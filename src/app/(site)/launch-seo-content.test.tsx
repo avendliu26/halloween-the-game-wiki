@@ -83,6 +83,24 @@ describe("launch SEO content cluster", () => {
     expect(html.indexOf(answer)).toBeLessThan(html.indexOf(check));
   });
 
+  it("answers the searched police-availability question without promising a respawn", async () => {
+    const guide = getGuide("how-to-respawn-as-police")!;
+    const html = renderToStaticMarkup(await GuidePage({
+      params: Promise.resolve({ slug: "how-to-respawn-as-police" })
+    }));
+    expect(guide.body).toContain("### What does “Police Respawn Available” mean?");
+    expect(html).toContain("is not a promise");
+    expect(html).toContain("there is no verified shortcut or fixed wait");
+    expect(html).toContain('href="/guides/how-to-call-the-police"');
+    expect(guide.frontmatter.description).toContain("spectator minigames");
+  });
+
+  it("keeps crossplay patch context current without asserting a new platform", async () => {
+    const html = renderToStaticMarkup(await ResearchArticle({ slug: "crossplay" }));
+    expect(html).toContain("Patch 1.1.0");
+    expect(html).not.toContain("latest patch listed");
+  });
+
   it("keeps titles and descriptions unique across published research content", () => {
     const records = [...getAllGuides(), getResearchPage("crossplay")!];
     const titles = records.map((record) => record.frontmatter.title);

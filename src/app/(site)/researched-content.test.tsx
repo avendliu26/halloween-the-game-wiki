@@ -74,8 +74,18 @@ describe("researched content in existing layouts", () => {
     expect(doc.textContent).toContain("No cross-progression or cross-save policy");
     expect(doc.textContent).toContain("October 6, 2026 disc release, which has now happened");
     const meta = researchMetadata("platforms");
-    expect(meta.title).toEqual({ absolute: "Halloween: The Game Crossplay & Platforms: PS5, Xbox, PC, PS4?" });
+    expect(meta.title).toEqual({ absolute: "Halloween: The Game Platforms — PS5, Xbox, PC (No PS4)" });
     expect(meta.alternates?.canonical).toBe("https://halloween-thegame.wiki/platforms");
+  });
+
+  it("answers platform device questions with clear PS4, Xbox One and Mac boundaries", async () => {
+    const doc = document.createElement("div");
+    doc.innerHTML = renderToStaticMarkup(await ResearchArticle({ slug: "platforms" }));
+    expect(doc.textContent).toContain("PS5: yes. PS4: no announced version.");
+    expect(doc.textContent).toContain("Xbox Series X|S: yes. Xbox One: no announced version.");
+    expect(doc.textContent).toContain("No native macOS or Linux version is listed");
+    const meta = researchMetadata("platforms");
+    expect(meta.description).toContain("no PS4 or Xbox One version is announced");
   });
 
   it("renders the platforms-only chooser after the static opening answer", async () => {
