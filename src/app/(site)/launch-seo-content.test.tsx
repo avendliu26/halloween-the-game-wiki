@@ -71,6 +71,18 @@ describe("launch SEO content cluster", () => {
     expectCompleteJsonLd(html, `https://halloween-thegame.wiki/guides/${slug}`);
   });
 
+  it("server-renders the police Quick Answer before its interactive check", async () => {
+    const html = renderToStaticMarkup(await GuidePage({
+      params: Promise.resolve({ slug: "how-to-respawn-as-police" })
+    }));
+    const answer = "Police return is possible, not guaranteed.";
+    const check = "Police Respawn Quick Check";
+
+    expect(html).toContain(answer);
+    expect(html).toContain("Choose one option in each group to get your next action.");
+    expect(html.indexOf(answer)).toBeLessThan(html.indexOf(check));
+  });
+
   it("keeps titles and descriptions unique across published research content", () => {
     const records = [...getAllGuides(), getResearchPage("crossplay")!];
     const titles = records.map((record) => record.frontmatter.title);

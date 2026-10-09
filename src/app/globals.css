@@ -805,6 +805,131 @@ a:hover {
 }
 .guide-article-page__body img { display: block; width: 100%; max-width: 100%; height: auto; border: 1px solid var(--color-border); }
 
+.police-respawn-check {
+  display: grid;
+  gap: 1rem;
+  max-width: 80ch;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary), var(--color-border) 55%);
+  border-top: 3px solid var(--color-primary);
+  background: var(--color-surface);
+}
+
+.police-respawn-check__header {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.police-respawn-check__header h3,
+.police-respawn-check__result h4 {
+  margin: 0;
+}
+
+.police-respawn-check__header h3 {
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+}
+
+.police-respawn-check__header > p,
+.police-respawn-check__warning {
+  color: var(--color-text-muted);
+}
+
+.police-respawn-check__header > .police-respawn-check__eyebrow {
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.police-respawn-check__questions {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.police-respawn-check fieldset {
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+}
+
+.police-respawn-check legend {
+  padding-inline: 0.25rem;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.police-respawn-check label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.police-respawn-check label:has(input:checked) {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary), transparent 91%);
+}
+
+.police-respawn-check input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+  accent-color: var(--color-primary);
+}
+
+.police-respawn-check__result {
+  display: grid;
+  gap: 0.65rem;
+  min-height: 3.25rem;
+  padding: 0.85rem;
+  border-left: 3px solid var(--color-primary);
+  background: var(--color-surface-raised);
+}
+
+.police-respawn-check__result p {
+  color: var(--color-text-muted);
+}
+
+.police-respawn-check__result strong {
+  color: var(--color-text);
+}
+
+.police-respawn-check__result nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.police-respawn-check__result a {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.police-respawn-check__warning {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+}
+
+@media (min-width: 48rem) {
+  .police-respawn-check {
+    padding: 1.25rem;
+  }
+
+  .police-respawn-check__questions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .guide-article-page__image {
   display: block;
   width: 100%;

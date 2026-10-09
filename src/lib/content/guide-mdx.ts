@@ -74,8 +74,18 @@ export const createSafeGuideMdxPlugin = (slug: string) => () => (tree: MdxNode):
     }
 
     if (node.type === "mdxJsxFlowElement" || node.type === "mdxJsxTextElement") {
-      if (node.name !== "ImportantNote" && node.name !== "OfficialVideo") {
-        unsafe(slug, `only the ImportantNote and OfficialVideo MDX components are allowed (received "${node.name ?? "fragment"}")`);
+      if (node.name !== "ImportantNote" && node.name !== "OfficialVideo" && node.name !== "PoliceRespawnQuickCheck") {
+        unsafe(slug, `only the ImportantNote, OfficialVideo, and PoliceRespawnQuickCheck MDX components are allowed (received "${node.name ?? "fragment"}")`);
+      }
+
+      if (node.name === "PoliceRespawnQuickCheck") {
+        if (slug !== "how-to-respawn-as-police" && slug !== "guides/how-to-respawn-as-police") {
+          unsafe(slug, "PoliceRespawnQuickCheck is only allowed in the police respawn guide");
+        }
+        if (node.type !== "mdxJsxFlowElement" || node.children?.length || node.attributes?.length) {
+          unsafe(slug, "PoliceRespawnQuickCheck must be a zero-prop block component with no children");
+        }
+        return;
       }
 
       if (node.name === "OfficialVideo") {

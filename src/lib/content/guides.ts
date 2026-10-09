@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import { ImportantNote } from "@/components/wiki/important-note";
 import { OfficialVideo } from "@/components/media/official-video";
 import { GuideMarkdownImage } from "@/components/wiki/guide-markdown-image";
+import { PoliceRespawnQuickCheck } from "@/components/wiki/police-respawn-quick-check";
 import { createGuideHeadingPlugin, createGuideImagePathCollector, createSafeGuideMdxPlugin, createRelatedPagesPlugin, type SidebarLink } from "@/lib/content/guide-mdx";
 import { loadGuidesFromDirectory, type GuideRecord } from "./guide-source.ts";
 
@@ -18,7 +19,7 @@ export type GuideHeading = {
   id: string;
 };
 
-export const mdxComponents = { ImportantNote, OfficialVideo, img: GuideMarkdownImage };
+export const mdxComponents = { ImportantNote, OfficialVideo, PoliceRespawnQuickCheck, img: GuideMarkdownImage };
 
 const headingExpression = /^(#{2,3})[ \t]+(.+?)(?:[ \t]+#+)?[ \t]*$/;
 const openingFenceExpression = /^[ \t]{0,3}(`{3,}|~{3,})/;

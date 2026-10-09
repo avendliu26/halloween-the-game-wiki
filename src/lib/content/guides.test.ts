@@ -182,6 +182,31 @@ describe("guide content", () => {
     expect(screen.queryByTitle("Multiplayer Gameplay Overview")).not.toBeInTheDocument();
   });
 
+  it("allows the zero-prop PoliceRespawnQuickCheck block component", async () => {
+    const slug = "how-to-respawn-as-police";
+    const record = parseGuideSource(`${frontmatter().replaceAll("test-guide", slug)}<PoliceRespawnQuickCheck />`, slug);
+    const compiled = await compileGuide(record);
+    render(compiled.content);
+
+    expect(screen.getByRole("heading", { name: "Police Respawn Quick Check" })).toBeVisible();
+    expect(screen.getAllByRole("radio")).toHaveLength(4);
+  });
+
+  it.each([
+    '<PoliceRespawnQuickCheck mode="escaped" />',
+    "<PoliceRespawnQuickCheck>Unsafe child</PoliceRespawnQuickCheck>",
+    "Text <PoliceRespawnQuickCheck />"
+  ])("rejects an invalid PoliceRespawnQuickCheck shape: %s", async (body) => {
+    const slug = "how-to-respawn-as-police";
+    const record = parseGuideSource(`${frontmatter().replaceAll("test-guide", slug)}${body}`, slug);
+    await expect(compileGuide(record)).rejects.toThrow(/PoliceRespawnQuickCheck must be a zero-prop block component with no children/);
+  });
+
+  it("rejects PoliceRespawnQuickCheck outside its single intended guide", async () => {
+    const record = parseGuideSource(`${frontmatter()}<PoliceRespawnQuickCheck />`, "test-guide");
+    await expect(compileGuide(record)).rejects.toThrow(/only allowed in the police respawn guide/);
+  });
+
   it.each([
     '<OfficialVideo video="missing" />',
     '<OfficialVideo video="https://example.com" />',

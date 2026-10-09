@@ -74,6 +74,7 @@ describe("post-launch gameplay content", () => {
     expect(michael.body).toContain("Patch 1.0.1");
 
     expect(police.body).toContain("## How to Return as a Sheriff's Deputy");
+    expect(police.body).toMatch(/Quick Answer[\s\S]*Police return is possible, not guaranteed\.[\s\S]*<PoliceRespawnQuickCheck \/>/);
     expect(police.body).toContain("## Officially Confirmed");
     expect(police.body).toContain("## Can You Return as Police After Escaping?");
     expect(police.body).toContain("## Why Police Reinforcements May Not Appear");
