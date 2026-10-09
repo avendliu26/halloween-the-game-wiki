@@ -805,6 +805,173 @@ a:hover {
 }
 .guide-article-page__body img { display: block; width: 100%; max-width: 100%; height: auto; border: 1px solid var(--color-border); }
 
+.platform-compatibility {
+  display: grid;
+  gap: 1rem;
+  max-width: 80ch;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary), var(--color-border) 58%);
+  border-top: 3px solid var(--color-primary);
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--color-surface-raised), transparent 45%), transparent 62%),
+    var(--color-surface);
+}
+
+.platform-compatibility__header {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.guide-article-page__body .platform-compatibility__header h2,
+.guide-article-page__body .platform-compatibility__result h3,
+.platform-compatibility p {
+  margin: 0;
+}
+
+.guide-article-page__body .platform-compatibility__header h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  text-wrap: balance;
+}
+
+.platform-compatibility__header > p:last-child,
+.platform-compatibility__footnote,
+.platform-compatibility__result > p {
+  color: var(--color-text-muted);
+}
+
+.platform-compatibility__eyebrow {
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.platform-compatibility__options {
+  min-width: 0;
+  margin: 0;
+  padding: 0.8rem;
+  border: 1px solid var(--color-border);
+}
+
+.platform-compatibility__options legend {
+  padding-inline: 0.3rem;
+  font-weight: 700;
+}
+
+.platform-compatibility__option-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10.5rem), 1fr));
+  gap: 0.6rem;
+}
+
+.platform-compatibility__option-grid label {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 3.25rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-text);
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.platform-compatibility__option-grid label:has(input:checked) {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary), transparent 90%);
+  box-shadow: inset 3px 0 0 var(--color-primary);
+}
+
+.platform-compatibility__option-grid label:has(input:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.platform-compatibility__option-grid input {
+  flex: 0 0 auto;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  accent-color: var(--color-primary);
+}
+
+.platform-compatibility__result {
+  display: grid;
+  gap: 0.75rem;
+  min-height: 4rem;
+  padding: 1rem;
+  border-left: 3px solid var(--color-primary);
+  background: var(--color-surface-raised);
+}
+
+.platform-compatibility__status-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 0.8rem;
+}
+
+.guide-article-page__body .platform-compatibility__result h3 {
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+}
+
+.platform-compatibility__badge {
+  width: fit-content;
+  padding: 0.28rem 0.5rem;
+  border: 1px solid currentColor;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.platform-compatibility__badge--available {
+  color: #8ed9a6;
+}
+
+.platform-compatibility__badge--not-listed {
+  color: #e0b07c;
+}
+
+.platform-compatibility__result strong {
+  color: var(--color-text);
+}
+
+.platform-compatibility__result nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.platform-compatibility__result nav a,
+.platform-compatibility__source {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary), var(--color-border) 40%);
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.platform-compatibility__result nav a:hover,
+.platform-compatibility__source:hover {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary), transparent 92%);
+}
+
+.platform-compatibility__footnote {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8125rem;
+}
+
 .police-respawn-check {
   display: grid;
   gap: 1rem;
@@ -921,6 +1088,10 @@ a:hover {
 }
 
 @media (min-width: 48rem) {
+  .platform-compatibility {
+    padding: 1.25rem;
+  }
+
   .police-respawn-check {
     padding: 1.25rem;
   }

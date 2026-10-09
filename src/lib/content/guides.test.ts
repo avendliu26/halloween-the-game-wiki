@@ -207,6 +207,31 @@ describe("guide content", () => {
     await expect(compileGuide(record)).rejects.toThrow(/only allowed in the police respawn guide/);
   });
 
+  it("allows the zero-prop PlatformCompatibilityChooser only on the platforms page", async () => {
+    const slug = "platforms";
+    const record = parseGuideSource(`${frontmatter().replaceAll("test-guide", slug)}<PlatformCompatibilityChooser />`, slug);
+    const compiled = await compileGuide(record);
+    render(compiled.content);
+
+    expect(screen.getByRole("heading", { name: "Can I play Halloween: The Game on my device?" })).toBeVisible();
+    expect(screen.getAllByRole("radio")).toHaveLength(7);
+  });
+
+  it.each([
+    '<PlatformCompatibilityChooser platform="ps5" />',
+    "<PlatformCompatibilityChooser>Unsafe child</PlatformCompatibilityChooser>",
+    "Text <PlatformCompatibilityChooser />"
+  ])("rejects an invalid PlatformCompatibilityChooser shape: %s", async (body) => {
+    const slug = "platforms";
+    const record = parseGuideSource(`${frontmatter().replaceAll("test-guide", slug)}${body}`, slug);
+    await expect(compileGuide(record)).rejects.toThrow(/PlatformCompatibilityChooser must be a zero-prop block component with no children/);
+  });
+
+  it("rejects PlatformCompatibilityChooser outside the platforms page", async () => {
+    const record = parseGuideSource(`${frontmatter()}<PlatformCompatibilityChooser />`, "test-guide");
+    await expect(compileGuide(record)).rejects.toThrow(/only allowed on the platforms page/);
+  });
+
   it.each([
     '<OfficialVideo video="missing" />',
     '<OfficialVideo video="https://example.com" />',

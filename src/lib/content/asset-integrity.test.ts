@@ -23,9 +23,9 @@ describe("production content asset integrity", () => {
       infobox: {}, sections: []
     };
     const saveEntities = (value: unknown) => writeFileSync(path.join(rootDirectory, "src/data/characters.json"), JSON.stringify(value));
-    const saveMdx = (body: string, fields = "", directory = "guides") => {
-      writeFileSync(path.join(rootDirectory, "src/content", directory, "test.mdx"),
-        `---\nslug: test\ntitle: Test\ndescription: Test guide\nupdatedAt: "2026-09-01"\ntags: []\nrelated: []\n${fields}---\n${body}`);
+    const saveMdx = (body: string, fields = "", directory = "guides", slug = "test") => {
+      writeFileSync(path.join(rootDirectory, "src/content", directory, `${slug}.mdx`),
+        `---\nslug: ${slug}\ntitle: Test\ndescription: Test guide\nupdatedAt: "2026-09-01"\ntags: []\nrelated: []\n${fields}---\n${body}`);
     };
     beforeEach(() => {
       rootDirectory = mkdtempSync(path.join(os.tmpdir(), "halloween-assets-"));
@@ -91,6 +91,14 @@ describe("production content asset integrity", () => {
     it("ignores code examples and does not execute allowed MDX components", async () => {
       saveMdx('```md\n![Example](https://example.com/image.webp)\n```\n\n<ImportantNote title="Safe">Note</ImportantNote>');
       await expect(validateAssets({ rootDirectory })).resolves.toEqual({ checkedImages: 2, checkedDocuments: 1 });
+    });
+    it("allows the zero-prop platform chooser in the pages/platforms validator context", async () => {
+      saveMdx("<PlatformCompatibilityChooser />", "", "pages", "platforms");
+      await expect(validateAssets({ rootDirectory })).resolves.toEqual({ checkedImages: 2, checkedDocuments: 1 });
+    });
+    it("rejects the platform chooser on every other research page validator context", async () => {
+      saveMdx("<PlatformCompatibilityChooser />", "", "pages");
+      await expect(validateAssets({ rootDirectory })).rejects.toThrow(/only allowed on the platforms page/);
     });
     it("rejects directories and symlinks escaping public/images", async () => {
       saveMdx("![Directory](/images/brand)");

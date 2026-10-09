@@ -74,8 +74,8 @@ export const createSafeGuideMdxPlugin = (slug: string) => () => (tree: MdxNode):
     }
 
     if (node.type === "mdxJsxFlowElement" || node.type === "mdxJsxTextElement") {
-      if (node.name !== "ImportantNote" && node.name !== "OfficialVideo" && node.name !== "PoliceRespawnQuickCheck") {
-        unsafe(slug, `only the ImportantNote, OfficialVideo, and PoliceRespawnQuickCheck MDX components are allowed (received "${node.name ?? "fragment"}")`);
+      if (node.name !== "ImportantNote" && node.name !== "OfficialVideo" && node.name !== "PlatformCompatibilityChooser" && node.name !== "PoliceRespawnQuickCheck") {
+        unsafe(slug, `only the ImportantNote, OfficialVideo, PlatformCompatibilityChooser, and PoliceRespawnQuickCheck MDX components are allowed (received "${node.name ?? "fragment"}")`);
       }
 
       if (node.name === "PoliceRespawnQuickCheck") {
@@ -84,6 +84,16 @@ export const createSafeGuideMdxPlugin = (slug: string) => () => (tree: MdxNode):
         }
         if (node.type !== "mdxJsxFlowElement" || node.children?.length || node.attributes?.length) {
           unsafe(slug, "PoliceRespawnQuickCheck must be a zero-prop block component with no children");
+        }
+        return;
+      }
+
+      if (node.name === "PlatformCompatibilityChooser") {
+        if (slug !== "platforms" && slug !== "pages/platforms") {
+          unsafe(slug, "PlatformCompatibilityChooser is only allowed on the platforms page");
+        }
+        if (node.type !== "mdxJsxFlowElement" || node.children?.length || node.attributes?.length) {
+          unsafe(slug, "PlatformCompatibilityChooser must be a zero-prop block component with no children");
         }
         return;
       }

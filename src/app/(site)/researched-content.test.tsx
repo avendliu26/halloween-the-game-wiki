@@ -78,4 +78,18 @@ describe("researched content in existing layouts", () => {
     expect(meta.alternates?.canonical).toBe("https://halloween-thegame.wiki/platforms");
   });
 
+  it("renders the platforms-only chooser after the static opening answer", async () => {
+    const doc = document.createElement("div");
+    doc.innerHTML = renderToStaticMarkup(await ResearchArticle({ slug: "platforms" }));
+    const body = doc.querySelector(".guide-article-page__body")!;
+    const openingAnswer = body.querySelector("p")!;
+    const chooser = body.querySelector(".platform-compatibility")!;
+
+    expect(openingAnswer.textContent).toMatch(/available digitally on PS5, Xbox Series X\|S, and Windows PC/);
+    expect(openingAnswer.compareDocumentPosition(chooser) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(chooser.querySelectorAll('input[type="radio"]')).toHaveLength(7);
+    expect(chooser.querySelector('[role="status"]')?.textContent).toMatch(/Select one of the seven devices/);
+    expect(body.querySelector("table")?.textContent).toContain("PlayStation 5");
+  });
+
 });
