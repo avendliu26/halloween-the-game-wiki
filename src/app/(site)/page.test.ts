@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { createElement, type ComponentType } from "react";
 import { describe, expect, it } from "vitest";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { gameConfig } from "@/config/game";
 import { createGameConfig, type GameConfig } from "@/lib/config/schema";
 import { fixtureGameConfig } from "@/test/fixtures/game";
 import * as homePageModule from "./page";
@@ -108,6 +109,23 @@ describe("HomePage", () => {
       "href",
       "/guides/pathfinder-guide#glass-step-timing"
     );
+  });
+
+  it("keeps mobile wiki shortcuts focused and renders the trailer once after updates", () => {
+    const { container } = render(createElement(homePageModule.HomePageContent, { config: gameConfig }));
+    const labels = [...container.querySelectorAll(".start-here-grid h3")].map((node) => node.textContent);
+
+    expect(labels).toEqual(["Characters", "Maps", "Challenges", "Michael Myers", "Perks", "How to Play"]);
+    expect(container.querySelectorAll(".official-video")).toHaveLength(1);
+    const updates = container.querySelector(".home-updates");
+    const video = container.querySelector(".home-video");
+    const database = container.querySelector('[aria-labelledby="database-heading"]');
+    expect(updates).not.toBeNull();
+    expect(video).not.toBeNull();
+    expect(database).not.toBeNull();
+    expect(updates!.compareDocumentPosition(video!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(video!.compareDocumentPosition(database!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Featured Gameplay Guides" })).toBeVisible();
   });
 
   it("renders the configured footer identity and disclaimer", () => {

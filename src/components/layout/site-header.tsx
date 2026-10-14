@@ -11,7 +11,8 @@ export function SiteHeader() {
       <ContentShell className="site-header__content">
         <Link aria-label={`${gameConfig.wikiName} home`} className="site-header__brand" href="/">
           <Image alt="" height={40} priority src={gameConfig.logoPath} width={40} />
-          <span>{gameConfig.wikiName}</span>
+          <span className="site-header__brand-full">{gameConfig.wikiName}</span>
+          <span className="site-header__brand-mobile">Halloween Wiki</span>
         </Link>
         <DesktopNav />
         <MobileNav />

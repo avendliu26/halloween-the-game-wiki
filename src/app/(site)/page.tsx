@@ -37,9 +37,20 @@ export function generateMetadata(): Metadata {
 export function HomePageContent({ config }: Readonly<{ config: GameConfig }>) {
   const guides = getAllGuides();
   const popularGuides = guides.filter((guide) => guide.frontmatter.featured).slice(0, 3);
-  const latestGuides = guides.slice(0, 3);
+  const latestGuides = guides.filter((guide) => !popularGuides.some((featured) => featured.slug === guide.slug)).slice(0, 3);
   const featuredEntities = getFeaturedEntities(3);
   const homepage = config.content.homepage;
+  const isHalloween = config.name === "Halloween: The Game";
+  const wikiLinks = isHalloween
+    ? [
+        ...homepage.startHereLinks.filter((item) => item.label === "Characters"),
+        { label: "Maps", description: "Browse Haddonfield maps and locations.", reference: homepage.databaseAction.reference },
+        ...homepage.startHereLinks.filter((item) => ["Perks", "Challenges", "Michael Myers", "How to Play"].includes(item.label))
+      ]
+    : homepage.startHereLinks;
+  const updateLinks = isHalloween
+    ? homepage.startHereLinks.filter((item) => ["Patch Notes", "October 27 Update", "Tower Farm"].includes(item.label))
+    : [];
 
   return (
     <>
@@ -64,7 +75,8 @@ export function HomePageContent({ config }: Readonly<{ config: GameConfig }>) {
         <div className="home-hero__content">
           <p className="home-hero__eyebrow">{homepage.hero?.eyebrow ?? config.wikiName}</p>
           <h1 id="home-title">{homepage.hero?.title ?? config.tagline}</h1>
-          <p className="home-hero__description">{homepage.hero?.description ?? config.description}</p>
+          <p className="home-hero__description home-hero__description--full">{homepage.hero?.description ?? config.description}</p>
+          {isHalloween ? <p className="home-hero__description home-hero__description--mobile">Characters, maps, perks and practical guides to surviving Haddonfield.</p> : null}
           {homepage.hero ? <ul className="tag-list" aria-label="Current game facts">
             {homepage.hero.stats.map((stat) => <li key={stat}>{stat}</li>)}
           </ul> : null}
@@ -80,21 +92,17 @@ export function HomePageContent({ config }: Readonly<{ config: GameConfig }>) {
             </Link> : null}
           </div>
         </div>
-        {config.name === "Halloween: The Game" ? <div className="home-hero__media">
-          <p className="preview-card__eyebrow">Official Media</p>
-          <OfficialVideo video="homepage" />
-        </div> : <div className="home-hero__art">
+        {!isHalloween ? <div className="home-hero__art">
           <Image alt={getHeroImageAlt(config.name)} fill priority sizes="(min-width: 64rem) 42vw, 100vw" src={config.heroImagePath} />
-        </div>}
+        </div> : null}
       </section>
-
       <section className="home-section" aria-labelledby="start-here-heading">
         <div className="section-heading">
           <p>{config.content.homepage.startHereEyebrow}</p>
           <h2 id="start-here-heading">{homepage.startHereTitle ?? "Start Here"}</h2>
         </div>
         <div className="start-here-grid">
-          {config.content.homepage.startHereLinks.map((item) => {
+          {wikiLinks.map((item) => {
             const href = resolveInternalHref(item.reference);
 
             return (
@@ -110,12 +118,38 @@ export function HomePageContent({ config }: Readonly<{ config: GameConfig }>) {
       <section className="home-section" aria-labelledby="popular-guides-heading">
         <div className="section-heading">
           <p>Recommended reading</p>
-          <h2 id="popular-guides-heading">Popular Guides</h2>
+          <h2 id="popular-guides-heading">Featured Gameplay Guides</h2>
         </div>
         <div className="preview-grid preview-grid--guides">
           {popularGuides.map((guide) => <GuideCard guide={guide} key={guide.slug} />)}
         </div>
       </section>
+
+      {updateLinks.length > 0 ? <section className="home-section home-updates" aria-labelledby="home-updates-heading">
+        <div className="section-heading">
+          <p>Latest game information</p>
+          <h2 id="home-updates-heading">Updates &amp; New Content</h2>
+        </div>
+        <div className="home-updates__grid">
+          {updateLinks.map((item) => (
+            <Link className="home-updates__link" href={resolveInternalHref(item.reference)} key={item.label}>
+              <span>
+                <strong>{item.label}</strong>
+                <small>{item.description}</small>
+              </span>
+              <span aria-hidden="true">↗</span>
+            </Link>
+          ))}
+        </div>
+      </section> : null}
+
+      {isHalloween ? <section className="home-section home-video" aria-labelledby="mobile-trailer-heading">
+        <div className="section-heading home-video__heading">
+          <p>Official Media</p>
+          <h2 id="mobile-trailer-heading">Watch the Game Trailer</h2>
+        </div>
+        <OfficialVideo video="homepage" />
+      </section> : null}
 
       <section className="home-section" aria-labelledby="database-heading">
         <div className="section-heading section-heading--with-link">
@@ -157,7 +191,7 @@ export function HomePageContent({ config }: Readonly<{ config: GameConfig }>) {
         </ul>
       </section>
 
-      <section className="home-section" aria-labelledby="latest-guides-heading">
+      {latestGuides.length > 0 ? <section className="home-section" aria-labelledby="latest-guides-heading">
         <div className="section-heading">
           <p>Recently revised</p>
           <h2 id="latest-guides-heading">Latest Guides</h2>
@@ -165,7 +199,7 @@ export function HomePageContent({ config }: Readonly<{ config: GameConfig }>) {
         <div className="preview-grid preview-grid--guides">
           {latestGuides.map((guide) => <GuideCard guide={guide} key={guide.slug} />)}
         </div>
-      </section>
+      </section> : null}
 
       <section className="home-section game-information" aria-labelledby="game-information-heading">
         <div>
