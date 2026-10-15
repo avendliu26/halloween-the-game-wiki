@@ -95,3 +95,15 @@ Processing: inspected every selected original visually; resized proportionally t
 - Embed uses `loading="lazy"`, fullscreen permission, no autoplay, and `referrerPolicy="strict-origin-when-cross-origin"`. A bare embed opened without a referrer can show YouTube error 153; the actual embedding context supplies the required origin referrer.
 - Direct YouTube link remains available if the viewer's network or browser blocks third-party media. No VideoObject schema added.
 - Integrated production-page recheck: at `http://localhost:3107/`, Chrome showed the official trailer poster; before interaction the video was paused at 0 seconds. Clicking Play advanced it to 2.157 seconds, `paused = false`, media error `null`. YouTube served its compact `ytmCuedOverlayPlayButton` player at this card width, so verification used the actual visible play control rather than assuming the desktop player's CSS class.
+
+
+## Tower Farm — added 2026-10-15
+
+- Local filename: `public/images/maps/tower-farm-official.webp`.
+- Official source: [Tower Farm arriving just in time for Halloween!](https://halloweengame.com/news/towerfarm/) (published October 13, 2026).
+- Original file: https://a.storyblok.com/f/286129504682394/1920x1080/a3284787bc/map5_10.jpg
+- Exact association: **Yes**. The official Tower Farm reveal's screenshot displays farm buildings with Halloween lights and a windmill; it is not an unrelated map.
+- Image alt: `Official Tower Farm map screenshot showing a farmhouse, barns and a windmill at night`.
+- Handling: scaled the official 1920×1080 JPEG to 1600×900 WebP (quality 84), with no cropping or retouching. Original visible copyright notice retained. Reused in the locations card and `/locations/tower-farm` detail via one image field.
+- Rights status: **Requires licensing verification, no open license identified**. Official publication establishes provenance only, not re-use authorization. Image and accompanying page identify owners and link the original; the intended use is narrowly scoped editorial commentary in this independent fan wiki. Copyright and trademarks remain with the rights holders, and attribution by itself does not establish permission.
+- Release status at publication: Tower Farm was officially scheduled for October 27, **not yet playable**.

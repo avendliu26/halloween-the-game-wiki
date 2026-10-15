@@ -164,14 +164,14 @@
     "slug": "tower-farm",
     "name": "Tower Farm",
     "category": "locations",
-    "image": "/images/placeholders/entity.svg",
-    "imageAlt": "Neutral site placeholder; no approved official Tower Farm image is available",
+    "image": "/images/maps/tower-farm-official.webp",
+    "imageAlt": "Official Tower Farm map screenshot showing a farmhouse, barns and a windmill at night",
     "summary": "Free Halloween: The Game post-launch map arriving October 27, 2026, inspired by Halloween 5 settings, with country roads, cornfields, farmhouses, barns, a trailer park and a harvest festival.",
     "tags": [
       "Post-launch map",
       "Announced"
     ],
-    "updatedAt": "2026-10-06",
+    "updatedAt": "2026-10-15",
     "featured": false,
     "related": [
       {

@@ -3,6 +3,9 @@ import { describe, expect, it } from "vitest";
 import { HomePageContent } from "@/components/home/home-page";
 import { gameConfig } from "@/config/game";
 import { GuideCard } from "./guide-card";
+import { EntityCard } from "./entity-card";
+import { getEntity } from "@/lib/content/queries";
+import { categoryDefinitions } from "@/config/categories";
 import { getGuide } from "@/lib/content/guides";
 
 describe("official media presentation", () => {
@@ -18,6 +21,16 @@ describe("official media presentation", () => {
     expect(video).toHaveAttribute("referrerpolicy", "strict-origin-when-cross-origin");
     expect(video.getAttribute("src")).not.toContain("autoplay");
   });
+  it("uses the actual Tower Farm official map image in the locations card", () => {
+    const tower = getEntity("locations", "tower-farm");
+    const category = categoryDefinitions.find((item) => item.slug === "locations");
+    expect(tower).toBeDefined();
+    expect(category).toBeDefined();
+    render(<EntityCard entity={tower!} category={category!} />);
+    expect(screen.getByRole("img", { name: /official Tower Farm map screenshot/i }))
+      .toHaveAttribute("src", "/images/maps/tower-farm-official.webp");
+  });
+
   it("shows the existing guide's locally hosted official illustration", () => {
     render(<GuideCard guide={getGuide("beginner-guide")!} />);
     expect(screen.getByRole("img")).toHaveAttribute("src", "/images/characters/civilians-card.webp");

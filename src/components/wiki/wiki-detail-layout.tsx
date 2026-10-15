@@ -46,6 +46,13 @@ export function WikiDetailLayout({ category, entity, related, editorial, ads }: 
         >
         <div className="wiki-detail-layout__body">
           <Image alt={entity.imageAlt} className="wiki-detail-layout__image" height={720} src={entity.image} unoptimized width={1280} />
+          {category.slug === "locations" && entity.slug === "tower-farm" ? (
+            <p className="official-image-credit">
+              Official Tower Farm map preview image, published October 13, 2026 by{" "}
+              <a href="https://halloweengame.com/news/towerfarm/" rel="noopener noreferrer" target="_blank">Halloween: The Game</a>.
+              {" "}© Compass International Pictures / IllFonic. All rights reserved; included for editorial reference, not under an open license.
+            </p>
+          ) : null}
           {locationVisual ? <div className="location-visuals">
             <Image alt={locationVisual.alt} className="wiki-detail-layout__image" height={900} src={locationVisual.image} unoptimized width={1600} />
             <OfficialVideo video={locationVisual.video} />

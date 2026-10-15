@@ -1233,6 +1233,15 @@ a:hover {
   aspect-ratio: 16 / 9;
 }
 
+/* Credit the map-specific editorial screenshot without changing other entries. */
+.official-image-credit {
+  margin: -1.5rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+.official-image-credit a { color: var(--color-primary); }
+
 /* Responsive TOC variants keep mobile compact and desktop expanded. */
 .wiki-page-layout {
   display: flex;
