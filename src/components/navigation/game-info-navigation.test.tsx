@@ -11,6 +11,6 @@ it("keeps a navigable Game Info overview in the desktop submenu", () => {
 
 it("keeps a navigable Game Info overview in the mobile submenu", () => {
   const { container } = render(<MobileNav />);
-  fireEvent.click(screen.getByRole("button", { name: "Open wiki navigation" }));
+  fireEvent.click(screen.getByRole("button", { name: "Wiki navigation" }));
   expect(container.querySelector('a[href="/game-info"]')).not.toBeNull();
 });

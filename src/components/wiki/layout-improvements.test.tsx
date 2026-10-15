@@ -65,8 +65,8 @@ describe("Steam navigation", () => {
   });
   it("exposes Steam inside the mobile menu rather than crowding the closed header", () => {
     render(<MobileNav />);
-    expect(screen.queryByRole("link", { name: /buy on steam/i })).not.toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: /open wiki navigation/i }));
+    expect(screen.getByRole("link", { name: /buy on steam/i })).not.toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: /^wiki navigation$/i }));
     expect(screen.getByRole("link", { name: /buy on steam/i })).toHaveAttribute("target", "_blank");
   });
 });

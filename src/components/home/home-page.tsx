@@ -101,6 +101,11 @@ export function HomePageContent({ config }: Readonly<{ config: GameConfig }>) {
               {homepage.tertiaryAction.label}
             </Link> : null}
           </div>
+          {isHalloween ? <nav className="home-hero__roles" aria-label="Choose your learning path">
+            <span>Jump to your role</span>
+            <Link href="/guides/how-to-play#playing-as-a-civilian">Civilian <span aria-hidden="true">↗</span></Link>
+            <Link href="/guides/how-to-play#playing-as-michael-myers">Michael Myers <span aria-hidden="true">↗</span></Link>
+          </nav> : null}
         </div>
         {!isHalloween ? <div className="home-hero__art">
           <Image alt={getHeroImageAlt(config.name)} fill priority sizes="(min-width: 64rem) 42vw, 100vw" src={config.heroImagePath} />
