@@ -4,6 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 import GuidePage, { generateMetadata } from "./page";
 import { getGuide } from "@/lib/content/guides";
 import { MatchStart } from "@/components/wiki/match-start";
+import sitemap from "@/app/sitemap";
 
 vi.mock("@/components/ads/adsterra-banner", () => ({
   AdsterraBanner: () => null,
@@ -25,6 +26,10 @@ describe("first-match guide experience", () => {
     expect(screen.getByRole("img", { name: /Michael Myers and a Civilian on a Haddonfield street/ })).toBeVisible();
     expect(container.querySelectorAll(".official-video")).toHaveLength(1);
     expect(screen.getByRole("heading", { name: "Sources checked" })).toBeVisible();
+    const routes = new Set(sitemap().map((entry) => new URL(entry.url).pathname));
+    for (const link of container.querySelectorAll<HTMLAnchorElement>('a[href^="/"]')) {
+      expect(routes.has(new URL(link.href).pathname), link.getAttribute("href")).toBe(true);
+    }
   });
 
   it("keeps the indexed canonical and Article metadata on the existing URL", async () => {
