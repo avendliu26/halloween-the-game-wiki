@@ -20,6 +20,6 @@ describe("official media presentation", () => {
   });
   it("shows the existing guide's locally hosted official illustration", () => {
     render(<GuideCard guide={getGuide("beginner-guide")!} />);
-    expect(screen.getByRole("img")).toHaveAttribute("src", "/images/characters/civilians-official.webp");
+    expect(screen.getByRole("img")).toHaveAttribute("src", "/images/characters/civilians-card.webp");
   });
 });

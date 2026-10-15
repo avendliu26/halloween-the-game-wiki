@@ -59,6 +59,19 @@ describe("Wiki preview cards", () => {
     expect(screen.getByRole("img")).toHaveAttribute("src", "/images/placeholders/entity.svg");
   });
 
+  it("uses the smaller official image on an entity card while retaining its image metadata", () => {
+    render(<EntityCard category={fixtureCategoryDefinition("characters")} entity={fixtureEntity({
+      category: "characters",
+      image: "/images/characters/michael-myers-official.webp",
+      imageAlt: "Michael Myers standing on a staircase"
+    })} />);
+
+    expect(screen.getByRole("img", { name: "Michael Myers standing on a staircase" })).toHaveAttribute("src", "/images/characters/michael-myers-card.webp");
+    expect(screen.getByRole("img")).toHaveAttribute("width", "640");
+    expect(screen.getByRole("img")).toHaveAttribute("height", "360");
+    expect(screen.getByRole("img")).toHaveAttribute("loading", "lazy");
+  });
+
   it("renders compact metadata from the supplied category cardFields", () => {
     const baseCategory = fixtureCategoryDefinition();
     const entity = {
