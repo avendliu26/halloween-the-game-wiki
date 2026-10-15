@@ -28,7 +28,7 @@ describe("first-match guide experience", () => {
     expect(screen.getByRole("heading", { name: "Sources checked" })).toBeVisible();
     const routes = new Set(sitemap().map((entry) => new URL(entry.url).pathname));
     for (const link of container.querySelectorAll<HTMLAnchorElement>('a[href^="/"]')) {
-      expect(routes.has(new URL(link.href).pathname), link.getAttribute("href")).toBe(true);
+      expect(routes.has(new URL(link.href).pathname), link.href).toBe(true);
     }
   });
 
