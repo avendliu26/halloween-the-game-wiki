@@ -6,16 +6,20 @@ import { formatDate } from "@/lib/utils/format";
 
 type GuideCardProps = Readonly<{
   guide: GuideRecord;
+  // Opt-in only: above-the-fold cards (e.g. the first guide) load eagerly with a
+  // high fetchpriority so the LCP image is not deferred. Every other card keeps
+  // the lazy default.
+  priority?: boolean;
 }>;
 
-export function GuideCard({ guide }: GuideCardProps) {
+export function GuideCard({ guide, priority = false }: GuideCardProps) {
   const { frontmatter } = guide;
 
   return (
     <article className="preview-card guide-card">
       <Link aria-label={frontmatter.title} className="preview-card__link" href={`/guides/${guide.slug}`}>
         {frontmatter.image ? <div className="preview-card__media">
-          <Image alt={frontmatter.imageAlt ?? frontmatter.title} className="guide-card__image" height={360} src={getCardImageSrc(frontmatter.image)} unoptimized width={640} />
+          <Image alt={frontmatter.imageAlt ?? frontmatter.title} className="guide-card__image" fetchPriority={priority ? "high" : undefined} height={360} loading={priority ? "eager" : "lazy"} src={getCardImageSrc(frontmatter.image)} unoptimized width={640} />
         </div> : null}
         <p className="preview-card__eyebrow">Guide</p>
         <h3>{frontmatter.title}</h3>

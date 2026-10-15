@@ -123,4 +123,56 @@ describe("Wiki preview cards", () => {
     expect(screen.getByText("Updated Sep 1, 2026")).toBeVisible();
     expect(screen.getByText("combat")).toBeVisible();
   });
+
+  it("keeps a guide card image lazy without a fetchpriority hint by default", () => {
+    render(
+      <GuideCard
+        guide={{
+          slug: "field-notes",
+          body: "",
+          frontmatter: {
+            slug: "field-notes",
+            title: "Field Notes",
+            description: "Start safely.",
+            updatedAt: "2026-09-01",
+            image: "/images/official/michael-lurking-pv2.webp",
+            imageAlt: "Michael Myers watching police vehicles on a dark Haddonfield street",
+            tags: ["beginner"],
+            related: []
+          }
+        }}
+      />
+    );
+
+    const image = screen.getByRole("img", { name: /michael myers watching police vehicles/i });
+    expect(image).toHaveAttribute("loading", "lazy");
+    expect(image).not.toHaveAttribute("fetchpriority");
+  });
+
+  it("loads a priority guide card image eagerly with a high fetchpriority", () => {
+    render(
+      <GuideCard
+        priority
+        guide={{
+          slug: "field-notes",
+          body: "",
+          frontmatter: {
+            slug: "field-notes",
+            title: "Field Notes",
+            description: "Start safely.",
+            updatedAt: "2026-09-01",
+            image: "/images/official/michael-lurking-pv2.webp",
+            imageAlt: "Michael Myers watching police vehicles on a dark Haddonfield street",
+            tags: ["beginner"],
+            related: []
+          }
+        }}
+      />
+    );
+
+    const image = screen.getByRole("img", { name: /michael myers watching police vehicles/i });
+    expect(image).toHaveAttribute("loading", "eager");
+    expect(image).toHaveAttribute("fetchpriority", "high");
+    expect(image).toHaveAttribute("src", "/images/official/michael-lurking-pv2.webp");
+  });
 });

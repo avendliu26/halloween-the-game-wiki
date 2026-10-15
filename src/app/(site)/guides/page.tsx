@@ -28,7 +28,7 @@ export default function GuidesPage() {
       </header>
       <WikiPageLayout related={[{ title: "Story Challenges", href: "/challenges" }, { title: "Perks and decks", href: "/perks" }, { title: "Michael Myers abilities", href: "/characters/michael-myers" }, { title: "Playable characters", href: "/characters" }, { title: "Crossplay status", href: "/crossplay" }]}>
       <div className="preview-grid preview-grid--guides">
-        {guides.map((guide) => <GuideCard guide={guide} key={guide.slug} />)}
+        {guides.map((guide, index) => <GuideCard guide={guide} key={guide.slug} priority={index === 0} />)}
       </div>
       </WikiPageLayout>
     </article>
