@@ -76,7 +76,7 @@ html.site-theme { color-scheme: dark; --page-gutter: 1.5rem; }
 .site-theme .site-footer { background: var(--color-background); }
 .site-theme .site-footer p,.site-theme .site-footer li { font-size: 12px; }
 .site-theme .home-section--revealed { animation: none; }
-/* Original guide MDX is untouched, including uncertainty and evidence labels. */
+/* Shared guide typography and evidence labels. */
 .site-theme .breadcrumbs { font-size: 12px; color: var(--color-text-muted); }
 .site-theme .guide-article-page { gap: 24px; }
 .site-theme .guide-article-page__header { max-width: none; }
@@ -208,10 +208,10 @@ html[data-theme="dark"] .topic-icon {
   background: linear-gradient(140deg, #354252, #272d38 60%, #3a2e2a);
   color: #c5ced8;
 }
-html[data-theme="dark"] .role-entry a:first-child {
+html[data-theme="dark"] .role-entry a[href="#playing-as-michael-myers"] {
   background: linear-gradient(125deg, #342724, #24262e 65%, #1d2732);
 }
-html[data-theme="dark"] .role-entry a:nth-child(2) {
+html[data-theme="dark"] .role-entry a[href="#playing-as-a-civilian"] {
   background: linear-gradient(125deg, #243544, #202934 65%, #25232c);
 }
 html[data-theme="dark"] .button--primary {
@@ -219,4 +219,65 @@ html[data-theme="dark"] .button--primary {
 }
 html[data-theme="dark"] .button--primary:hover {
   background: linear-gradient(115deg, #f6c29d, #f0ac83 55%, #e69a72);
+}
+
+/* First-match paths extend the homepage's quiet orange and charcoal hierarchy. */
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  transform: translateY(-180%);
+}
+.skip-link:focus { transform: translateY(0); color: var(--color-primary-contrast); }
+.site-theme .home-hero__roles { display: flex; flex-wrap: wrap; align-items: center; gap: 0 16px; font-size: 12px; }
+.home-hero__roles > span { color: var(--color-text-muted); }
+.home-hero__roles a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+.match-start { border: 1px solid var(--color-border); border-radius: 16px; padding: 28px; background: linear-gradient(120deg, rgb(91 48 28 / 16%), rgb(17 22 28 / 65%) 60%); }
+.match-start__intro { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.match-start__intro p { margin: 0; }
+.match-start__intro h2 { margin: 8px 0; font-size: clamp(22px, 3vw, 28px); font-weight: 600; line-height: 1.25; }
+.match-start__intro p:last-child { font-size: 14px; color: var(--color-text-muted); }
+.match-start__basics { display: inline-flex; flex-shrink: 0; align-items: center; gap: 16px; min-height: 44px; padding: 10px 16px; border: 1px solid var(--color-border); border-radius: 8px; font-size: 13px; text-decoration: none; }
+.match-start__basics:hover { border-color: var(--color-primary); }
+.site-theme .match-start .role-entry { max-width: none; margin-top: 24px; }
+.match-start .role-entry a { align-items: start; padding: 24px; }
+.match-start .role-entry a > span:nth-child(2) { gap: 8px; }
+.match-start .role-entry strong { font-size: 20px; color: var(--color-text); }
+.match-start .role-entry a > span:nth-child(2) > span { line-height: 1.6; }
+.match-start .role-entry a .role-entry__action { display: flex; justify-content: space-between; gap: 16px; margin-top: 10px; color: var(--color-primary); font-weight: 600; }
+.match-start .role-entry .topic-icon { color: var(--color-primary); }
+.match-start__shortcuts { display: flex; flex-wrap: wrap; align-items: center; gap: 0 20px; margin-top: 20px; border-top: 1px solid var(--color-border); padding-top: 12px; font-size: 12px; }
+.match-start__shortcuts > span { color: var(--color-text-muted); }
+.match-start__shortcuts a { display: inline-flex; align-items: center; min-height: 44px; }
+.guide-article-page--how-to-play .guide-article-page__body > :is(#playing-as-a-civilian, #playing-as-michael-myers) { padding-top: 20px; border-top: 1px solid var(--color-border); color: var(--color-primary); }
+.guide-article-page--how-to-play :is(#playing-as-a-civilian, #playing-as-michael-myers) + ol { display: grid; gap: 10px; padding-left: 28px; list-style: decimal; }
+.site-theme .guide-article-page--how-to-play :is(#playing-as-a-civilian, #playing-as-michael-myers) + ol > li { margin: 0; padding: 14px 18px; border: 1px solid var(--color-border); border-radius: 10px; background: rgb(25 31 39 / 65%); }
+.guide-article-page--how-to-play .guide-article-page__body :is(h2, h3):target { outline: 1px solid var(--color-primary); outline-offset: 8px; border-radius: 2px; }
+.site-theme .mobile-nav__trigger { display: flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-height: 44px; padding-inline: 12px; font-size: 12px; font-weight: 600; list-style: none; }
+.mobile-nav__trigger::-webkit-details-marker { display: none; }
+.mobile-nav__icon { font-size: 18px; }
+.mobile-nav[open] .mobile-nav__trigger { border-color: var(--color-primary); color: var(--color-primary); }
+.site-theme .mobile-nav__panel { top: 100%; max-height: calc(100dvh - 96px); overflow-y: auto; overscroll-behavior: contain; }
+.site-theme .mobile-nav__panel .mobile-nav__start { display: grid; gap: 6px; padding: 20px; background: linear-gradient(110deg, rgb(239 164 120 / 12%), transparent); }
+.mobile-nav__start small { color: var(--color-primary); font-size: 10px; letter-spacing: .1em; }
+.mobile-nav__start strong { display: flex; justify-content: space-between; gap: 16px; font-size: 16px; font-weight: 600; }
+.site-theme .mobile-nav__panel [aria-current="page"] { color: var(--color-primary); background: rgb(239 164 120 / 7%); box-shadow: inset 3px 0 var(--color-primary); }
+@media (max-width: 767px) {
+  .match-start { padding: 20px; }
+  .match-start__intro { display: grid; gap: 16px; }
+  .match-start__basics { justify-content: space-between; }
+  .site-theme .match-start .role-entry { margin-top: 18px; }
+  .match-start .role-entry a { padding: 18px; }
+  .match-start .role-entry strong { font-size: 18px; }
+  .match-start .role-entry small { font-size: 10px; }
+  .match-start .role-entry a > span:nth-child(2) > span { font-size: 13px; }
+  .match-start__shortcuts { gap: 0 16px; }
+  .match-start__shortcuts > span { width: 100%; padding-block: 8px; }
+  .site-theme .home-hero__roles { gap: 0 14px; }
+  .home-hero__roles > span { width: 100%; }
 }

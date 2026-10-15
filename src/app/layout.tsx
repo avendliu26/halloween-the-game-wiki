@@ -57,8 +57,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
         <SiteHeader />
-        <main className="site-main">
+        <main className="site-main" id="main-content" tabIndex={-1}>
           <ContentShell>{children}</ContentShell>
         </main>
         <SiteFooter />

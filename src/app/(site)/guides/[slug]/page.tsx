@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { TopicIcon } from "@/components/home/topic-icon";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { JsonLdScript } from "@/components/seo/json-ld-script";
 import { Breadcrumbs } from "@/components/wiki/breadcrumbs";
 import { WikiPageLayout } from "@/components/wiki/wiki-page-layout";
+import { MatchStart } from "@/components/wiki/match-start";
 import { compileGuide, getAllGuides, getGuide } from "@/lib/content/guides";
 import { resolveContentReferences } from "@/lib/content/queries";
 import { buildArticleJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
@@ -86,18 +86,15 @@ export default async function GuidePage({ params }: GuidePageProps) {
     <article className={`guide-article-page${slug === "how-to-play" ? " guide-article-page--how-to-play" : ""}`}>
       <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/guides", label: "Guides" }, { label: heading }]} />
       <header className="guide-article-page__header">
-        <p className="preview-card__eyebrow">Guide</p>
+        <p className="preview-card__eyebrow">{slug === "how-to-play" ? "Getting started · Multiplayer guide" : "Guide"}</p>
         <h1>{heading}</h1>
         <div className="guide-dates">{guide.frontmatter.publishedAt ? <time dateTime={guide.frontmatter.publishedAt}>Published {formatDate(guide.frontmatter.publishedAt)}</time> : null}
         <time dateTime={guide.frontmatter.updatedAt}>Updated {formatDate(guide.frontmatter.updatedAt)}</time></div>
         {slug === "how-to-play" ? <>
           <p className="guide-deck">{guide.frontmatter.description}</p>
-          <nav className="role-entry" aria-label="Jump to your role">
-            <a href="#playing-as-michael-myers"><TopicIcon name="Michael Myers" /><span><small>THE HUNTER</small><strong>Play as Michael Myers</strong><span>Go to the hunting steps</span></span><span aria-hidden="true">↗</span></a>
-            <a href="#playing-as-a-civilian"><TopicIcon name="Characters" /><span><small>THE SURVIVORS</small><strong>Play as a Civilian</strong><span>Go to the survival steps</span></span><span aria-hidden="true">↗</span></a>
-          </nav>
         </> : null}
       </header>
+      {slug === "how-to-play" ? <MatchStart /> : null}
       <ResponsiveAdsterraTop />
       <WikiPageLayout headings={headings} related={relatedPages.length ? relatedPages : related} relatedHeading={relatedPages.length ? "Related Pages" : "Related Content"}
         sidebarAd={showRectangleAd ? <AdsterraBanner size="300x250" /> : undefined}>

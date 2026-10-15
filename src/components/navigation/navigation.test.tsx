@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { createElement, type ComponentType } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { DesktopNav } from "@/components/navigation/desktop-nav";
 import { MobileNav } from "@/components/navigation/mobile-nav";
@@ -36,33 +37,55 @@ describe("Wiki navigation", () => {
 
   it("opens and closes the mobile menu accessibly", () => {
     renderMobileNav();
-    const trigger = screen.getByRole("button", { name: /open wiki navigation/i });
+    const trigger = screen.getByRole("button", { name: /^wiki navigation$/i });
 
     fireEvent.click(trigger);
     expect(screen.getByRole("navigation", { name: /mobile/i })).toBeVisible();
 
-    fireEvent.click(screen.getByRole("button", { name: /close wiki navigation/i }));
-    expect(screen.queryByRole("navigation", { name: /mobile/i })).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /^wiki navigation$/i }));
+    expect(screen.getByRole("navigation", { name: /mobile/i })).not.toBeVisible();
   });
 
   it("closes the mobile menu when Escape is pressed", () => {
     renderMobileNav();
-    fireEvent.click(screen.getByRole("button", { name: /open wiki navigation/i }));
+    fireEvent.click(screen.getByRole("button", { name: /^wiki navigation$/i }));
 
     fireEvent.keyDown(document, { key: "Escape" });
 
-    expect(screen.queryByRole("navigation", { name: /mobile/i })).not.toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: /mobile/i })).not.toBeVisible();
+    expect(screen.getByRole("button", { name: "Wiki navigation" })).toHaveFocus();
+  });
+
+  it("renders the mobile links inside native details before JavaScript runs", () => {
+    const html = renderToStaticMarkup(<MobileNav config={navigationConfig} />);
+    const document = new DOMParser().parseFromString(html, "text/html");
+    const menu = document.querySelector("details.mobile-nav");
+    expect(menu?.hasAttribute("open")).toBe(false);
+    expect(menu?.querySelector("summary")).not.toBeNull();
+    expect(menu?.querySelector('a[href="/guides"]')).not.toBeNull();
+  });
+
+  it("shows the current nested route and closes on an outside pointer", () => {
+    route.pathname = "/weapons/training-sword";
+    renderMobileNav();
+    fireEvent.click(screen.getByRole("button", { name: "Wiki navigation" }));
+    const current = screen.getByRole("link", { name: "Weapons" });
+    expect(current).toHaveAttribute("aria-current", "page");
+    expect(current).toBeVisible();
+    fireEvent.pointerDown(document.body);
+    expect(screen.getByRole("navigation", { name: /mobile/i })).not.toBeVisible();
   });
 
   it("closes the mobile menu after selecting a nested navigation link", () => {
+    route.pathname = "/guides/field-notes";
     renderMobileNav();
-    fireEvent.click(screen.getByRole("button", { name: /open wiki navigation/i }));
+    fireEvent.click(screen.getByRole("button", { name: /^wiki navigation$/i }));
     fireEvent.click(screen.getByText("Wiki Archive"));
 
     const weaponsLink = screen.getByRole("link", { name: "Weapons" });
     weaponsLink.addEventListener("click", (event) => event.preventDefault());
     fireEvent.click(weaponsLink);
 
-    expect(screen.queryByRole("navigation", { name: /mobile/i })).not.toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: /mobile/i })).not.toBeVisible();
   });
 });
