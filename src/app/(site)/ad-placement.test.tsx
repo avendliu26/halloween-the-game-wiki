@@ -1,7 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import GuidePage from "./guides/[slug]/page";
-import { HomePageContent } from "./page";
+import { HomePageContent } from "@/components/home/home-page";
 import GameInfoPage from "./game-info/page";
 import { gameConfig } from "@/config/game";
 

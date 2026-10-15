@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { HomePageContent } from "@/app/(site)/page";
+import { HomePageContent } from "@/components/home/home-page";
 import { gameConfig } from "@/config/game";
 import { GuideCard } from "./guide-card";
 import { getGuide } from "@/lib/content/guides";

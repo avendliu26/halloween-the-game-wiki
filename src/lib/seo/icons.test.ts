@@ -38,13 +38,13 @@ describe("site icons", () => {
     expect(ico.readUInt16LE(4)).toBeGreaterThan(0);
   });
 
-  it("uses Halloween branding, install icons and matching dark/orange browser colors", () => {
+  it("uses Halloween branding, install icons and matching dark browser colors", () => {
     expect(existsSync("public/site.webmanifest")).toBe(true);
     const manifest = JSON.parse(readFileSync("public/site.webmanifest", "utf8"));
     expect(manifest).toMatchObject({
       name: "Halloween: The Game Wiki", short_name: "Halloween Wiki",
       start_url: "/", display: "standalone",
-      theme_color: "#f96d10", background_color: "#110f0d",
+      theme_color: "#11161c", background_color: "#11161c",
       icons: [
         { src: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
         { src: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" }

@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { gameConfig } from "@/config/game";
 import "./globals.css";
+import "./visual-theme.css";
 
 export const metadata: Metadata = {
   title: {
@@ -26,8 +27,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  // Hex equivalent of the existing primary hsl(24 95% 52%), shared with the manifest.
-  themeColor: "#f96d10"
+  themeColor: "#11161c"
 };
 
 type RootLayoutProps = Readonly<{
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   } as CSSProperties;
 
   return (
-    <html lang={gameConfig.locale} style={themeStyle}>
+    <html className="site-theme" data-theme="dark" lang={gameConfig.locale} style={themeStyle}>
       <head>
         <script
           async

@@ -4,7 +4,7 @@ import { createGameConfig } from "@/lib/config/schema";
 import { fixtureGameConfig } from "@/test/fixtures/game";
 import { createCategoryDefinitions } from "@/config/categories";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { HomePageContent, buildHomePageMetadata } from "./page";
+import { HomePageContent, buildHomePageMetadata } from "@/components/home/home-page";
 
 const extendedConfig = () => createGameConfig({
   ...fixtureGameConfig,

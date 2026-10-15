@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { TopicIcon } from "@/components/home/topic-icon";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { JsonLdScript } from "@/components/seo/json-ld-script";
@@ -82,13 +83,20 @@ export default async function GuidePage({ params }: GuidePageProps) {
           siteUrl: gameConfig.siteUrl
         })}
       />
-    <article className="guide-article-page">
+    <article className={`guide-article-page${slug === "how-to-play" ? " guide-article-page--how-to-play" : ""}`}>
       <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/guides", label: "Guides" }, { label: heading }]} />
       <header className="guide-article-page__header">
         <p className="preview-card__eyebrow">Guide</p>
         <h1>{heading}</h1>
-        {guide.frontmatter.publishedAt ? <time dateTime={guide.frontmatter.publishedAt}>Published {formatDate(guide.frontmatter.publishedAt)}</time> : null}
-        <time dateTime={guide.frontmatter.updatedAt}>Updated {formatDate(guide.frontmatter.updatedAt)}</time>
+        <div className="guide-dates">{guide.frontmatter.publishedAt ? <time dateTime={guide.frontmatter.publishedAt}>Published {formatDate(guide.frontmatter.publishedAt)}</time> : null}
+        <time dateTime={guide.frontmatter.updatedAt}>Updated {formatDate(guide.frontmatter.updatedAt)}</time></div>
+        {slug === "how-to-play" ? <>
+          <p className="guide-deck">{guide.frontmatter.description}</p>
+          <nav className="role-entry" aria-label="Jump to your role">
+            <a href="#playing-as-michael-myers"><TopicIcon name="Michael Myers" /><span><small>THE HUNTER</small><strong>Play as Michael Myers</strong><span>Go to the hunting steps</span></span><span aria-hidden="true">↗</span></a>
+            <a href="#playing-as-a-civilian"><TopicIcon name="Characters" /><span><small>THE SURVIVORS</small><strong>Play as a Civilian</strong><span>Go to the survival steps</span></span><span aria-hidden="true">↗</span></a>
+          </nav>
+        </> : null}
       </header>
       <ResponsiveAdsterraTop />
       <WikiPageLayout headings={headings} related={relatedPages.length ? relatedPages : related} relatedHeading={relatedPages.length ? "Related Pages" : "Related Content"}

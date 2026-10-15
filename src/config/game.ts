@@ -26,15 +26,15 @@ export const gameConfig = createGameConfig({
     keywords: "Halloween: The Game, wiki, guides, maps, crossplay, Michael Myers, PS5, Xbox, PC"
   },
   theme: {
-    background: "hsl(20 12% 6%)",
-    surface: "hsl(20 10% 10%)",
-    surfaceRaised: "hsl(20 10% 14%)",
-    text: "hsl(40 20% 92%)",
-    textMuted: "#b5ada2",
-    primary: "hsl(24 95% 52%)",
-    primaryContrast: "hsl(20 15% 6%)",
-    secondary: "hsl(0 55% 30%)",
-    border: "hsl(20 10% 19%)"
+    background: "#11161c",
+    surface: "#191f27",
+    surfaceRaised: "#202833",
+    text: "#eef1f5",
+    textMuted: "#a9b4c1",
+    primary: "#efa478",
+    primaryContrast: "#171b20",
+    secondary: "#27313b",
+    border: "#303943"
   },
   navigation: [
     { id: "home", label: "Home", href: "/" },

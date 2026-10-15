@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { gameConfig } from "@/config/game";
 import { createGameConfig, type GameConfig } from "@/lib/config/schema";
 import { fixtureGameConfig } from "@/test/fixtures/game";
-import * as homePageModule from "./page";
+import * as homePageModule from "@/components/home/home-page";
 
 const alternateConfig = createGameConfig({
   ...fixtureGameConfig,
