@@ -11,7 +11,6 @@ import { buildArticleJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { formatDate } from "@/lib/utils/format";
 import { gameConfig } from "@/config/game";
-import { AdsterraBanner, ResponsiveAdsterraTop } from "@/components/ads/adsterra-banner";
 
 type GuidePageProps = Readonly<{
   params: Promise<{ slug: string }>;
@@ -57,7 +56,6 @@ export default async function GuidePage({ params }: GuidePageProps) {
   const { content, headings, relatedPages } = await compileGuide(guide, { moveRelatedToSidebar: true });
   const related = resolveContentReferences(guide.frontmatter.related);
   const heading = guide.frontmatter.heading ?? guide.frontmatter.title;
-  const showRectangleAd = guide.body.length >= 4000;
 
   return (
     <>
@@ -95,9 +93,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
         </> : null}
       </header>
       {slug === "how-to-play" ? <MatchStart /> : null}
-      <ResponsiveAdsterraTop />
-      <WikiPageLayout headings={headings} related={relatedPages.length ? relatedPages : related} relatedHeading={relatedPages.length ? "Related Pages" : "Related Content"}
-        sidebarAd={showRectangleAd ? <AdsterraBanner size="300x250" /> : undefined}>
+      <WikiPageLayout headings={headings} related={relatedPages.length ? relatedPages : related} relatedHeading={relatedPages.length ? "Related Pages" : "Related Content"}>
         <div className="guide-article-page__body">
           {/* These guides place their media in MDX after the direct answer. */}
           {!["how-to-play", "how-to-respawn-as-police"].includes(guide.slug) && guide.frontmatter.image && guide.frontmatter.imageAlt ? (

@@ -10,7 +10,6 @@ import { getResearchPage, standalonePages } from "@/lib/content/pages";
 import { buildArticleJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { formatDate } from "@/lib/utils/format";
-import { AdsterraBanner, ResponsiveAdsterraTop } from "@/components/ads/adsterra-banner";
 
 const requirePage = (slug: string) => {
   const route = standalonePages.find((page) => page.slug === slug);
@@ -39,7 +38,6 @@ export async function ResearchArticle({ slug }: { slug: string }) {
     ...(isChapter ? [{ name: "Story Challenges", pathname: "/challenges" }] : []),
     { name: heading, pathname: route.pathname }
   ];
-  const showRectangleAd = record.body.length >= 4000;
   const { content, headings, relatedPages } = await compileGuide(record, { moveRelatedToSidebar: true });
   return <>
     <JsonLdScript data={buildArticleJsonLd({
@@ -63,9 +61,7 @@ export async function ResearchArticle({ slug }: { slug: string }) {
           <time dateTime={updatedAt}>Updated {formatDate(updatedAt)}</time>
         </p>
       </header>
-      <ResponsiveAdsterraTop />
-      <WikiPageLayout headings={headings} related={relatedPages}
-        sidebarAd={showRectangleAd ? <AdsterraBanner size="300x250" /> : undefined}>
+      <WikiPageLayout headings={headings} related={relatedPages}>
         <PageSummaryCards slug={slug} />
         <div className="guide-article-page__body">{content}</div>
       </WikiPageLayout>

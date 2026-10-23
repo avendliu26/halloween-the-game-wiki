@@ -1,15 +1,10 @@
 import { render, screen, within } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import GuidePage, { generateMetadata } from "./page";
 import { getGuide } from "@/lib/content/guides";
 import { MatchStart } from "@/components/wiki/match-start";
 import sitemap from "@/app/sitemap";
-
-vi.mock("@/components/ads/adsterra-banner", () => ({
-  AdsterraBanner: () => null,
-  ResponsiveAdsterraTop: () => null
-}));
 
 describe("first-match guide experience", () => {
   it("connects every onboarding and TOC link to the actual compiled article", async () => {
