@@ -21,7 +21,7 @@ describe("researched content in existing layouts", () => {
     expect(html).toContain("Killer Sense and Stalk");
     expect(html).toContain("Michael Myers Abilities");
     expect(html).toContain("Published");
-    expect((await entityMetadata({ params })).title).toEqual({ absolute: "Michael Myers Abilities & Stalk — Halloween: The Game" });
+    expect((await entityMetadata({ params })).title).toEqual({ absolute: "Michael Myers in Halloween: The Game — Abilities, Weapons & Strategy" });
   });
   it("does not append the brand twice to a researched guide title", async () => {
     const params = Promise.resolve({ slug: "how-to-play" });

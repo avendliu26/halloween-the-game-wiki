@@ -166,12 +166,12 @@
     "category": "locations",
     "image": "/images/maps/tower-farm-official.webp",
     "imageAlt": "Official Tower Farm map screenshot showing a farmhouse, barns and a windmill at night",
-    "summary": "Free Halloween: The Game post-launch map arriving October 27, 2026, inspired by Halloween 5 settings, with country roads, cornfields, farmhouses, barns, a trailer park and a harvest festival.",
+    "summary": "Free Halloween: The Game post-launch map announced for October 27, 2026, inspired by Halloween 5 settings, with country roads, cornfields, farmhouses, barns, a trailer park and a harvest festival.",
     "tags": [
       "Post-launch map",
       "Announced"
     ],
-    "updatedAt": "2026-10-15",
+    "updatedAt": "2026-10-27",
     "featured": false,
     "related": [
       {
@@ -195,7 +195,7 @@
         "id": "tips",
         "title": "Gameplay Notes",
         "type": "prose",
-        "body": "The announcement describes open rural areas with exposed crossings and longer sightlines than the launch neighborhoods. Spawn behavior, escape routes, objective placement, dimensions, and tested balance are not established before release, so this page makes no claims about them. Check the October 27 update overview for release status."
+        "body": "The announcement describes open rural areas with exposed crossings and longer sightlines than the launch neighborhoods. Spawn behavior, escape routes, objective placement, dimensions, and tested balance are not established before release, so this page makes no claims about them. As of the October 27 review (23:28 UTC, October 26), release is not confirmed in the official sources checked. The official content announcement also lists the Scythe as discoverable on Tower Farm, with a free challenge unlock or immediate unlock through purchase of the Halloween 5 Michael skin."
       }
     ]
   }
