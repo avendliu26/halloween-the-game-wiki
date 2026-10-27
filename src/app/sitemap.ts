@@ -1,3 +1,6 @@
+// Metadata depends only on repository content and build-time site configuration.
+export const dynamic = 'force-static';
+
 import type { MetadataRoute } from "next";
 import { categoryDefinitions } from "@/config/categories";
 import { gameConfig } from "@/config/game";

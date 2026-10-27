@@ -15,3 +15,6 @@ artifacts/
 # Large local source originals are preserved on disk; research manifests record their provenance.
 research/visual-assets-2026-09-28/candidates/
 research/visual-assets-2026-09-28/selected/
+
+# Static backup build output
+/out/
